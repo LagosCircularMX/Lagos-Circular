@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --azul-jalisco: #0A2342;
-            --verde: #1B5E20;
-            --dorado: #C9A941;
+            --azul-jalisco: #002856;      /* Fomento a la agricultura */
+            --oro-jalisco: #C9A941;       /* Hacer el bien a los más desfavorecidos */
+            --verde-financiero: #1B5E20;
             --blanco: #F8F9FA;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,6 +21,7 @@
             padding: 20px;
         }
         .dashboard-container { max-width: 1300px; margin: auto; }
+
         header {
             background: var(--azul-jalisco);
             color: white;
@@ -33,13 +34,22 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             flex-wrap: wrap;
         }
-        header h1 { font-size: 2rem; font-weight: 800; }
-        header h1 span { color: var(--dorado); }
+        header h1 { font-size: 1.9rem; font-weight: 800; }
+        header h1 span { color: var(--oro-jalisco); }
+        .simbolismo {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+        }
+        .simbolismo i { color: var(--oro-jalisco); margin-right: 4px; }
+
         .selector-anio { display: flex; gap: 10px; }
         .selector-anio button {
             background: transparent;
-            border: 2px solid var(--dorado);
-            color: var(--dorado);
+            border: 2px solid var(--oro-jalisco);
+            color: var(--oro-jalisco);
             padding: 8px 18px;
             border-radius: 20px;
             font-weight: bold;
@@ -47,9 +57,10 @@
             transition: 0.3s;
         }
         .selector-anio button.active, .selector-anio button:hover {
-            background: var(--dorado);
+            background: var(--oro-jalisco);
             color: var(--azul-jalisco);
         }
+
         .summary-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -63,12 +74,13 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.08);
             text-align: center;
             transition: transform 0.3s;
-            border-bottom: 4px solid var(--verde);
+            border-bottom: 4px solid var(--azul-jalisco);
         }
         .card:hover { transform: translateY(-5px); }
-        .card i { font-size: 2.5rem; color: var(--verde); margin-bottom: 10px; }
-        .card .value { font-size: 2.5rem; font-weight: 800; color: var(--azul-jalisco); }
+        .card i { font-size: 2.2rem; color: var(--azul-jalisco); margin-bottom: 10px; }
+        .card .value { font-size: 2.2rem; font-weight: 800; color: var(--azul-jalisco); }
         .card .label { color: #6c757d; margin-top: 5px; font-size: 0.95rem; }
+
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -85,10 +97,11 @@
             margin-bottom: 15px;
             color: var(--azul-jalisco);
             font-size: 1.2rem;
-            border-left: 4px solid var(--dorado);
+            border-left: 4px solid var(--oro-jalisco);
             padding-left: 10px;
         }
         canvas { max-height: 300px; }
+
         .progress-container {
             background: white;
             border-radius: 12px;
@@ -107,19 +120,44 @@
             height: 100%;
             border-radius: 10px;
             width: 0%;
-            background: linear-gradient(90deg, var(--verde), var(--dorado));
+            background: linear-gradient(90deg, var(--azul-jalisco), var(--oro-jalisco));
             transition: width 1.5s ease-in-out;
         }
+
+        .simbolismo-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #4A5568;
+        }
+        .simbolismo-footer span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin: 0 1rem;
+        }
+        .simbolismo-footer .azul { color: var(--azul-jalisco); font-weight: 600; }
+        .simbolismo-footer .oro { color: var(--oro-jalisco); font-weight: 600; }
+
+        footer { text-align: center; margin-top: 20px; color: #6c757d; font-size: 0.9rem; }
+
         @media (max-width: 768px) {
             .charts-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 1rem; text-align: center; }
+            .simbolismo { justify-content: center; }
         }
-        footer { text-align: center; margin-top: 20px; color: #6c757d; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 <div class="dashboard-container">
     <header>
-        <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Ejecutivo</h1>
+        <div>
+            <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Ejecutivo</h1>
+            <div class="simbolismo">
+                <span><i class="fas fa-tractor"></i> Azul: fomento a la agricultura</span>
+                <span><i class="fas fa-hand-holding-heart"></i> Oro: hacer el bien a los más desfavorecidos</span>
+            </div>
+        </div>
         <div class="selector-anio">
             <button id="btn2026" class="active">2026 (Año 1)</button>
             <button id="btn2027">2027 (Año 2)</button>
@@ -147,6 +185,12 @@
             <div class="progress-fill" id="progressFill"></div>
         </div>
     </div>
+
+    <div class="simbolismo-footer">
+        <span class="azul"><i class="fas fa-seedling"></i> Impulsamos la agricultura</span>
+        <span class="oro"><i class="fas fa-heart"></i> Servimos a los más desfavorecidos</span>
+    </div>
+
     <footer>
         Proyecto reconocido por Fundación POSiBLE 2026 | Lagos de Moreno, Jalisco | Actualizado Abril 2026
     </footer>
@@ -183,7 +227,7 @@
                 labels: ['Ladrillos', 'Tarimas', 'Tapetes Ganado', 'Utensilios Compost.', 'Fertilizante', 'Cuota Municipal'],
                 datasets: [{
                     data: [d.ladrillos, d.tarimas, d.tapetes, d.utensilios, d.fertilizante, d.cuotaMun],
-                    backgroundColor: ['#1B5E20', '#2E7D32', '#0A2342', '#C9A941', '#8B5A2B', '#6C757D'],
+                    backgroundColor: ['#002856', '#1B5E20', '#C9A941', '#8B5A2B', '#6C757D', '#A68A1C'],
                     borderWidth: 0
                 }]
             },
@@ -199,7 +243,7 @@
             data: {
                 labels: ['2026 (Año 1)', '2027 (Año 2)', '2028 (Año 3)'],
                 datasets: [
-                    { label: 'Flujo Efectivo Acumulado', data: flujoAcum, borderColor: '#1B5E20', backgroundColor: 'rgba(27,94,32,0.1)', fill: true, tension: 0.3 },
+                    { label: 'Flujo Efectivo Acumulado', data: flujoAcum, borderColor: '#002856', backgroundColor: 'rgba(0,40,86,0.1)', fill: true, tension: 0.3 },
                     { label: 'Línea de Inversión ($2.4M)', data: [inversion, inversion, inversion], borderColor: '#C9A941', borderDash: [6, 6], borderWidth: 2, fill: false }
                 ]
             },
