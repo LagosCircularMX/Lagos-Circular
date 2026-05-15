@@ -5,103 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido por Fundación POSiBLE 2026.">
     <meta name="author" content="Ing. [Tu Nombre Completo]">
-    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
-    
-    <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <style>
-        /* ===== RESET Y VARIABLES ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --verde-primario: #1B5E20;
-            --verde-claro: #2E7D32;
-            --dorado: #C9A941;
-            --dorado-hover: #B89B3C;
-            --azul-jalisco: #0A2342;
-            --blanco: #F8F9FA;
-            --texto: #212529;
-            --gris: #6C757D;
-            --sombra: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --azul-jalisco: #002856;
+            --azul-profundo: #0A2342;
+            --oro-jalisco: #C9A941;
+            --oro-claro: #DFC878;
+            --verde-financiero: #1B5E20;
+            --verde-sustentable: #2E7D32;
+            --blanco: #FFFFFF;
+            --gris-perla: #F5F7FA;
+            --texto-primario: #1A1A1A;
+            --texto-secundario: #4A5568;
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 8px 32px rgba(0, 0, 0, 0.10);
+            --sombra-fuerte: 0 12px 40px rgba(0, 0, 0, 0.15);
             --borde-radius: 12px;
             --max-width: 1200px;
+            --transicion: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--texto);
+            color: var(--texto-primario);
             line-height: 1.7;
             background: var(--blanco);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== NAVEGACIÓN FLOTANTE ===== */
+        /* ===== NAVEGACIÓN INSTITUCIONAL ===== */
         nav {
-            background: rgba(10, 35, 66, 0.97);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 40, 86, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             color: var(--blanco);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 5%;
+            padding: 0.7rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+            border-bottom: 2px solid var(--oro-jalisco);
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-size: 1.7rem;
+            font-weight: 900;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
-
         .logo .lago-part { color: var(--blanco); }
-        .logo .circ-part { color: var(--dorado); }
+        .logo .circ-part { color: var(--oro-jalisco); }
+        .logo i { color: var(--verde-sustentable); font-size: 1.5rem; }
 
-        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav ul { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
 
         nav a {
-            color: var(--blanco);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            transition: 0.3s;
+            transition: var(--transicion);
             position: relative;
+            letter-spacing: 0.01em;
         }
-
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
-            background: var(--dorado);
-            transition: 0.3s;
+            background: var(--oro-jalisco);
+            transition: width 0.3s;
+            border-radius: 1px;
         }
-
-        nav a:hover { color: var(--dorado); }
+        nav a:hover { color: var(--oro-claro); }
         nav a:hover::after { width: 100%; }
 
-        /* Icono hamburguesa */
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--blanco);
+        .btn-nav {
+            background: var(--oro-jalisco);
+            color: var(--azul-jalisco) !important;
+            padding: 0.55rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transicion);
+            box-shadow: 0 4px 14px rgba(201, 169, 65, 0.3);
         }
+        .btn-nav:hover {
+            background: var(--oro-claro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 65, 0.4);
+        }
+        .btn-nav::after { display: none; }
 
-        @media (max-width: 768px) {
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--blanco); }
+
+        @media (max-width: 900px) {
             .hamburger { display: block; }
             nav ul {
                 display: none;
@@ -111,17 +126,18 @@
                 left: 0;
                 width: 100%;
                 background: var(--azul-jalisco);
-                padding: 1.5rem;
+                padding: 1.8rem;
                 gap: 1.2rem;
                 text-align: center;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+                border-bottom: 2px solid var(--oro-jalisco);
             }
             nav ul.active { display: flex; }
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO INSTITUCIONAL ===== */
         .hero {
-            background: linear-gradient(135deg, rgba(10, 35, 66, 0.82), rgba(27, 94, 32, 0.78)),
+            background: linear-gradient(155deg, rgba(0,40,86,0.88) 0%, rgba(10,35,66,0.82) 40%, rgba(27,94,32,0.72) 100%),
                         url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Lagos_de_Moreno_Jalisco_Mexico.jpg/1024px-Lagos_de_Moreno_Jalisco_Mexico.jpg') center/cover no-repeat;
             min-height: 100vh;
             display: flex;
@@ -130,78 +146,155 @@
             align-items: center;
             text-align: center;
             color: var(--blanco);
-            margin-top: 0;
             padding: 8rem 2rem 4rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero .highlight { color: var(--dorado); }
-
-        .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            max-width: 700px;
-            margin-bottom: 2rem;
-            opacity: 0.92;
-        }
-
-        .btn {
-            background: var(--dorado);
-            color: var(--azul-jalisco);
-            font-weight: 700;
-            padding: 0.85rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 1.05rem;
-            box-shadow: 0 6px 18px rgba(201, 169, 65, 0.35);
-        }
-
-        .btn:hover {
-            background: var(--dorado-hover);
-            transform: translateY(-2px);
-        }
-
-        /* ===== SECCIONES ===== */
-        section { padding: 5rem 5%; max-width: var(--max-width); margin: 0 auto; }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            color: var(--azul-jalisco);
             position: relative;
         }
-
-        .section-title::after {
+        .hero::before {
             content: '';
-            display: block;
-            width: 70px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, rgba(255,255,255,1) 0%, transparent 100%);
+        }
+
+        .hero-badge {
+            background: rgba(201, 169, 65, 0.15);
+            border: 1px solid rgba(201, 169, 65, 0.5);
+            color: var(--oro-claro);
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .hero-badge i { font-size: 1rem; }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+        .hero .highlight { color: var(--oro-jalisco); }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            background: var(--oro-jalisco);
+            color: var(--azul-jalisco);
+            font-weight: 700;
+            padding: 0.9rem 2.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-size: 1rem;
+            box-shadow: 0 8px 24px rgba(201, 169, 65, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn:hover {
+            background: var(--oro-claro);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(201, 169, 65, 0.45);
+        }
+        .btn-outline-hero {
+            background: transparent;
+            border: 2px solid var(--blanco);
+            color: var(--blanco);
+            font-weight: 600;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-size: 1rem;
+        }
+        .btn-outline-hero:hover {
+            background: var(--blanco);
+            color: var(--azul-jalisco);
+        }
+
+        /* ===== SECCIONES GENERALES ===== */
+        section { padding: 5rem 5%; max-width: var(--max-width); margin: 0 auto; }
+
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-label {
+            color: var(--verde-financiero);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--azul-jalisco);
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .section-divider {
+            width: 80px;
             height: 4px;
-            background: var(--dorado);
-            margin: 0.6rem auto 0;
+            background: linear-gradient(90deg, var(--oro-jalisco), var(--verde-sustentable));
+            margin: 0 auto;
             border-radius: 2px;
         }
 
         /* ===== PROBLEMA ===== */
+        #problema { background: var(--gris-perla); }
         .problema-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
         }
-
         .problema-grid img {
             width: 100%;
             border-radius: var(--borde-radius);
-            box-shadow: var(--sombra);
+            box-shadow: var(--sombra-media);
         }
+        .stat-destacado {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--azul-jalisco);
+            display: block;
+        }
+        .stat-destacado span { color: var(--verde-financiero); }
+
+        /* ===== SELLO FINANCIAMIENTO VERDE ===== */
+        .financiamiento-verde {
+            background: linear-gradient(135deg, var(--verde-financiero), #0D3B0F);
+            color: var(--blanco);
+            border-radius: var(--borde-radius);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: var(--sombra-media);
+        }
+        .financiamiento-verde i { font-size: 2.5rem; color: var(--oro-jalisco); flex-shrink: 0; }
 
         /* ===== PRODUCTOS ===== */
         .grid {
@@ -209,176 +302,157 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-
         .producto-card {
-            background: white;
+            background: var(--blanco);
             border-radius: var(--borde-radius);
-            box-shadow: var(--sombra);
+            box-shadow: var(--sombra-suave);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transicion);
+            border: 1px solid rgba(0,0,0,0.04);
         }
-
         .producto-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+            box-shadow: var(--sombra-fuerte);
         }
-
         .producto-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-
         .producto-card .contenido {
             padding: 1.5rem;
         }
-
         .producto-card h3 {
-            color: var(--verde-primario);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            color: var(--azul-jalisco);
+            margin-bottom: 0.4rem;
+            font-size: 1.15rem;
+            font-weight: 700;
         }
-
-        .producto-card p {
-            color: var(--gris);
-            font-size: 0.95rem;
-        }
+        .producto-card p { color: var(--texto-secundario); font-size: 0.95rem; }
 
         /* ===== FODA ===== */
         .foda-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
-
         .foda-item {
             padding: 2rem;
             border-radius: var(--borde-radius);
-            color: white;
-            box-shadow: var(--sombra);
+            color: var(--blanco);
+            box-shadow: var(--sombra-suave);
         }
-
         .foda-item h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 700;
         }
-
         .fortalezas { background: linear-gradient(135deg, #1B5E20, #2E7D32); }
-        .debilidades { background: linear-gradient(135deg, #B8860B, #DAA520); color: #212529; }
-        .oportunidades { background: linear-gradient(135deg, #0A2342, #1A3A6B); }
-        .amenazas { background: linear-gradient(135deg, #8B0000, #B22222); }
-
+        .debilidades { background: linear-gradient(135deg, #A68A1C, #C9A941); color: #1A1A1A; }
+        .oportunidades { background: linear-gradient(135deg, #002856, #0A3A6B); }
+        .amenazas { background: linear-gradient(135deg, #7A1C1C, #A83232); }
         .foda-item ul { list-style: none; padding-left: 0; }
-        .foda-item li { padding: 0.4rem 0; font-size: 0.95rem; }
-        .foda-item li::before { content: '• '; color: var(--dorado); font-weight: bold; }
+        .foda-item li { padding: 0.5rem 0; font-size: 0.95rem; }
+        .foda-item li::before { content: '▸ '; color: var(--oro-jalisco); font-weight: bold; }
 
         /* ===== IMPACTO ===== */
+        #impacto { background: var(--gris-perla); }
         .indicadores {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
         }
-
         .indicador {
             flex: 1 1 180px;
-            max-width: 220px;
-            background: white;
-            padding: 2rem 1rem;
+            max-width: 230px;
+            background: var(--blanco);
+            padding: 2.2rem 1.2rem;
             border-radius: var(--borde-radius);
-            box-shadow: var(--sombra);
+            box-shadow: var(--sombra-suave);
             text-align: center;
-            transition: 0.3s;
+            transition: var(--transicion);
+            border-bottom: 4px solid var(--verde-sustentable);
         }
+        .indicador:hover { transform: translateY(-4px); box-shadow: var(--sombra-media); }
+        .indicador i { font-size: 2.4rem; color: var(--verde-sustentable); margin-bottom: 0.8rem; }
+        .indicador .numero { font-size: 2.4rem; font-weight: 900; color: var(--azul-jalisco); }
+        .indicador p { color: var(--texto-secundario); margin-top: 0.3rem; font-weight: 500; }
 
-        .indicador:hover { transform: translateY(-4px); }
-
-        .indicador i { font-size: 2.5rem; color: var(--verde-claro); margin-bottom: 0.8rem; }
-
-        .indicador .numero {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--azul-jalisco);
-        }
-
-        .indicador p { color: var(--gris); margin-top: 0.3rem; }
-
-        /* ===== RESPALDOS ===== */
+        /* ===== RESPALDO ===== */
         .respaldo {
             background: var(--azul-jalisco);
-            color: white;
+            color: var(--blanco);
             text-align: center;
-            padding: 3rem 5%;
+            padding: 3.5rem 5%;
             margin-top: 2rem;
         }
-
         .logos {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 3rem;
+            gap: 2.5rem;
             margin-top: 2rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
-
         .logos div {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             padding: 1rem 2rem;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.12);
         }
+        .logos i { color: var(--oro-jalisco); }
 
         /* ===== CONTACTO ===== */
-        .contacto {
-            background: var(--verde-primario);
-            color: white;
+        #contacto {
+            background: linear-gradient(160deg, var(--verde-financiero), #0D3B0F);
+            color: var(--blanco);
             text-align: center;
-            padding: 4rem 5%;
+            padding: 5rem 5%;
         }
-
-        .contacto .section-title { color: white; }
-
-        .contacto a { color: var(--dorado); font-weight: 700; text-decoration: none; }
-        .contacto a:hover { text-decoration: underline; }
-
-        .contacto .btn-wrapper { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-
+        #contacto .section-title { color: var(--blanco); }
+        #contacto .btn-wrapper { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--dorado);
-            color: var(--dorado);
+            border: 2px solid var(--oro-jalisco);
+            color: var(--oro-jalisco);
             font-weight: 700;
-            padding: 0.7rem 2rem;
+            padding: 0.75rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
-            transition: 0.3s;
+            transition: var(--transicion);
         }
-
-        .btn-outline:hover { background: var(--dorado); color: var(--azul-jalisco); }
+        .btn-outline:hover { background: var(--oro-jalisco); color: var(--azul-jalisco); }
 
         /* ===== FOOTER ===== */
         footer {
-            background: #061526;
-            color: white;
+            background: #04182E;
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 2rem 5%;
+            padding: 2.5rem 5%;
             font-size: 0.9rem;
         }
+        footer .socials { margin: 1rem 0; display: flex; gap: 1.8rem; justify-content: center; }
+        footer .socials a { color: var(--oro-jalisco); font-size: 1.4rem; transition: var(--transicion); }
+        footer .socials a:hover { color: var(--blanco); }
+        footer .slogan { font-style: italic; color: var(--oro-jalisco); margin-top: 0.5rem; font-weight: 500; }
 
-        footer .socials { margin: 1rem 0; display: flex; gap: 1.5rem; justify-content: center; }
-        footer .socials a { color: var(--dorado); font-size: 1.4rem; transition: 0.3s; }
-        footer .socials a:hover { color: white; }
-        footer .slogan { font-style: italic; color: var(--dorado); margin-top: 0.5rem; }
-
-        /* ===== RESPONSIVE FINAL ===== */
+        @media (max-width: 768px) {
+            .problema-grid { grid-template-columns: 1fr; }
+            .financiamiento-verde { flex-direction: column; text-align: center; }
+            .section-title { font-size: 1.8rem; }
+        }
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.8rem; }
             .section-title { font-size: 1.6rem; }
-            .problema-grid { grid-template-columns: 1fr; }
             .indicador { flex: 1 1 140px; max-width: 160px; padding: 1.2rem 0.8rem; }
             .indicador .numero { font-size: 1.8rem; }
         }
@@ -388,7 +462,7 @@
 
     <!-- ==================== NAV ==================== -->
     <nav>
-        <div class="logo"><span class="lago-part">LAGOS</span><span class="circ-part">CIRCULAR</span></div>
+        <div class="logo"><i class="fas fa-recycle"></i> LAGOS<span class="circ-part">CIRCULAR</span></div>
         <span class="hamburger" onclick="toggleMenu()">☰</span>
         <ul id="nav-links">
             <li><a href="#hero">Inicio</a></li>
@@ -396,36 +470,56 @@
             <li><a href="#productos">Productos</a></li>
             <li><a href="#foda">FODA</a></li>
             <li><a href="#impacto">Impacto</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#contacto" class="btn-nav">Contacto <i class="fas fa-arrow-right"></i></a></li>
         </ul>
     </nav>
 
     <!-- ==================== HERO ==================== -->
     <section id="hero" class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-certificate"></i> Reconocido por Fundación POSiBLE 2026
+        </div>
         <h1>Transformamos <span class="highlight">Residuos</span> en<br>Desarrollo para Jalisco</h1>
-        <p>Proyecto reconocido por <strong>Fundación POSiBLE 2026</strong>, respaldado por el H. Ayuntamiento de Lagos de Moreno y Grupo ENERWASTE. Convertimos desechos en ladrillos ecológicos, tarimas, utensilios compostables y progreso real para las familias rurales de Los Altos.</p>
-        <a href="#productos" class="btn">Explorar Productos Sustentables</a>
+        <p class="subtitle">Proyecto de economía circular respaldado por el H. Ayuntamiento de Lagos de Moreno y Grupo ENERWASTE. Convertimos desechos en ladrillos ecológicos, tarimas, utensilios compostables y progreso real para las familias rurales de Los Altos.</p>
+        <div class="hero-buttons">
+            <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar Productos</a>
+            <a href="hub.html" class="btn-outline-hero"><i class="fas fa-chart-pie"></i> Centro de Inversión</a>
+        </div>
     </section>
 
     <!-- ==================== PROBLEMA ==================== -->
     <section id="problema">
-        <h2 class="section-title">El Reto que Enfrentamos</h2>
+        <div class="section-header">
+            <p class="section-label">Contexto Municipal</p>
+            <h2 class="section-title">El Reto que Enfrentamos</h2>
+            <div class="section-divider"></div>
+        </div>
         <div class="problema-grid">
             <div>
                 <img src="relleno-sanitario.jpg" alt="Relleno sanitario de Lagos de Moreno" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop';" loading="lazy">
             </div>
             <div>
-                <p><strong>32,000 toneladas</strong> de basura genera Lagos de Moreno cada año.</p>
-                <p>El relleno sanitario está al <strong>85% de su capacidad</strong> y su vida útil es menor a 5 años.</p>
+                <p><span class="stat-destacado"><span>32,000</span> toneladas</span> de basura genera Lagos de Moreno cada año.</p>
+                <p style="margin-top:1rem;">El relleno sanitario está al <strong>85% de su capacidad</strong> y su vida útil es menor a 5 años.</p>
                 <p>Los plásticos contaminan nuestros suelos y el <strong>14% de los residuos urbanos</strong> son potencialmente aprovechables.</p>
-                <p style="margin-top:1.5rem; font-size:1.1rem;">Ante este desafío, <strong>nace LAGOS CIRCULAR</strong> con el respaldo de la <span style="color:#1B5E20; font-weight:700;">Fundación POSiBLE 2026</span>, una iniciativa de Nacional Monte de Piedad y Fundación Televisa que impulsa el emprendimiento innovador en México.</p>
+                <div class="financiamiento-verde">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <div>
+                        <strong>Elegible para el Financiamiento Verde de Jalisco</strong><br>
+                        <small>El programa estatal permite acceder a créditos de hasta <strong>15 MDP</strong> con condiciones preferenciales para proyectos de economía circular: gestión, valorización, reciclaje y reutilización de residuos.</small>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ==================== PRODUCTOS ==================== -->
-    <section id="productos" style="background:#f0f4f8;">
-        <h2 class="section-title">Nuestros Productos de Alto Impacto</h2>
+    <section id="productos">
+        <div class="section-header">
+            <p class="section-label">Catálogo de Soluciones</p>
+            <h2 class="section-title">Productos de Alto Impacto</h2>
+            <div class="section-divider"></div>
+        </div>
         <div class="grid">
             <div class="producto-card">
                 <img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';" loading="lazy">
@@ -473,8 +567,12 @@
     </section>
 
     <!-- ==================== FODA ==================== -->
-    <section id="foda">
-        <h2 class="section-title">Análisis FODA Estratégico</h2>
+    <section id="foda" style="background: var(--gris-perla);">
+        <div class="section-header">
+            <p class="section-label">Análisis Estratégico</p>
+            <h2 class="section-title">FODA</h2>
+            <div class="section-divider"></div>
+        </div>
         <div class="foda-grid">
             <div class="foda-item fortalezas">
                 <h3><i class="fas fa-check-circle"></i> Fortalezas</h3>
@@ -482,15 +580,15 @@
                     <li>Materia prima local gratuita</li>
                     <li>Tecnología patentable</li>
                     <li>Alianza Ayuntamiento + ENERWASTE</li>
-                    <li>Alto impacto social medible</li>
                     <li>Reconocimiento POSiBLE 2026</li>
+                    <li>Alineado al Financiamiento Verde estatal</li>
                 </ul>
             </div>
             <div class="foda-item oportunidades">
                 <h3><i class="fas fa-lightbulb"></i> Oportunidades</h3>
                 <ul>
                     <li>Prohibición de plásticos de un solo uso</li>
-                    <li>Fondos estatales para economía circular</li>
+                    <li>Financiamiento Verde Jalisco (FOJAL)</li>
                     <li>Mercado ganadero de Los Altos</li>
                     <li>Bonos de carbono</li>
                     <li>Premio Estatal de Innovación Jalisco 2026</li>
@@ -517,7 +615,11 @@
 
     <!-- ==================== IMPACTO ==================== -->
     <section id="impacto">
-        <h2 class="section-title">Impacto en los Primeros 3 Años</h2>
+        <div class="section-header">
+            <p class="section-label">Métricas Clave</p>
+            <h2 class="section-title">Impacto en los Primeros 3 Años</h2>
+            <div class="section-divider"></div>
+        </div>
         <div class="indicadores">
             <div class="indicador">
                 <i class="fas fa-home"></i>
@@ -537,15 +639,15 @@
             <div class="indicador">
                 <i class="fas fa-chart-line"></i>
                 <div class="numero">187%</div>
-                <p>ROI acumulado en 3 años</p>
+                <p>ROI acumulado</p>
             </div>
         </div>
     </section>
 
-    <!-- ==================== RESPALDOS ==================== -->
+    <!-- ==================== RESPALDO ==================== -->
     <section class="respaldo">
-        <h2 style="color:white; font-weight:800;">Respaldo Institucional</h2>
-        <p style="max-width:650px; margin:1rem auto 0; opacity:0.9;">Nuestro proyecto busca el reconocimiento de las principales entidades comprometidas con el desarrollo sostenible de Jalisco.</p>
+        <h2 style="font-weight:800; font-size:2rem;">Respaldo Institucional</h2>
+        <p style="max-width:650px; margin:1rem auto 0; opacity:0.9;">Nuestro proyecto cuenta con el reconocimiento de las principales entidades comprometidas con el desarrollo sostenible de Jalisco.</p>
         <div class="logos">
             <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
             <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
@@ -555,10 +657,22 @@
     </section>
 
     <!-- ==================== CONTACTO ==================== -->
-    <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
-<a href="hub.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Centro de Inversión</a>
-<a href="Plan-Negocios-Lagos-Circular-2026.pdf" target="_blank" class="btn-outline"><i class="fas fa-download"></i> Descargar PDF</a>
-<a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard Interactivo</a>
+    <section id="contacto">
+        <div class="section-header">
+            <p class="section-label" style="color:rgba(255,255,255,0.8);">Vinculación Estratégica</p>
+            <h2 class="section-title">Invitación al Gobernador Pablo Lemus Navarro y Posibles Inversionistas</h2>
+        </div>
+        <p style="max-width:700px; margin:0 auto;">Presentamos este proyecto como una solución concreta a la crisis de residuos, alineada con la política ambiental estatal y elegible para el <strong>Financiamiento Verde de Jalisco</strong> (FOJAL). Solicitamos respetuosamente la inclusión de <strong>LAGOS CIRCULAR</strong> en la agenda de proyectos estratégicos de economía circular.</p>
+        <div class="btn-wrapper">
+            <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
+            <a href="hub.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Centro de Inversión</a>
+            <a href="Plan-Negocios-Lagos-Circular-2026.pdf" target="_blank" class="btn-outline"><i class="fas fa-download"></i> Plan de Negocios (PDF)</a>
+        </div>
+        <p style="margin-top:2rem;">
+            <i class="fas fa-phone"></i> +52 (474) 108 1206 &nbsp;&nbsp;
+            <i class="fas fa-map-marker-alt"></i> Lagos de Moreno, Jalisco, México
+        </p>
+    </section>
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
@@ -569,22 +683,18 @@
             <a href="https://wa.me/5214741081206" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:engineerflores@outlook.com" title="Correo"><i class="fas fa-envelope"></i></a>
         </div>
-        <p class="slogan">De la Basura al Progreso, Construyendo un Lagos Circular</p>
+        <p class="slogan">"De la Basura al Progreso, Construyendo un Lagos Circular"</p>
     </footer>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        /* Menú hamburguesa */
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('active');
         }
-        /* Cerrar menú al hacer clic en un enlace (móvil) */
         document.querySelectorAll('#nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('nav-links').classList.remove('active');
             });
         });
     </script>
-
 </body>
 </html>
