@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interactivo | LAGOS CIRCULAR</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --azul-jalisco: #0A2342;
+            --verde: #1B5E20;
+            --dorado: #C9A941;
+            --blanco: #F8F9FA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #e9ecef);
+            color: #212529;
+            padding: 20px;
+        }
+        .dashboard-container { max-width: 1300px; margin: auto; }
+        header {
+            background: var(--azul-jalisco);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            flex-wrap: wrap;
+        }
+        header h1 { font-size: 2rem; font-weight: 800; }
+        header h1 span { color: var(--dorado); }
+        .selector-anio { display: flex; gap: 10px; }
+        .selector-anio button {
+            background: transparent;
+            border: 2px solid var(--dorado);
+            color: var(--dorado);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .selector-anio button.active, .selector-anio button:hover {
+            background: var(--dorado);
+            color: var(--azul-jalisco);
+        }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--verde);
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 2.5rem; color: var(--verde); margin-bottom: 10px; }
+        .card .value { font-size: 2.5rem; font-weight: 800; color: var(--azul-jalisco); }
+        .card .label { color: #6c757d; margin-top: 5px; font-size: 0.95rem; }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .chart-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+        .chart-box h3 {
+            margin-bottom: 15px;
+            color: var(--azul-jalisco);
+            font-size: 1.2rem;
+            border-left: 4px solid var(--dorado);
+            padding-left: 10px;
+        }
+        canvas { max-height: 300px; }
+        .progress-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--verde), var(--dorado));
+            transition: width 1.5s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+        footer { text-align: center; margin-top: 20px; color: #6c757d; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <header>
+        <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Ejecutivo</h1>
+        <div class="selector-anio">
+            <button id="btn2026" class="active">2026 (Año 1)</button>
+            <button id="btn2027">2027 (Año 2)</button>
+            <button id="btn2028">2028 (Año 3)</button>
+        </div>
+    </header>
+
+    <div class="summary-cards" id="summaryCards"></div>
+
+    <div class="charts-grid">
+        <div class="chart-box">
+            <h3><i class="fas fa-chart-pie"></i> Composición de Ingresos (MXN)</h3>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3><i class="fas fa-chart-line"></i> Flujo de Efectivo Acumulado</h3>
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <div class="progress-container">
+        <h3 style="color: var(--azul-jalisco); margin-bottom: 5px;">Recuperación de Inversión (Payback)</h3>
+        <p id="payback-label">Progreso: 37% del total de $2,400,000 MXN</p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+    <footer>
+        Proyecto reconocido por Fundación POSiBLE 2026 | Lagos de Moreno, Jalisco | Actualizado Abril 2026
+    </footer>
+</div>
+
+<script>
+    const dataByYear = {
+        2026: { ingresosTotales: 2500000, costos: 1600000, flujoNeto: 900000, flujoAcum: 900000, ladrillos: 930000, tarimas: 810000, tapetes: 372000, utensilios: 281000, fertilizante: 93000, cuotaMun: 360000, plasticoProc: 120, organicoProc: 60, empleos: 15, familias: 300, paybackPct: 37.5 },
+        2027: { ingresosTotales: 3500000, costos: 2000000, flujoNeto: 1500000, flujoAcum: 2400000, ladrillos: 1260000, tarimas: 1100000, tapetes: 510000, utensilios: 420000, fertilizante: 110000, cuotaMun: 360000, plasticoProc: 240, organicoProc: 150, empleos: 20, familias: 600, paybackPct: 100 },
+        2028: { ingresosTotales: 4500000, costos: 2400000, flujoNeto: 2100000, flujoAcum: 4500000, ladrillos: 1620000, tarimas: 1420000, tapetes: 660000, utensilios: 540000, fertilizante: 180000, cuotaMun: 360000, plasticoProc: 480, organicoProc: 300, empleos: 25, familias: 800, paybackPct: 187.5 }
+    };
+
+    let currentYear = 2026;
+    let pieChartInstance, lineChartInstance;
+
+    function updateDashboard(year) {
+        const d = dataByYear[year];
+        document.getElementById('summaryCards').innerHTML = `
+            <div class="card"><i class="fas fa-dollar-sign"></i><div class="value">$${(d.ingresosTotales/1000000).toFixed(1)}M</div><div class="label">Ingresos Totales</div></div>
+            <div class="card"><i class="fas fa-chart-simple"></i><div class="value">$${(d.flujoNeto/1000000).toFixed(1)}M</div><div class="label">Flujo Neto</div></div>
+            <div class="card"><i class="fas fa-recycle"></i><div class="value">${d.plasticoProc} T</div><div class="label">Plástico Procesado</div></div>
+            <div class="card"><i class="fas fa-users"></i><div class="value">${d.empleos}</div><div class="label">Empleos Verdes</div></div>
+            <div class="card"><i class="fas fa-home"></i><div class="value">${d.familias}+</div><div class="label">Familias Beneficiadas</div></div>
+            <div class="card"><i class="fas fa-seedling"></i><div class="value">${d.organicoProc} T</div><div class="label">Orgánicos Compostados</div></div>
+        `;
+        document.getElementById('progressFill').style.width = d.paybackPct + '%';
+        document.getElementById('payback-label').innerHTML = `Progreso: ${d.paybackPct}% de $2,400,000 MXN ${d.paybackPct >= 100 ? '✅ INVERSIÓN RECUPERADA' : ''}`;
+
+        if (pieChartInstance) pieChartInstance.destroy();
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        pieChartInstance = new Chart(ctxPie, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ladrillos', 'Tarimas', 'Tapetes Ganado', 'Utensilios Compost.', 'Fertilizante', 'Cuota Municipal'],
+                datasets: [{
+                    data: [d.ladrillos, d.tarimas, d.tapetes, d.utensilios, d.fertilizante, d.cuotaMun],
+                    backgroundColor: ['#1B5E20', '#2E7D32', '#0A2342', '#C9A941', '#8B5A2B', '#6C757D'],
+                    borderWidth: 0
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+        });
+
+        if (lineChartInstance) lineChartInstance.destroy();
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const flujoAcum = [dataByYear[2026].flujoAcum, dataByYear[2027].flujoAcum, dataByYear[2028].flujoAcum];
+        const inversion = 2400000;
+        lineChartInstance = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['2026 (Año 1)', '2027 (Año 2)', '2028 (Año 3)'],
+                datasets: [
+                    { label: 'Flujo Efectivo Acumulado', data: flujoAcum, borderColor: '#1B5E20', backgroundColor: 'rgba(27,94,32,0.1)', fill: true, tension: 0.3 },
+                    { label: 'Línea de Inversión ($2.4M)', data: [inversion, inversion, inversion], borderColor: '#C9A941', borderDash: [6, 6], borderWidth: 2, fill: false }
+                ]
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: value => '$' + (value/1000000).toFixed(1) + 'M' } } } }
+        });
+    }
+
+    document.getElementById('btn2026').addEventListener('click', function() { setActiveButton(this); updateDashboard(2026); });
+    document.getElementById('btn2027').addEventListener('click', function() { setActiveButton(this); updateDashboard(2027); });
+    document.getElementById('btn2028').addEventListener('click', function() { setActiveButton(this); updateDashboard(2028); });
+
+    function setActiveButton(btn) {
+        document.querySelectorAll('.selector-anio button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+    window.onload = () => updateDashboard(2026);
+</script>
+</body>
+</html>
