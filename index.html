@@ -28,7 +28,6 @@
             background-color: var(--gris-fondo);
         }
 
-        /* ----- NAVEGACIÓN ----- */
         nav {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(15px);
@@ -57,7 +56,6 @@
             color: var(--gris-oscuro);
             font-weight: 500;
             transition: color 0.3s;
-            position: relative;
         }
         nav a:hover { color: var(--naranja-institucional); }
 
@@ -67,11 +65,27 @@
             padding: 0.6rem 1.8rem;
             border-radius: 50px;
             font-weight: 600;
-            transition: background 0.3s;
         }
         .btn-nav:hover { background: #e08600; }
 
-        /* ----- HERO (con degradado animado) ----- */
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            }
+            nav ul.active { display: flex; }
+        }
+
         .hero {
             background: linear-gradient(45deg, #232526, #414345, #232526);
             background-size: 400% 400%;
@@ -100,7 +114,6 @@
             border-radius: 50px;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            font-size: 0.9rem;
         }
 
         .hero h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); font-weight: 800; margin-bottom: 1rem; }
@@ -121,7 +134,6 @@
         }
         .btn:hover { background: #e08600; transform: translateY(-2px); }
 
-        /* ----- SECCIONES GENERALES ----- */
         section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
 
         .section-title {
@@ -133,7 +145,6 @@
         }
         .section-title span { color: var(--naranja-institucional); }
 
-        /* ----- TARJETAS DE DATOS (Problema) ----- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -149,9 +160,8 @@
             border-left: 5px solid var(--naranja-institucional);
         }
         .stat-card i { font-size: 2rem; color: var(--naranja-institucional); margin-bottom: 1rem; }
-        .stat-card .number { font-size: 2.2rem; font-weight: 700; color: var(--gris-oscuro); }
+        .stat-card .number { font-size: 2.2rem; font-weight: 700; }
 
-        /* ----- PRODUCTOS ----- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,7 +183,51 @@
         .producto-card h3 { color: var(--gris-oscuro); margin-bottom: 0.5rem; }
         .producto-card p { color: var(--gris-texto); font-size: 0.95rem; }
 
-        /* ----- FOOTER ----- */
+        .respaldo {
+            background: var(--gris-oscuro);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 5%;
+            margin-top: 2rem;
+        }
+        .logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            font-weight: 600;
+        }
+        .logos div {
+            background: rgba(255,255,255,0.08);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .logos i { color: var(--naranja-institucional); }
+
+        .contacto {
+            background: var(--naranja-institucional);
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+        .contacto .section-title { color: white; }
+        .contacto .btn-wrapper { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-outline:hover { background: white; color: var(--naranja-institucional); }
+
         footer {
             background: var(--gris-oscuro);
             color: white;
@@ -183,67 +237,107 @@
         }
         footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
 
-        /* Animación de desplazamiento */
-        @media (prefers-reduced-motion: no-preference) {
-            .fade-in {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.8s ease, transform 0.8s ease;
-            }
-            .fade-in.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">LAGOS<span>CIRCULAR</span></div>
-        <ul>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <ul id="nav-links">
             <li><a href="#problema">Problema</a></li>
             <li><a href="#productos">Productos</a></li>
             <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#respaldo">Respaldo</a></li>
             <li><a href="#contacto" class="btn-nav">Contacto</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido por Fundación POSiBLE 2026</div>
         <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
-        <p>Una biofábrica social que busca convertir plásticos y residuos orgánicos en ladrillos ecológicos, tarimas, utensilios compostables y progreso para las familias de Los Altos.</p>
+        <p>Una biofábrica social que convierte plásticos y residuos orgánicos en ladrillos ecológicos, tarimas, utensilios compostables y progreso para las familias de Los Altos.</p>
         <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
     </section>
 
-    <section id="problema">
+    <section id="problema" class="fade-in">
         <h2 class="section-title">El <span>reto</span> que enfrentamos</h2>
         <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fas fa-trash-alt"></i>
-                <div class="number">32,000 T</div>
-                <p>Basura generada al año</p>
+            <div class="stat-card"><i class="fas fa-trash-alt"></i><div class="number">32,000 T</div><p>Basura generada al año</p></div>
+            <div class="stat-card"><i class="fas fa-exclamation-triangle"></i><div class="number">85%</div><p>Capacidad del relleno</p></div>
+            <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">14%</div><p>Plásticos aprovechables</p></div>
+            <div class="stat-card"><i class="fas fa-hand-holding-usd"></i><div class="number">FOJAL</div><p>Elegible Financiamiento Verde</p></div>
+        </div>
+    </section>
+
+    <section id="productos" class="fade-in">
+        <h2 class="section-title">Nuestros <span>productos</span></h2>
+        <div class="grid">
+            <div class="producto-card">
+                <img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Ladrillos Ecológicos</h3><p>30% más económicos, ligeros y aislantes. Ideales para vivienda social.</p></div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div class="number">85%</div>
-                <p>Capacidad del relleno</p>
+            <div class="producto-card">
+                <img src="tarima.jpg" alt="Tarimas plásticas" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Tarimas de Plástico</h3><p>Duraderas, higiénicas, libres de plagas. Certificación ISPM-15.</p></div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-recycle"></i>
-                <div class="number">14%</div>
-                <p>Plásticos aprovechables</p>
+            <div class="producto-card">
+                <img src="tapete.jpg" alt="Tapete anti-estrés ganadero" onerror="this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Tapetes Anti-estrés</h3><p>Confort y bienestar para ganado lechero. Mejora productividad.</p></div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-hand-holding-usd"></i>
-                <div class="number">FOJAL</div>
-                <p>Elegible para Financiamiento Verde</p>
+            <div class="producto-card">
+                <img src="utensilios.jpg" alt="Utensilios compostables" onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Utensilios Compostables</h3><p>Platos, vasos y cubiertos de hoja de elote y cáscara de plátano.</p></div>
+            </div>
+            <div class="producto-card">
+                <img src="vivienda.jpg" alt="Vivienda rural con ecobloques" onerror="this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div>
+            </div>
+            <div class="producto-card">
+                <img src="fertilizante-organico.jpg" alt="Fertilizante orgánico" onerror="this.src='https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop';">
+                <div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Las secciones de productos e impacto se mantienen con la misma estructura, 
-         solo asegúrate de que los textos tengan la clase 'fade-in' para la animación. -->
+    <section id="impacto" class="fade-in">
+        <h2 class="section-title">Impacto en <span>3 años</span></h2>
+        <div class="stats-grid">
+            <div class="stat-card"><i class="fas fa-home"></i><div class="number">500+</div><p>Familias con piso firme</p></div>
+            <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">780 T</div><p>Residuos valorizados al año</p></div>
+            <div class="stat-card"><i class="fas fa-users"></i><div class="number">25</div><p>Empleos verdes directos</p></div>
+            <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>ROI acumulado</p></div>
+        </div>
+    </section>
+
+    <section id="respaldo" class="respaldo fade-in">
+        <h2 style="color:white; margin-bottom:2rem;">Respaldo Institucional</h2>
+        <div class="logos">
+            <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
+            <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
+            <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
+            <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
+        </div>
+        <div style="margin-top:2rem;">
+            <a href="Certificado-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Certificado POSiBLE</a>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto fade-in">
+        <h2 class="section-title">Contacto e <span>Inversión</span></h2>
+        <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
+        <div class="btn-wrapper">
+            <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
+            <a href="hub.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
+            <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
+        </div>
+    </section>
 
     <footer>
         <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
@@ -251,17 +345,15 @@
     </footer>
 
     <script>
-        // Animación de elementos al aparecer en pantalla
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
-
 </body>
 </html>
