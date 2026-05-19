@@ -8,57 +8,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --azul-jalisco: #002856;      /* Fomento a la agricultura */
-            --oro-jalisco: #C9A941;       /* Hacer el bien a los más desfavorecidos */
-            --verde-financiero: #1B5E20;
-            --blanco: #F8F9FA;
+            --naranja-institucional: #F39200;
+            --gris-fondo: #F2F2F2;
+            --gris-texto: #4D4D4D;
+            --gris-oscuro: #333333;
+            --blanco: #FFFFFF;
+            --verde-sostenible: #2E7D32;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8, #e9ecef);
-            color: #212529;
+            background: var(--gris-fondo);
+            color: var(--gris-oscuro);
             padding: 20px;
         }
         .dashboard-container { max-width: 1300px; margin: auto; }
 
         header {
-            background: var(--azul-jalisco);
-            color: white;
+            background: var(--blanco);
+            border-left: 6px solid var(--naranja-institucional);
             padding: 20px 30px;
             border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
             flex-wrap: wrap;
+            gap: 1rem;
         }
-        header h1 { font-size: 1.9rem; font-weight: 800; }
-        header h1 span { color: var(--oro-jalisco); }
-        .simbolismo {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.8);
-        }
-        .simbolismo i { color: var(--oro-jalisco); margin-right: 4px; }
-
+        header h1 { font-size: 1.8rem; font-weight: 800; color: var(--gris-oscuro); }
+        header h1 span { color: var(--naranja-institucional); }
         .selector-anio { display: flex; gap: 10px; }
         .selector-anio button {
-            background: transparent;
-            border: 2px solid var(--oro-jalisco);
-            color: var(--oro-jalisco);
+            background: var(--blanco);
+            border: 2px solid var(--naranja-institucional);
+            color: var(--naranja-institucional);
             padding: 8px 18px;
             border-radius: 20px;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
         }
         .selector-anio button.active, .selector-anio button:hover {
-            background: var(--oro-jalisco);
-            color: var(--azul-jalisco);
+            background: var(--naranja-institucional);
+            color: var(--blanco);
         }
 
         .summary-cards {
@@ -68,18 +62,18 @@
             margin-bottom: 30px;
         }
         .card {
-            background: white;
+            background: var(--blanco);
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             text-align: center;
             transition: transform 0.3s;
-            border-bottom: 4px solid var(--azul-jalisco);
+            border-top: 4px solid var(--naranja-institucional);
         }
         .card:hover { transform: translateY(-5px); }
-        .card i { font-size: 2.2rem; color: var(--azul-jalisco); margin-bottom: 10px; }
-        .card .value { font-size: 2.2rem; font-weight: 800; color: var(--azul-jalisco); }
-        .card .label { color: #6c757d; margin-top: 5px; font-size: 0.95rem; }
+        .card i { font-size: 2rem; color: var(--verde-sostenible); margin-bottom: 10px; }
+        .card .value { font-size: 2.2rem; font-weight: 800; color: var(--gris-oscuro); }
+        .card .label { color: var(--gris-texto); margin-top: 5px; font-size: 0.95rem; }
 
         .charts-grid {
             display: grid;
@@ -88,29 +82,30 @@
             margin-bottom: 30px;
         }
         .chart-box {
-            background: white;
+            background: var(--blanco);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
         }
         .chart-box h3 {
             margin-bottom: 15px;
-            color: var(--azul-jalisco);
+            color: var(--gris-oscuro);
             font-size: 1.2rem;
-            border-left: 4px solid var(--oro-jalisco);
+            border-left: 4px solid var(--naranja-institucional);
             padding-left: 10px;
         }
         canvas { max-height: 300px; }
 
         .progress-container {
-            background: white;
+            background: var(--blanco);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             margin-bottom: 30px;
         }
+        .progress-container h3 { color: var(--gris-oscuro); margin-bottom: 5px; }
         .progress-bar {
-            background: #e9ecef;
+            background: var(--gris-fondo);
             border-radius: 10px;
             height: 20px;
             margin: 10px 0 20px;
@@ -120,44 +115,22 @@
             height: 100%;
             border-radius: 10px;
             width: 0%;
-            background: linear-gradient(90deg, var(--azul-jalisco), var(--oro-jalisco));
+            background: linear-gradient(90deg, var(--naranja-institucional), var(--verde-sostenible));
             transition: width 1.5s ease-in-out;
         }
 
-        .simbolismo-footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #4A5568;
-        }
-        .simbolismo-footer span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin: 0 1rem;
-        }
-        .simbolismo-footer .azul { color: var(--azul-jalisco); font-weight: 600; }
-        .simbolismo-footer .oro { color: var(--oro-jalisco); font-weight: 600; }
-
-        footer { text-align: center; margin-top: 20px; color: #6c757d; font-size: 0.9rem; }
+        footer { text-align: center; margin-top: 20px; color: var(--gris-texto); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             .charts-grid { grid-template-columns: 1fr; }
-            header { flex-direction: column; gap: 1rem; text-align: center; }
-            .simbolismo { justify-content: center; }
+            header { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 <div class="dashboard-container">
     <header>
-        <div>
-            <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Ejecutivo</h1>
-            <div class="simbolismo">
-                <span><i class="fas fa-tractor"></i> Azul: fomento a la agricultura</span>
-                <span><i class="fas fa-hand-holding-heart"></i> Oro: hacer el bien a los más desfavorecidos</span>
-            </div>
-        </div>
+        <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Ejecutivo</h1>
         <div class="selector-anio">
             <button id="btn2026" class="active">2026 (Año 1)</button>
             <button id="btn2027">2027 (Año 2)</button>
@@ -179,20 +152,15 @@
     </div>
 
     <div class="progress-container">
-        <h3 style="color: var(--azul-jalisco); margin-bottom: 5px;">Recuperación de Inversión (Payback)</h3>
-        <p id="payback-label">Progreso: 37% del total de $2,400,000 MXN</p>
+        <h3>Recuperación de Inversión (Payback)</h3>
+        <p id="payback-label" style="color: var(--gris-texto);">Progreso: 37% del total de $2,400,000 MXN</p>
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
     </div>
 
-    <div class="simbolismo-footer">
-        <span class="azul"><i class="fas fa-seedling"></i> Impulsamos la agricultura</span>
-        <span class="oro"><i class="fas fa-heart"></i> Servimos a los más desfavorecidos</span>
-    </div>
-
     <footer>
-        Proyecto reconocido por Fundación POSiBLE 2026 | Lagos de Moreno, Jalisco | Actualizado Abril 2026
+        Proyecto reconocido por Fundación POSiBLE 2026 | Lagos de Moreno, Jalisco
     </footer>
 </div>
 
@@ -203,7 +171,6 @@
         2028: { ingresosTotales: 4500000, costos: 2400000, flujoNeto: 2100000, flujoAcum: 4500000, ladrillos: 1620000, tarimas: 1420000, tapetes: 660000, utensilios: 540000, fertilizante: 180000, cuotaMun: 360000, plasticoProc: 480, organicoProc: 300, empleos: 25, familias: 800, paybackPct: 187.5 }
     };
 
-    let currentYear = 2026;
     let pieChartInstance, lineChartInstance;
 
     function updateDashboard(year) {
@@ -227,7 +194,7 @@
                 labels: ['Ladrillos', 'Tarimas', 'Tapetes Ganado', 'Utensilios Compost.', 'Fertilizante', 'Cuota Municipal'],
                 datasets: [{
                     data: [d.ladrillos, d.tarimas, d.tapetes, d.utensilios, d.fertilizante, d.cuotaMun],
-                    backgroundColor: ['#002856', '#1B5E20', '#C9A941', '#8B5A2B', '#6C757D', '#A68A1C'],
+                    backgroundColor: ['#F39200', '#333333', '#2E7D32', '#4D4D4D', '#A0A0A0', '#F2F2F2'],
                     borderWidth: 0
                 }]
             },
@@ -243,8 +210,8 @@
             data: {
                 labels: ['2026 (Año 1)', '2027 (Año 2)', '2028 (Año 3)'],
                 datasets: [
-                    { label: 'Flujo Efectivo Acumulado', data: flujoAcum, borderColor: '#002856', backgroundColor: 'rgba(0,40,86,0.1)', fill: true, tension: 0.3 },
-                    { label: 'Línea de Inversión ($2.4M)', data: [inversion, inversion, inversion], borderColor: '#C9A941', borderDash: [6, 6], borderWidth: 2, fill: false }
+                    { label: 'Flujo Efectivo Acumulado', data: flujoAcum, borderColor: '#F39200', backgroundColor: 'rgba(243,146,0,0.1)', fill: true, tension: 0.3 },
+                    { label: 'Línea de Inversión ($2.4M)', data: [inversion, inversion, inversion], borderColor: '#333333', borderDash: [6, 6], borderWidth: 2, fill: false }
                 ]
             },
             options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: value => '$' + (value/1000000).toFixed(1) + 'M' } } } }
