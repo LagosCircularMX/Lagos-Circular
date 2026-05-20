@@ -26,10 +26,11 @@
             font-family: 'Inter', sans-serif;
             color: var(--gris-oscuro);
             background-color: var(--gris-fondo);
+            line-height: 1.6;
         }
 
         nav {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             padding: 0.7rem 5%;
@@ -91,7 +92,7 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: white;
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -140,10 +141,16 @@
             text-align: center;
             font-size: 2.3rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             color: var(--gris-oscuro);
         }
         .section-title span { color: var(--naranja-institucional); }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gris-texto);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
 
         .stats-grid {
             display: grid;
@@ -160,7 +167,35 @@
             border-left: 5px solid var(--naranja-institucional);
         }
         .stat-card i { font-size: 2rem; color: var(--naranja-institucional); margin-bottom: 1rem; }
-        .stat-card .number { font-size: 2.2rem; font-weight: 700; }
+        .stat-card .number { font-size: 2.2rem; font-weight: 700; color: var(--gris-oscuro); }
+        .stat-card p { color: var(--gris-texto); }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .problema-grid img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+        .problema-grid h3 { color: var(--gris-oscuro); margin-bottom: 1rem; }
+
+        .destacado-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border-left: 6px solid var(--naranja-institucional);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .destacado-item i { font-size: 2.5rem; color: var(--naranja-institucional); }
 
         .grid {
             display: grid;
@@ -228,6 +263,17 @@
         }
         .btn-outline:hover { background: white; color: var(--naranja-institucional); }
 
+        .cita-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .cita-block blockquote { font-style: italic; color: var(--gris-texto); font-size: 1.1rem; }
+        .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
+
         footer {
             background: var(--gris-oscuro);
             color: white;
@@ -267,12 +313,57 @@
     </section>
 
     <section id="problema" class="fade-in">
-        <h2 class="section-title">El <span>reto</span> que enfrentamos</h2>
+        <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
+        <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
+        
+        <div class="destacado-item">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>El basurero municipal de Lagos de Moreno se encuentra ya al 85 por ciento de su capacidad.</strong> Las autoridades calculan que en menos de 5 años llegará a su límite total, lo que representa una amenaza inminente de colapso ambiental para todo el municipio.</p>
+        </div>
+
         <div class="stats-grid">
-            <div class="stat-card"><i class="fas fa-trash-alt"></i><div class="number">32,000 T</div><p>Basura generada al año</p></div>
-            <div class="stat-card"><i class="fas fa-exclamation-triangle"></i><div class="number">85%</div><p>Capacidad del relleno</p></div>
-            <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">14%</div><p>Plásticos aprovechables</p></div>
-            <div class="stat-card"><i class="fas fa-hand-holding-usd"></i><div class="number">FOJAL</div><p>Elegible Financiamiento Verde</p></div>
+            <div class="stat-card">
+                <i class="fas fa-trash-alt"></i>
+                <div class="number">90-92</div>
+                <p>Toneladas de basura generadas <strong>cada día</strong> por la población de Lagos de Moreno</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="number">&lt; 5</div>
+                <p>Años de vida útil restantes del relleno sanitario municipal</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-recycle"></i>
+                <div class="number">18-20%</div>
+                <p>Porcentaje de basura que <strong>realmente se recicla</strong></p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-skull-crossbones"></i>
+                <div class="number">8</div>
+                <p>Basureros clandestinos clausurados con residuos peligrosos</p>
+            </div>
+        </div>
+
+        <div class="problema-grid">
+            <div class="problema-texto">
+                <h3>Una crisis que va más allá del basurero</h3>
+                <p>En Lagos de Moreno, la gestión de residuos no es solo un tema ambiental: <strong>es una emergencia de salud pública, de justicia social y de sostenibilidad económica.</strong></p>
+                <p>La falta de infraestructura para la separación, el bajo porcentaje de reciclaje —apenas un 18% del total— y la proliferación de tiraderos clandestinos han convertido a nuestro municipio en un ejemplo de la crisis que enfrenta Jalisco, donde <strong>más de 90 municipios violan las normas ambientales.</strong></p>
+                <p>Mientras el relleno sanitario se acerca a su saturación total, <strong>14 de cada 100 toneladas de basura son plásticos aprovechables</strong> que hoy terminan enterrados o contaminando nuestros suelos y cuerpos de agua.</p>
+                <p>El problema se agrava porque, como señalan los expertos, "el camión se lo lleva todo mezclado", lo que desalienta a la ciudadanía a separar sus residuos.</p>
+                <a href="#productos" class="btn">Descubre cómo lo solucionamos <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="problema-imagen">
+                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop" alt="Vertedero de basura en Lagos de Moreno" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1604187351574-c75ca9b3f1a6?w=600&h=400&fit=crop';">
+                <p style="margin-top:0.5rem; color:var(--gris-texto); font-size:0.9rem; text-align:center;">El basurero municipal de Lagos de Moreno opera al límite de su capacidad.</p>
+            </div>
+        </div>
+
+        <div class="cita-block">
+            <blockquote>
+                "El problema es que la sociedad en general lo que ve es que si tú separas, al final de cuentas el camión se lo lleva todo mezclado. Entonces tú dices, pues mi esfuerzo es nulo."
+                <cite>— Dra. Bertha Alicia Arce, investigadora del CU Lagos, Universidad de Guadalajara</cite>
+            </blockquote>
         </div>
     </section>
 
@@ -280,27 +371,27 @@
         <h2 class="section-title">Nuestros <span>productos</span></h2>
         <div class="grid">
             <div class="producto-card">
-                <img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';">
+                <img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Ladrillos Ecológicos</h3><p>30% más económicos, ligeros y aislantes. Ideales para vivienda social.</p></div>
             </div>
             <div class="producto-card">
-                <img src="tarima.jpg" alt="Tarimas plásticas" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';">
+                <img src="tarima.jpg" alt="Tarimas plásticas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Tarimas de Plástico</h3><p>Duraderas, higiénicas, libres de plagas. Certificación ISPM-15.</p></div>
             </div>
             <div class="producto-card">
-                <img src="tapete.jpg" alt="Tapete anti-estrés ganadero" onerror="this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';">
+                <img src="tapete.jpg" alt="Tapete anti-estrés ganadero" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Tapetes Anti-estrés</h3><p>Confort y bienestar para ganado lechero. Mejora productividad.</p></div>
             </div>
             <div class="producto-card">
-                <img src="utensilios.jpg" alt="Utensilios compostables" onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';">
+                <img src="utensilios.jpg" alt="Utensilios compostables" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Utensilios Compostables</h3><p>Platos, vasos y cubiertos de hoja de elote y cáscara de plátano.</p></div>
             </div>
             <div class="producto-card">
-                <img src="vivienda.jpg" alt="Vivienda rural con ecobloques" onerror="this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';">
+                <img src="vivienda.jpg" alt="Vivienda rural con ecobloques" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div>
             </div>
             <div class="producto-card">
-                <img src="fertilizante-organico.jpg" alt="Fertilizante orgánico" onerror="this.src='https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop';">
+                <img src="fertilizante-organico.jpg" alt="Fertilizante orgánico" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop';">
                 <div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div>
             </div>
         </div>
@@ -317,7 +408,7 @@
     </section>
 
     <section id="respaldo" class="respaldo fade-in">
-        <h2 style="color:white; margin-bottom:2rem;">Busqueda de Posible Respaldo Institucional</h2>
+        <h2 style="color:white; margin-bottom:2rem;">Respaldo Institucional</h2>
         <div class="logos">
             <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
             <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
@@ -330,10 +421,10 @@
     </section>
 
     <section id="contacto" class="contacto fade-in">
-        <h2 class="section-title">Contacto Inversión</span></h2>
+        <h2 class="section-title">Contacto e <span>Inversión</span></h2>
         <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
         <div class="btn-wrapper">
-            <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agenda Reunión</a>
+            <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
             <a href="hub.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
             <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
         </div>
@@ -357,60 +448,3 @@
     </script>
 </body>
 </html>
-<section id="problema" class="fade-in">
-    <div class="section-header">
-        <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
-        <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
-    </div>
-    
-    <div class="problema-destacado">
-        <div class="destacado-item">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p><strong>Relleno sanitario al 85% de su capacidad.</strong> Le quedan menos de 5 años de vida útil antes del colapso total.</p>
-        </div>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <i class="fas fa-trash-alt"></i>
-            <div class="number">92</div>
-            <p>Toneladas de basura generadas <strong>cada día</strong></p>
-        </div>
-        <div class="stat-card">
-            <i class="fas fa-clock"></i>
-            <div class="number">&lt; 5</div>
-            <p>Años de vida útil restantes del relleno sanitario</p>
-        </div>
-        <div class="stat-card">
-            <i class="fas fa-recycle"></i>
-            <div class="number">18%</div>
-            <p>Porcentaje de basura que <strong>realmente se recicla</strong></p>
-        </div>
-        <div class="stat-card">
-            <i class="fas fa-skull-crossbones"></i>
-            <div class="number">8</div>
-            <p>Basureros clandestinos clausurados <strong>con animales muertos y vísceras</strong></p>
-        </div>
-    </div>
-
-    <div class="problema-grid">
-        <div class="problema-texto">
-            <h3>Una crisis que va más allá del basurero</h3>
-            <p>En Lagos de Moreno, la gestión de residuos no es solo un tema ambiental: <strong>es una emergencia de salud pública, de justicia social y de sostenibilidad económica.</strong></p>
-            <p>La falta de infraestructura para la separación, el bajo porcentaje de reciclaje —apenas un 18% del total— y la proliferación de tiraderos clandestinos han convertido a nuestro municipio en un ejemplo de la crisis que enfrenta Jalisco, donde <strong>más de 90 municipios violan las normas ambientales.</strong></p>
-            <p>Mientras el relleno sanitario se acerca a su saturación total, <strong>14 de cada 100 toneladas de basura son plásticos aprovechables</strong> que hoy terminan enterrados o contaminando nuestros suelos y cuerpos de agua.</p>
-            <a href="#solucion" class="btn">Descubre cómo lo solucionamos <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="problema-imagen">
-            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop" alt="Vertedero de basura en Lagos de Moreno" onerror="this.src='https://images.unsplash.com/photo-1604187351574-c75ca9b3f1a6?w=600&h=400&fit=crop';">
-            <p class="imagen-pie">El basurero municipal de Lagos de Moreno opera al límite de su capacidad.</p>
-        </div>
-    </div>
-
-    <div class="problema-cita">
-        <blockquote>
-            "El problema es que la sociedad en general lo que ve es que si tú separas, al final de cuentas el camión se lo lleva todo mezclado. Entonces tú dices, pues mi esfuerzo es nulo."
-            <cite>— Dra. Bertha Alicia Arce, investigadora del CU Lagos, Universidad de Guadalajara</cite>
-        </blockquote>
-    </div>
-</section>
