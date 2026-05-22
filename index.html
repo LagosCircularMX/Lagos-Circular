@@ -457,17 +457,11 @@
         }
     }
 </script>
+
         <footer>
-        <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-    <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
-        <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
-    </h3>
-    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=https://lagoscircularmx.github.io/Lagos-Circular/"></script>
-</div>
             <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
             <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
             <p><a href="privacidad.html" style="color: white; margin-left: 1rem; text-decoration: none;">Política de Privacidad y Aviso Legal</a></p>
-        </footer>
 
     <script>
         function toggleMenu() {
@@ -480,5 +474,23 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
-</body>
+</body>    <!-- ==================== SECCIÓN UNIFICADA DE VISITANTES Y FOOTER ==================== -->
+
+    <!-- 1. Sección del Mapa de Visitantes (ClustrMaps) -->
+    <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
+        <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
+            <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
+        </h3>
+        <!-- 👉 REEMPLAZA ESTO con el código real de ClustrMaps -->
+        <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=TU_CODIGO_UNICO"></script>
+    </div>
+
+    <!-- 2. Footer Oficial (Solo uno) -->
+    <footer>
+        <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
+        <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
+        <p>
+            <a href="privacidad.html" style="color: white; text-decoration: underline; margin-left: 1rem;">Política de Privacidad y Aviso Legal</a>
+        </p>
+    </footer>
 </html>
