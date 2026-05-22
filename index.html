@@ -425,7 +425,7 @@
     </section>
 
     <section id="contacto" class="contacto fade-in">
-        <h2 class="section-title">Contacto e Inversión</span></h2>
+        <h2 class="section-title">Contacto e Inversión</h2>
         <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
         <div class="btn-wrapper">
             <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
@@ -433,55 +433,9 @@
             <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
         </div>
     </section>
-   
-    <script>
-        function toggleFAQ(num) {
-            var elemento = document.getElementById('faq' + num);
-            if (elemento.style.display === 'none') {
-                elemento.style.display = 'block';
-            } else {
-                elemento.style.display = 'none';
-            }
-        }
-    </script>
-    </div>
-</section>
-
-<script>
-    function toggleFAQ(num) {
-        var elemento = document.getElementById('faq' + num);
-        if (elemento.style.display === 'none') {
-            elemento.style.display = 'block';
-        } else {
-            elemento.style.display = 'none';
-        }
-    }
-</script>
-
-        <footer>
-    <script>
-        function toggleMenu() {
-            document.getElementById('nav-links').classList.toggle('active');
-        }
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
-</body>    <!-- ==================== SECCIÓN UNIFICADA DE VISITANTES Y FOOTER ==================== -->
-
-    <!-- 1. Sección del Mapa de Visitantes (ClustrMaps) -->
-    <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-        <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
-            <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
-        </h3>
-        <!-- 👉 REEMPLAZA ESTO con el código real de ClustrMaps -->
-        <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/map_v2.js?d=WSn1BULsP2TWwpoPvX71AmGVd3k7BVCBN_UPJyjjfZs"></script>"></script>
+    
     </div>
 
-    <!-- 2. Footer Oficial (Solo uno) -->
     <footer>
         <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
         <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
@@ -489,4 +443,19 @@
             <a href="privacidad.html" style="color: white; text-decoration: underline; margin-left: 1rem;">Política de Privacidad y Aviso Legal</a>
         </p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>
