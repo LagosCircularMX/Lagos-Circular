@@ -272,24 +272,28 @@
             text-align: center;
         }
         .cita-block blockquote { font-style: italic; color: var(--gris-texto); font-size: 1.1rem; }
-        .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
+    .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
+    footer {
+        background: var(--gris-oscuro);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        
+    }
+    footer a {
+        color: white;
+        margin-left: 1rem;
+    }
+    footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
 
-        footer {
-            background: var(--gris-oscuro);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-        }
-        footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-    </style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
 
@@ -430,10 +434,102 @@
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
-        <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
-    </footer>
+    <!-- SECCIÓN FAQ -->
+    <section id="faq" class="fade-in" style="background: var(--blanco); max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+        
+        <div style="text-align: left; margin-top: 2rem;">
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(1)">
+                <i class="fas fa-building-columns"></i> ¿Cómo se beneficiará el Ayuntamiento de esta alianza?
+            </h3>
+            <p id="faq1" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                El municipio obtendrá un ahorro significativo en el costo de disposición final de residuos y podrá adquirir ladrillos ecológicos para obra pública a un precio hasta 30% menor que los materiales tradicionales. Además, la reducción del volumen de basura alargará la vida útil del relleno sanitario, postergando una inversión millonaria en la búsqueda de un nuevo predio.
+            </p>
+    
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(2)">
+                <i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir dinero?
+            </h3>
+            <p id="faq2" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                No. El modelo de negocio está diseñado para que ENERWASTE no invierta capital. Su participación consiste en suministrar los plásticos recolectados —que actualmente entierra— a cambio de un porcentaje de las utilidades futuras. De esta manera, diversifican sus ingresos sin riesgo financiero.
+            </p>
+    
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(3)">
+                <i class="fas fa-hand-holding-usd"></i> ¿Qué garantías de rentabilidad ofrece el proyecto a un inversionista?
+            </h3>
+            <p id="faq3" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                Las proyecciones financieras —disponibles en nuestro dashboard— muestran un periodo de recuperación de la inversión (payback) de 2.3 años y un retorno sobre la inversión (ROI) del 187% al tercer año. La materia prima tiene costo casi nulo y el mercado local carece de competidores directos que fabriquen productos terminados a partir de residuos.
+            </p>
+            
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(4)">
+                <i class="fas fa-gavel"></i> ¿Cómo se protege legalmente la innovación del proyecto?
+            </h3>
+            <p id="faq4" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                Actualmente se está gestionando la solicitud provisional de patente ante el IMPI, el registro de la marca "LAGOS CIRCULAR" y los derechos de autor del plan de negocios y el código del sitio web. Para todas las reuniones con posibles socios, se emplean acuerdos de confidencialidad (NDAs).
+            </p>
+        </div>
+    </section>
+    
+    <script>
+        function toggleFAQ(num) {
+            var elemento = document.getElementById('faq' + num);
+            if (elemento.style.display === 'none') {
+                elemento.style.display = 'block';
+            } else {
+                elemento.style.display = 'none';
+            }
+        }
+    </script>
+    
+    <!-- SECCIÓN FAQ -->
+<section id="faq" class="fade-in" style="background: var(--blanco); max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+    <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+    
+    <div style="text-align: left; margin-top: 2rem;">
+        <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(1)">
+            <i class="fas fa-building-columns"></i> ¿Cómo se beneficiará el Ayuntamiento de esta alianza?
+        </h3>
+        <p id="faq1" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+            El municipio obtendrá un ahorro significativo en el costo de disposición final de residuos y podrá adquirir ladrillos ecológicos para obra pública a un precio hasta 30% menor que los materiales tradicionales. Además, la reducción del volumen de basura alargará la vida útil del relleno sanitario, postergando una inversión millonaria en la búsqueda de un nuevo predio.
+        </p>
+
+        <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(2)">
+            <i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir dinero?
+        </h3>
+        <p id="faq2" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+            No. El modelo de negocio está diseñado para que ENERWASTE no invierta capital. Su participación consiste en suministrar los plásticos recolectados —que actualmente entierra— a cambio de un porcentaje de las utilidades futuras. De esta manera, diversifican sus ingresos sin riesgo financiero.
+        </p>
+
+        <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(3)">
+            <i class="fas fa-hand-holding-usd"></i> ¿Qué garantías de rentabilidad ofrece el proyecto a un inversionista?
+        </h3>
+        <p id="faq3" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+            Las proyecciones financieras —disponibles en nuestro dashboard— muestran un periodo de recuperación de la inversión (payback) de 2.3 años y un retorno sobre la inversión (ROI) del 187% al tercer año. La materia prima tiene costo casi nulo y el mercado local carece de competidores directos que fabriquen productos terminados a partir de residuos.
+        </p>
+        
+        <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(4)">
+            <i class="fas fa-gavel"></i> ¿Cómo se protege legalmente la innovación del proyecto?
+        </h3>
+        <p id="faq4" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+            Actualmente se está gestionando la solicitud provisional de patente ante el IMPI, el registro de la marca "LAGOS CIRCULAR" y los derechos de autor del plan de negocios y el código del sitio web. Para todas las reuniones con posibles socios, se emplean acuerdos de confidencialidad (NDAs).
+        </p>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(num) {
+        var elemento = document.getElementById('faq' + num);
+        if (elemento.style.display === 'none') {
+            elemento.style.display = 'block';
+        } else {
+            elemento.style.display = 'none';
+        }
+    }
+</script>
+        <footer>
+            <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
+            <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
+            <p><a href="privacidad.html" style="color: white; margin-left: 1rem; text-decoration: none;">Política de Privacidad y Aviso Legal</a></p>
+        </footer>
 
     <script>
         function toggleMenu() {
