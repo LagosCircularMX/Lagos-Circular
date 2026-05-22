@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control Interactivo | LAGOS CIRCULAR</title>
-    
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --naranja-institucional: #F39200;
@@ -24,9 +18,7 @@
             --verde-sostenible: #2E7D32;
             --rojo-peligro: #C0392B;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Inter', sans-serif;
             background: var(--gris-fondo);
@@ -34,12 +26,7 @@
             line-height: 1.6;
             padding: 20px;
         }
-
-        .panel-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        .panel-container { max-width: 1400px; margin: 0 auto; }
         header {
             background: var(--blanco);
             border-left: 6px solid var(--naranja-institucional);
@@ -53,138 +40,27 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-
         header h1 { font-size: 1.8rem; font-weight: 800; color: var(--gris-oscuro); }
         header h1 span { color: var(--naranja-institucional); }
         header p { color: var(--gris-texto); margin: 0; }
-
-        .filtros-grid {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .filtros-sidebar {
-            background: var(--blanco);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .filtros-sidebar h3 {
-            color: var(--gris-oscuro);
-            margin-bottom: 1.2rem;
-            font-size: 1.2rem;
-            border-left: 4px solid var(--naranja-institucional);
-            padding-left: 10px;
-        }
-
-        .filtro-grupo {
-            margin-bottom: 1.5rem;
-        }
-
-        .filtro-grupo label {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 500;
-            color: var(--gris-texto);
-            cursor: pointer;
-            padding: 0.5rem 0;
-            transition: color 0.2s;
-        }
-
+        .filtros-grid { display: grid; grid-template-columns: 300px 1fr; gap: 25px; margin-bottom: 30px; }
+        .filtros-sidebar { background: var(--blanco); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .filtros-sidebar h3 { color: var(--gris-oscuro); margin-bottom: 1.2rem; font-size: 1.2rem; border-left: 4px solid var(--naranja-institucional); padding-left: 10px; }
+        .filtro-grupo { margin-bottom: 1.5rem; }
+        .filtro-grupo label { display: flex; align-items: center; gap: 0.8rem; font-weight: 500; color: var(--gris-texto); cursor: pointer; padding: 0.5rem 0; transition: color 0.2s; }
         .filtro-grupo label:hover { color: var(--naranja-institucional); }
-
-        .filtro-grupo input[type="checkbox"] {
-            accent-color: var(--naranja-institucional);
-            width: 18px;
-            height: 18px;
-        }
-
-        .filtro-grupo select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            color: var(--gris-oscuro);
-            background: white;
-            cursor: pointer;
-        }
-
-        .mapa-container {
-            background: var(--blanco);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        #mapaLagos {
-            height: 500px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .leyenda {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--gris-texto);
-        }
-
-        .leyenda-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .leyenda-item .circulo {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .chart-box {
-            background: var(--blanco);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .chart-box h3 {
-            color: var(--gris-oscuro);
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--naranja-institucional);
-            padding-left: 10px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: var(--gris-texto);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 900px) {
-            .filtros-grid {
-                grid-template-columns: 1fr;
-            }
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        .filtro-grupo input[type="checkbox"] { accent-color: var(--naranja-institucional); width: 18px; height: 18px; }
+        .filtro-grupo select { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; color: var(--gris-oscuro); background: white; cursor: pointer; }
+        .mapa-container { background: var(--blanco); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        #mapaLagos { height: 500px; border-radius: 8px; border: 1px solid #ddd; }
+        .leyenda { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem; color: var(--gris-texto); }
+        .leyenda-item { display: flex; align-items: center; gap: 0.4rem; }
+        .leyenda-item .circulo { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        .chart-box { background: var(--blanco); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .chart-box h3 { color: var(--gris-oscuro); margin-bottom: 1rem; border-left: 4px solid var(--naranja-institucional); padding-left: 10px; }
+        footer { text-align: center; margin-top: 20px; color: var(--gris-texto); font-size: 0.9rem; }
+        @media (max-width: 900px) { .filtros-grid { grid-template-columns: 1fr; } .charts-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -193,40 +69,26 @@
         <h1>📊 LAGOS<span>CIRCULAR</span> | Panel de Control Avanzado</h1>
         <p><i class="fas fa-filter"></i> Filtra por tipo de residuo, colonia o zona</p>
     </header>
-
     <div class="filtros-grid">
-        <!-- Barra lateral de filtros -->
         <div class="filtros-sidebar">
             <h3><i class="fas fa-sliders-h"></i> Filtros</h3>
-
             <div class="filtro-grupo">
                 <h4 style="margin-bottom: 0.5rem; color: var(--gris-oscuro);">Tipo de Punto</h4>
-                <label>
-                    <input type="checkbox" id="checkRelleno" checked>
-                    <span>🚛 Relleno Sanitario</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="checkClandestinos" checked>
-                    <span>☠️ Basureros Clandestinos</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="checkAcopio" checked>
-                    <span>♻️ Centros de Acopio Propuestos</span>
-                </label>
+                <label><input type="checkbox" id="checkRelleno" checked> <span>🚛 Relleno Sanitario</span></label>
+                <label><input type="checkbox" id="checkClandestinos" checked> <span>☠️ Basureros Clandestinos (8)</span></label>
+                <label><input type="checkbox" id="checkAcopio" checked> <span>♻️ Centros de Acopio Propuestos</span></label>
             </div>
-
             <div class="filtro-grupo">
                 <h4 style="margin-bottom: 0.5rem; color: var(--gris-oscuro);">Colonia / Zona</h4>
                 <select id="coloniaSelect">
                     <option value="todas">Todas las zonas</option>
                     <option value="Centro">Centro Histórico</option>
-                    <option value="Norte">Zona Norte (Betulia, Rancho Verde)</option>
+                    <option value="Norte">Zona Norte (Betulia, Rancho Verde, IT Mario Molina)</option>
                     <option value="Sur">Zona Sur (La Laguna, El Puesto)</option>
                     <option value="Oriente">Zona Oriente (Industrial, Comanja)</option>
-                    <option value="Poniente">Zona Poniente (Vistahermosa, Tepeyac)</option>
+                    <option value="Poniente">Zona Poniente (Vistahermosa, Tepeyac, La Cantera)</option>
                 </select>
             </div>
-
             <div class="filtro-grupo">
                 <h4 style="margin-bottom: 0.5rem; color: var(--gris-oscuro);">Tipo de Residuo Predominante</h4>
                 <select id="residuoSelect">
@@ -238,19 +100,15 @@
                 </select>
             </div>
         </div>
-
-        <!-- Mapa -->
         <div class="mapa-container">
             <div id="mapaLagos"></div>
             <div class="leyenda">
                 <div class="leyenda-item"><span class="circulo" style="background: #2980B9;"></span> Relleno Sanitario</div>
-                <div class="leyenda-item"><span class="circulo" style="background: #C0392B;"></span> Basureros Clandestinos</div>
+                <div class="leyenda-item"><span class="circulo" style="background: #C0392B;"></span> Basureros Clandestinos (8)</div>
                 <div class="leyenda-item"><span class="circulo" style="background: #27AE60;"></span> Centros de Acopio Propuestos</div>
             </div>
         </div>
     </div>
-
-    <!-- Gráficos dinámicos -->
     <div class="charts-grid">
         <div class="chart-box">
             <h3><i class="fas fa-chart-bar"></i> Distribución de Residuos por Zona</h3>
@@ -261,61 +119,38 @@
             <canvas id="graficoComposicion"></canvas>
         </div>
     </div>
-
-    <footer>
-        © 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos | Panel de Control de Residuos
-    </footer>
+    <footer>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos | Panel de Control de Residuos</footer>
 </div>
-
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <script>
-    // =========== INICIALIZAR MAPA ===========
     var map = L.map('mapaLagos').setView([21.3580, -101.9290], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // =========== CAPAS AGRUPADAS ===========
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
     var capaRelleno = L.layerGroup();
     var capaClandestinos = L.layerGroup();
     var capaAcopio = L.layerGroup();
-
-    // --- Punto del Relleno Sanitario ---
     L.marker([21.3490, -101.9000]).bindPopup('<b>🚛 Relleno Sanitario Municipal</b><br>85% de su capacidad.<br>Vida útil menor a 5 años.').addTo(capaRelleno);
-
-    // --- Basureros Clandestinos ---
     var basureros = [
         { lat: 21.3650, lng: -101.9100, nombre: 'Carretera al IT Mario Molina', zona: 'Norte', residuo: 'plasticos' },
-        { lat: 21.3500, lng: -101.9400, nombre: 'Zona de La Laguna (3 puntos)', zona: 'Sur', residuo: 'organicos' },
+        { lat: 21.3500, lng: -101.9400, nombre: 'Zona de La Laguna (punto 1 de 3)', zona: 'Sur', residuo: 'organicos' },
+        { lat: 21.3480, lng: -101.9380, nombre: 'Zona de La Laguna (punto 2 de 3)', zona: 'Sur', residuo: 'organicos' },
+        { lat: 21.3520, lng: -101.9420, nombre: 'Zona de La Laguna (punto 3 de 3)', zona: 'Sur', residuo: 'plasticos' },
         { lat: 21.3700, lng: -101.8800, nombre: 'Rancho Verde', zona: 'Norte', residuo: 'construccion' },
-        { lat: 21.3300, lng: -101.9600, nombre: 'Carretera a El Puesto', zona: 'Sur', residuo: 'plasticos' },
-        { lat: 21.3800, lng: -101.8700, nombre: 'Zona de Betulia (140 ton limpiadas)', zona: 'Norte', residuo: 'peligrosos' },
-        { lat: 21.3400, lng: -101.9200, nombre: 'Cerca de Las Huertitas', zona: 'Poniente', residuo: 'organicos' },
-        { lat: 21.3600, lng: -101.8950, nombre: 'Salida a Comanja (vertedero no controlado)', zona: 'Oriente', residuo: 'construccion' }
+        { lat: 21.3300, lng: -101.9600, nombre: 'Carretera a la delegación El Puesto', zona: 'Sur', residuo: 'plasticos' },
+        { lat: 21.3400, lng: -101.9200, nombre: 'Entre Las comunidades de La Cantera y Miranda', zona: 'Poniente', residuo: 'organicos' },
+        { lat: 21.3800, lng: -101.8700, nombre: 'Delegación de Betulia (140 toneladas limpiadas)', zona: 'Norte', residuo: 'peligrosos' }
     ];
-
     var iconoPeligro = L.icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
     });
-
     basureros.forEach(function(p) {
         var marker = L.marker([p.lat, p.lng], {icon: iconoPeligro})
             .bindPopup('<b>☠️ Basurero Clandestino</b><br>' + p.nombre + '<br>Zona: ' + p.zona + '<br>Residuo frecuente: ' + p.residuo);
-        // Guardamos propiedades para filtrar
         marker.zona = p.zona;
         marker.residuo = p.residuo;
         marker.addTo(capaClandestinos);
     });
-
-    // --- Centros de Acopio Propuestos ---
     var acopios = [
         { lat: 21.3580, lng: -101.9390, nombre: 'Centro de Acopio Centro (Mercado)', zona: 'Centro' },
         { lat: 21.3650, lng: -101.9200, nombre: 'Centro de Acopio Norte (cerca del IT Mario Molina)', zona: 'Norte' },
@@ -323,98 +158,63 @@
         { lat: 21.3600, lng: -101.9100, nombre: 'Centro de Acopio Oriente (Salida a Comanja)', zona: 'Oriente' },
         { lat: 21.3500, lng: -101.9500, nombre: 'Centro de Acopio Poniente (Vistahermosa)', zona: 'Poniente' }
     ];
-
     var iconoReciclaje = L.icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
     });
-
     acopios.forEach(function(p) {
         var marker = L.marker([p.lat, p.lng], {icon: iconoReciclaje})
             .bindPopup('<b>♻️ Centro de Acopio Propuesto</b><br>' + p.nombre + '<br>Zona: ' + p.zona);
         marker.zona = p.zona;
-        marker.residuo = 'todos'; // acopio general
+        marker.residuo = 'todos';
         marker.addTo(capaAcopio);
     });
-
-    // Añadir capas al mapa
     capaRelleno.addTo(map);
     capaClandestinos.addTo(map);
     capaAcopio.addTo(map);
-
-    // =========== FILTROS DE CAPAS ===========
     document.getElementById('checkRelleno').addEventListener('change', function() {
-        if (this.checked) map.addLayer(capaRelleno);
-        else map.removeLayer(capaRelleno);
+        if (this.checked) map.addLayer(capaRelleno); else map.removeLayer(capaRelleno);
     });
     document.getElementById('checkClandestinos').addEventListener('change', function() {
-        if (this.checked) map.addLayer(capaClandestinos);
-        else map.removeLayer(capaClandestinos);
+        if (this.checked) map.addLayer(capaClandestinos); else map.removeLayer(capaClandestinos);
     });
     document.getElementById('checkAcopio').addEventListener('change', function() {
-        if (this.checked) map.addLayer(capaAcopio);
-        else map.removeLayer(capaAcopio);
+        if (this.checked) map.addLayer(capaAcopio); else map.removeLayer(capaAcopio);
     });
-
-    // =========== FILTRO POR COLONIA/ZONA ===========
     function aplicarFiltros() {
         var zonaSeleccionada = document.getElementById('coloniaSelect').value;
         var residuoSeleccionado = document.getElementById('residuoSelect').value;
-
         capaClandestinos.eachLayer(function(marker) {
             var mostrar = true;
             if (zonaSeleccionada !== 'todas' && marker.zona !== zonaSeleccionada) mostrar = false;
             if (residuoSeleccionado !== 'todos' && marker.residuo !== residuoSeleccionado) mostrar = false;
-            if (mostrar) marker.setOpacity(1.0);
-            else marker.setOpacity(0.0);
+            if (mostrar) marker.setOpacity(1.0); else marker.setOpacity(0.0);
         });
-
         capaAcopio.eachLayer(function(marker) {
             var mostrar = true;
             if (zonaSeleccionada !== 'todas' && marker.zona !== zonaSeleccionada) mostrar = false;
-            if (mostrar) marker.setOpacity(1.0);
-            else marker.setOpacity(0.0);
+            if (mostrar) marker.setOpacity(1.0); else marker.setOpacity(0.0);
         });
     }
-
     document.getElementById('coloniaSelect').addEventListener('change', aplicarFiltros);
     document.getElementById('residuoSelect').addEventListener('change', aplicarFiltros);
-
-    // =========== GRÁFICOS ===========
-    // Gráfico de distribución de residuos por zona (barras)
     new Chart(document.getElementById('graficoZonas'), {
         type: 'bar',
         data: {
             labels: ['Centro', 'Norte', 'Sur', 'Oriente', 'Poniente'],
-            datasets: [{
-                label: 'Toneladas estimadas (diarias)',
-                data: [12, 28, 20, 15, 17],
-                backgroundColor: ['#F39200', '#E67E22', '#D35400', '#A04000', '#6E2C00'],
-                borderWidth: 0,
-                borderRadius: 4
-            }]
+            datasets: [{ label: 'Toneladas estimadas (diarias)', data: [12, 28, 20, 15, 17], backgroundColor: ['#F39200', '#E67E22', '#D35400', '#A04000', '#6E2C00'], borderWidth: 0, borderRadius: 4 }]
         },
         options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
     });
-
-    // Gráfico de composición de la basura
     new Chart(document.getElementById('graficoComposicion'), {
         type: 'doughnut',
         data: {
             labels: ['Plásticos (14%)', 'Orgánicos (45%)', 'Escombro y construcción (15%)', 'Papel y cartón (10%)', 'Vidrio (5%)', 'Otros (11%)'],
-            datasets: [{
-                data: [14, 45, 15, 10, 5, 11],
-                backgroundColor: ['#F39200', '#8B5A2B', '#A0A0A0', '#4D4D4D', '#2E7D32', '#C0392B'],
-                borderWidth: 0
-            }]
+            datasets: [{ data: [14, 45, 15, 10, 5, 11], backgroundColor: ['#F39200', '#8B5A2B', '#A0A0A0', '#4D4D4D', '#2E7D32', '#C0392B'], borderWidth: 0 }]
         },
         options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
     });
-
 </script>
 </body>
 </html>
