@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido por Fundación POSiBLE 2026.">
-    <meta name="author" content="Ing. Ind. Luis Javier Flores Flores">
-    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde">
+    <meta name="author" content="Ing. Luis Javier Flores Flores">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, POSiBLE, Financiamiento Verde">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
+    
+    <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Leaflet CSS (para el mapa de centros de acopio) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -32,6 +40,7 @@
             line-height: 1.6;
         }
 
+        /* ----- NAVEGACIÓN ----- */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
@@ -90,6 +99,7 @@
             nav ul.active { display: flex; }
         }
 
+        /* ----- HERO ----- */
         .hero {
             background: linear-gradient(45deg, #232526, #414345, #232526);
             background-size: 400% 400%;
@@ -138,6 +148,7 @@
         }
         .btn:hover { background: #e08600; transform: translateY(-2px); }
 
+        /* ----- SECCIONES GENERALES ----- */
         section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
 
         .section-title {
@@ -155,6 +166,7 @@
             font-size: 1.1rem;
         }
 
+        /* ----- TARJETAS DE DATOS ----- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -200,6 +212,7 @@
         }
         .destacado-item i { font-size: 2.5rem; color: var(--naranja-institucional); }
 
+        /* ----- PRODUCTOS ----- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -221,6 +234,7 @@
         .producto-card h3 { color: var(--gris-oscuro); margin-bottom: 0.5rem; }
         .producto-card p { color: var(--gris-texto); font-size: 0.95rem; }
 
+        /* ----- RESPALDO ----- */
         .respaldo {
             background: var(--gris-oscuro);
             color: white;
@@ -246,6 +260,7 @@
         }
         .logos i { color: var(--naranja-institucional); }
 
+        /* ----- CONTACTO ----- */
         .contacto {
             background: var(--naranja-institucional);
             color: white;
@@ -266,6 +281,7 @@
         }
         .btn-outline:hover { background: white; color: var(--naranja-institucional); }
 
+        /* ----- FAQ Y ACOPIO ----- */
         .cita-block {
             background: white;
             padding: 2rem;
@@ -277,6 +293,7 @@
         .cita-block blockquote { font-style: italic; color: var(--gris-texto); font-size: 1.1rem; }
         .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
 
+        /* ----- FOOTER ----- */
         footer {
             background: var(--gris-oscuro);
             color: white;
@@ -286,6 +303,7 @@
         }
         footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
 
+        /* ----- ANIMACIONES ----- */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -296,6 +314,7 @@
 </head>
 <body>
 
+    <!-- ==================== NAVEGACIÓN ==================== -->
     <nav>
         <div class="logo">LAGOS<span>CIRCULAR</span></div>
         <span class="hamburger" onclick="toggleMenu()">☰</span>
@@ -304,10 +323,12 @@
             <li><a href="#productos">Productos</a></li>
             <li><a href="#impacto">Impacto</a></li>
             <li><a href="#respaldo">Respaldo</a></li>
+            <li><a href="#centros-acopio">Acopio</a></li>
             <li><a href="#contacto" class="btn-nav">Contacto</a></li>
         </ul>
     </nav>
 
+    <!-- ==================== HERO ==================== -->
     <section class="hero" id="hero">
         <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido por Fundación POSiBLE 2026</div>
         <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
@@ -315,6 +336,7 @@
         <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
     </section>
 
+    <!-- ==================== PROBLEMA ==================== -->
     <section id="problema" class="fade-in">
         <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
         <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
@@ -370,6 +392,7 @@
         </div>
     </section>
 
+    <!-- ==================== PRODUCTOS ==================== -->
     <section id="productos" class="fade-in">
         <h2 class="section-title">Nuestros <span>productos</span></h2>
         <div class="grid">
@@ -394,13 +417,13 @@
                 <div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div>
             </div>
             <div class="producto-card">
-                <!-- Imagen de fertilizante directa de Unsplash para evitar error 404 -->
                 <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop" alt="Fertilizante orgánico">
                 <div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div>
             </div>
         </div>
     </section>
 
+    <!-- ==================== IMPACTO ==================== -->
     <section id="impacto" class="fade-in">
         <h2 class="section-title">Impacto en <span>3 años</span></h2>
         <div class="stats-grid">
@@ -411,20 +434,21 @@
         </div>
     </section>
 
+    <!-- ==================== RESPALDO ==================== -->
     <section id="respaldo" class="respaldo fade-in">
-        <h2 style="color:white; margin-bottom:2rem;">Proyecto en Busqueda de Respaldo Institucional</h2>
+        <h2 style="color:white; margin-bottom:2rem;">En Busqueda de Respaldo Institucional</h2>
         <div class="logos">
             <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
             <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
             <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
-            <div><i class="fas fa-leaf"></i> Secretaría de Medio Ambiente Jalisco</div>
+            <div><i class="fas fa-seedling"></i> Secretaría de Medio Ambiente jalisco</div>            
         </div>
         <div style="margin-top:2rem;">
             <a href="Certificado-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a>
         </div>
     </section>
 
-    <!-- SECCIÓN FAQ -->
+    <!-- ==================== FAQ ==================== -->
     <section id="faq" class="fade-in" style="background: var(--blanco); max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
         <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
         <div style="text-align: left; margin-top: 2rem;">
@@ -434,21 +458,18 @@
             <p id="faq1" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
                 El municipio obtendrá un ahorro significativo en el costo de disposición final de residuos y podrá adquirir ladrillos ecológicos para obra pública a un precio hasta 30% menor que los materiales tradicionales. Además, la reducción del volumen de basura alargará la vida útil del relleno sanitario, postergando una inversión millonaria en la búsqueda de un nuevo predio.
             </p>
-
             <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(2)">
                 <i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir dinero?
             </h3>
             <p id="faq2" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
                 No. El modelo de negocio está diseñado para que ENERWASTE no invierta capital. Su participación consiste en suministrar los plásticos recolectados —que actualmente entierra— a cambio de un porcentaje de las utilidades futuras. De esta manera, diversifican sus ingresos sin riesgo financiero.
             </p>
-
             <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(3)">
                 <i class="fas fa-hand-holding-usd"></i> ¿Qué garantías de rentabilidad ofrece el proyecto a un inversionista?
             </h3>
             <p id="faq3" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
                 Las proyecciones financieras —disponibles en nuestro dashboard— muestran un periodo de recuperación de la inversión (payback) de 2.3 años y un retorno sobre la inversión (ROI) del 187% al tercer año. La materia prima tiene costo casi nulo y el mercado local carece de competidores directos que fabriquen productos terminados a partir de residuos.
             </p>
-            
             <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(4)">
                 <i class="fas fa-gavel"></i> ¿Cómo se protege legalmente la innovación del proyecto?
             </h3>
@@ -458,6 +479,90 @@
         </div>
     </section>
 
+    <!-- ==================== CENTROS DE ACOPIO PROPUESTOS ==================== -->
+    <section id="centros-acopio" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
+        <p class="section-subtitle">Ubicaciones estratégicas para maximizar la valorización de residuos y beneficiar a las colonias del Pueblo Mágico</p>
+        
+        <div style="text-align: left; margin-top: 2rem;">
+            
+            <!-- Centro 1: Centro -->
+            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(1)">
+                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-store-alt" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i> Centro de Acopio Centro (Mercado)</span>
+                    <i id="icon-acopio-1" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i>
+                </h3>
+                <div id="acopio-1" style="display: none; margin-top: 1rem; color: var(--gris-texto);">
+                    <p><strong>📍 Ubicación estratégica:</strong> Corazón comercial del Pueblo Mágico. La colonia Centro concentra <strong>10,491 habitantes</strong> y una intensa actividad comercial que genera residuos plásticos de empaque, bolsas y envases.</p>
+                    <p style="margin-top: 0.8rem;"><strong>🎯 Beneficio comunitario:</strong> Facilita que comerciantes y vecinos entreguen sus residuos valorizables sin necesidad de transporte, creando un punto de acopio visible y educativo en el corazón del Pueblo Mágico.</p>
+                </div>
+            </div>
+            
+            <!-- Centro 2: Norte -->
+            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(2)">
+                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-school" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i> Centro de Acopio Norte (IT Mario Molina / Betulia)</span>
+                    <i id="icon-acopio-2" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i>
+                </h3>
+                <div id="acopio-2" style="display: none; margin-top: 1rem; color: var(--gris-texto);">
+                    <p><strong>📍 Ubicación estratégica:</strong> Zona de alta densidad poblacional y educativa. La presencia del Instituto Tecnológico Mario Molina atrae a estudiantes y personal de toda la región.</p>
+                    <p style="margin-top: 0.8rem;"><strong>⚠️ Problemática actual:</strong> Esta zona incluye los basureros clandestinos de <strong>Betulia (140 toneladas limpiadas)</strong> y <strong>Rancho Verde</strong>, donde se encontraron residuos peligrosos como animales muertos y vísceras.</p>
+                    <p style="margin-top: 0.8rem;"><strong>🎯 Beneficio comunitario:</strong> Inhibe la reincidencia de tiraderos ilegales y ofrece a las familias de Betulia, Rancho Verde y colonias aledañas una alternativa limpia y digna para disponer sus residuos valorizables.</p>
+                </div>
+            </div>
+            
+            <!-- Centro 3: Sur -->
+            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(3)">
+                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-water" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i> Centro de Acopio Sur (La Laguna / El Puesto)</span>
+                    <i id="icon-acopio-3" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i>
+                </h3>
+                <div id="acopio-3" style="display: none; margin-top: 1rem; color: var(--gris-texto);">
+                    <p><strong>📍 Ubicación estratégica:</strong> Una de las zonas con mayor número de basureros clandestinos clausurados. Se identificaron <strong>tres puntos de tiradero ilegal en La Laguna</strong>, además de los ubicados en la carretera a El Puesto.</p>
+                    <p style="margin-top: 0.8rem;"><strong>🎯 Beneficio comunitario:</strong> Cierra la brecha de servicio en el sur del municipio, evitando que los residuos terminen en arroyos o terrenos baldíos y ofreciendo a las familias una solución cercana y gratuita.</p>
+                </div>
+            </div>
+            
+            <!-- Centro 4: Oriente -->
+            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(4)">
+                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-industry" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i> Centro de Acopio Oriente (Salida a Comanja)</span>
+                    <i id="icon-acopio-4" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i>
+                </h3>
+                <div id="acopio-4" style="display: none; margin-top: 1rem; color: var(--gris-texto);">
+                    <p><strong>📍 Ubicación estratégica:</strong> Corredor industrial y de servicios del municipio. La salida a Comanja conecta con la carretera federal 45D y concentra talleres, bodegas y empresas que generan residuos plásticos y de empaque en grandes volúmenes.</p>
+                    <p style="margin-top: 0.8rem;"><strong>⚠️ Problemática actual:</strong> En esta zona se ha documentado un <strong>vertedero no controlado</strong> en la salida a Comanja, lo que indica una necesidad urgente de infraestructura formal de acopio.</p>
+                    <p style="margin-top: 0.8rem;"><strong>🎯 Beneficio comunitario:</strong> Sirve como punto de transferencia para los residuos generados por la zona industrial y de servicios, evitando que sean abandonados en las orillas de la carretera y facilitando su valorización.</p>
+                </div>
+            </div>
+            
+            <!-- Centro 5: Poniente -->
+            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(5)">
+                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-tree" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i> Centro de Acopio Poniente (Vistahermosa / Tepeyac)</span>
+                    <i id="icon-acopio-5" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i>
+                </h3>
+                <div id="acopio-5" style="display: none; margin-top: 1rem; color: var(--gris-texto);">
+                    <p><strong>📍 Ubicación estratégica:</strong> Zona de alta densidad habitacional. Colonias como <strong>Vistahermosa, Tepeyac, El Refugio, Huertitas y Barrio Bajo</strong> han requerido intervenciones intensivas de Aseo Público.</p>
+                    <p style="margin-top: 0.8rem;"><strong>⚠️ Problemática actual:</strong> Se detectó un <strong>basurero clandestino cerca de Las Huertitas</strong>, y la colonia Vistahermosa ha requerido labores de limpieza profunda debido a la acumulación de maleza y residuos en espacios públicos.</p>
+                    <p style="margin-top: 0.8rem;"><strong>🎯 Beneficio comunitario:</strong> Atiende directamente a una de las áreas más densamente pobladas del municipio, reduciendo la presión sobre los espacios públicos y creando una cultura de separación de residuos desde el hogar.</p>
+                </div>
+            </div>
+            
+            <!-- ==================== MAPA DE CENTROS DE ACOPIO ==================== -->
+            <div style="margin-top: 2rem;">
+                <h3 style="color: var(--gris-oscuro); text-align: center; margin-bottom: 1rem;">
+                    <i class="fas fa-map-pin" style="color: var(--naranja-institucional);"></i> Mapa de Ubicación de los Centros de Acopio
+                </h3>
+                <div id="mapa-acopio" style="height: 400px; border-radius: 12px; border: 2px solid var(--naranja-institucional);"></div>
+                <p style="text-align: center; margin-top: 0.5rem; color: var(--gris-texto); font-size: 0.9rem;">
+                    Los puntos verdes indican los centros de acopio propuestos. Haz clic en cada uno para más información.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACTO ==================== -->
     <section id="contacto" class="contacto fade-in">
         <h2 class="section-title">Contacto e Inversión</span></h2>
         <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
@@ -468,7 +573,7 @@
         </div>
     </section>
 
-    <!-- MAPA DE VISITANTES (ClustrMaps con colores institucionales) -->
+    <!-- ==================== MAPA DE VISITANTES (ClustrMaps) ==================== -->
     <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
         <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
             <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
@@ -476,6 +581,7 @@
         <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=WSn1BULsP2TWwpoPvX71AmGVd3k7BVCBN_UPJyjjfZs&co=F39200&cmo=2E7D32&cmn=F2F2F2&ct=333333'></script>
     </div>
 
+    <!-- ==================== FOOTER ==================== -->
     <footer>
         <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
         <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
@@ -484,10 +590,16 @@
         </p>
     </footer>
 
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Leaflet JS (para el mapa de centros de acopio) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <script>
+        // Menú hamburguesa
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('active');
         }
+        // FAQ
         function toggleFAQ(num) {
             var elemento = document.getElementById('faq' + num);
             if (elemento.style.display === 'none') {
@@ -496,12 +608,55 @@
                 elemento.style.display = 'none';
             }
         }
+        // Acopio
+        function toggleAcopio(num) {
+            var contenido = document.getElementById('acopio-' + num);
+            var icono = document.getElementById('icon-acopio-' + num);
+            if (contenido.style.display === 'none' || contenido.style.display === '') {
+                contenido.style.display = 'block';
+                icono.style.transform = 'rotate(180deg)';
+            } else {
+                contenido.style.display = 'none';
+                icono.style.transform = 'rotate(0deg)';
+            }
+        }
+        // Animaciones fade-in
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mapa de centros de acopio
+        var mapAcopio = L.map('mapa-acopio').setView([21.3580, -101.9290], 14);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(mapAcopio);
+
+        var iconoAcopio = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        var centrosAcopio = [
+            { lat: 21.3580, lng: -101.9390, nombre: 'Centro de Acopio Centro (Mercado)', descripcion: 'Corazón comercial. Facilita el acopio a comerciantes y vecinos del centro.' },
+            { lat: 21.3650, lng: -101.9200, nombre: 'Centro de Acopio Norte (IT Mario Molina / Betulia)', descripcion: 'Zona educativa y de alta densidad. Combate basureros en Betulia y Rancho Verde.' },
+            { lat: 21.3450, lng: -101.9450, nombre: 'Centro de Acopio Sur (La Laguna / El Puesto)', descripcion: 'Cierra la brecha de servicio en el sur. Evita tiraderos en arroyos.' },
+            { lat: 21.3600, lng: -101.9100, nombre: 'Centro de Acopio Oriente (Salida a Comanja)', descripcion: 'Corredor industrial. Punto de transferencia para empresas y talleres.' },
+            { lat: 21.3500, lng: -101.9500, nombre: 'Centro de Acopio Poniente (Vistahermosa / Tepeyac)', descripcion: 'Zona de alta densidad habitacional. Reduce presión sobre espacios públicos.' }
+        ];
+
+        centrosAcopio.forEach(function(punto) {
+            L.marker([punto.lat, punto.lng], {icon: iconoAcopio})
+                .addTo(mapAcopio)
+                .bindPopup('<b>' + punto.nombre + '</b><br>' + punto.descripcion);
+        });
     </script>
 </body>
 </html>
