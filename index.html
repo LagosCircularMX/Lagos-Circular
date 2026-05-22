@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido por Fundación POSiBLE 2026.">
+    <meta name="author" content="Ing. Ind. Luis Javier Flores Flores">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -272,28 +275,24 @@
             text-align: center;
         }
         .cita-block blockquote { font-style: italic; color: var(--gris-texto); font-size: 1.1rem; }
-    .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
-    footer {
-        background: var(--gris-oscuro);
-        color: white;
-        text-align: center;
-        padding: 2rem;
-        font-size: 0.9rem;
-        
-    }
-    footer a {
-        color: white;
-        margin-left: 1rem;
-    }
-    footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
+        .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
 
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
+        footer {
+            background: var(--gris-oscuro);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
 <body>
 
@@ -343,7 +342,7 @@
             </div>
             <div class="stat-card">
                 <i class="fas fa-skull-crossbones"></i>
-                <div class="number">7</div>
+                <div class="number">8</div>
                 <p>Basureros clandestinos clausurados con residuos peligrosos</p>
             </div>
         </div>
@@ -395,7 +394,8 @@
                 <div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div>
             </div>
             <div class="producto-card">
-                <img src="fertilizante-organico.jpg" alt="Fertilizante orgánico" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop';">
+                <!-- Imagen de fertilizante directa de Unsplash para evitar error 404 -->
+                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop" alt="Fertilizante orgánico">
                 <div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div>
             </div>
         </div>
@@ -412,7 +412,7 @@
     </section>
 
     <section id="respaldo" class="respaldo fade-in">
-        <h2 style="color:white; margin-bottom:2rem;">En Busqueda Del Respaldo Institucional</h2>
+        <h2 style="color:white; margin-bottom:2rem;">Respaldo Institucional</h2>
         <div class="logos">
             <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
             <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
@@ -424,8 +424,42 @@
         </div>
     </section>
 
+    <!-- SECCIÓN FAQ -->
+    <section id="faq" class="fade-in" style="background: var(--blanco); max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+        <div style="text-align: left; margin-top: 2rem;">
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(1)">
+                <i class="fas fa-building-columns"></i> ¿Cómo se beneficiará el Ayuntamiento de esta alianza?
+            </h3>
+            <p id="faq1" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                El municipio obtendrá un ahorro significativo en el costo de disposición final de residuos y podrá adquirir ladrillos ecológicos para obra pública a un precio hasta 30% menor que los materiales tradicionales. Además, la reducción del volumen de basura alargará la vida útil del relleno sanitario, postergando una inversión millonaria en la búsqueda de un nuevo predio.
+            </p>
+
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(2)">
+                <i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir dinero?
+            </h3>
+            <p id="faq2" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                No. El modelo de negocio está diseñado para que ENERWASTE no invierta capital. Su participación consiste en suministrar los plásticos recolectados —que actualmente entierra— a cambio de un porcentaje de las utilidades futuras. De esta manera, diversifican sus ingresos sin riesgo financiero.
+            </p>
+
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(3)">
+                <i class="fas fa-hand-holding-usd"></i> ¿Qué garantías de rentabilidad ofrece el proyecto a un inversionista?
+            </h3>
+            <p id="faq3" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                Las proyecciones financieras —disponibles en nuestro dashboard— muestran un periodo de recuperación de la inversión (payback) de 2.3 años y un retorno sobre la inversión (ROI) del 187% al tercer año. La materia prima tiene costo casi nulo y el mercado local carece de competidores directos que fabriquen productos terminados a partir de residuos.
+            </p>
+            
+            <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(4)">
+                <i class="fas fa-gavel"></i> ¿Cómo se protege legalmente la innovación del proyecto?
+            </h3>
+            <p id="faq4" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">
+                Actualmente se está gestionando la solicitud provisional de patente ante el IMPI, el registro de la marca "LAGOS CIRCULAR" y los derechos de autor del plan de negocios y el código del sitio web. Para todas las reuniones con posibles socios, se emplean acuerdos de confidencialidad (NDAs).
+            </p>
+        </div>
+    </section>
+
     <section id="contacto" class="contacto fade-in">
-        <h2 class="section-title">Contacto e Inversión</h2>
+        <h2 class="section-title">Contacto e <span>Inversión</span></h2>
         <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
         <div class="btn-wrapper">
             <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
@@ -434,31 +468,14 @@
         </div>
     </section>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById('nav-links').classList.toggle('active');
-        }
+    <!-- MAPA DE VISITANTES (ClustrMaps con colores institucionales) -->
+    <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
+        <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
+            <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
+        </h3>
+        <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=WSn1BULsP2TWwpoPvX71AmGVd3k7BVCBN_UPJyjjfZs&co=F39200&cmo=2E7D32&cmn=F2F2F2&ct=333333'></script>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
-</body>
-    <!-- ==================== SECCIÓN UNIFICADA DE VISITANTES Y FOOTER ==================== -->
-
-    <!-- 1. Sección del Mapa de Visitantes (ClustrMaps) -->
-<div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-    <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
-        <i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
-    </h3>
-    <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=WSn1BULsP2TWwpoPvX71AmGVd3k7BVCBN_UPJyjjfZs&co=F39200&cmo=2E7D32&cmn=F2F2F2&ct=333333'></script>
-</div>
-
-    <!-- 2. Footer Oficial (Solo uno) -->
     <footer>
         <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
         <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
@@ -466,4 +483,25 @@
             <a href="privacidad.html" style="color: white; text-decoration: underline; margin-left: 1rem;">Política de Privacidad y Aviso Legal</a>
         </p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+        function toggleFAQ(num) {
+            var elemento = document.getElementById('faq' + num);
+            if (elemento.style.display === 'none') {
+                elemento.style.display = 'block';
+            } else {
+                elemento.style.display = 'none';
+            }
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>
