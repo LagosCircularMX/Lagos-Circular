@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido por Fundación POSiBLE 2026.">
-    <meta name="author" content="Ing. Ind. Luis Javier Flores Flores">
-    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde">
+    <!--
+      ============================================================
+      PROYECTO: LAGOS CIRCULAR - Biofábrica Social de Los Altos
+      AUTOR: Ing. Ind. Luis Javier Flores Flores
+      RFC: FOFL840425E40
+      CORREO: engineerflores@outlook.com
+      TELÉFONO: 474 108 1206
+      FECHA DE CREACIÓN: Abril 2026
+      PROTEGIDO POR DERECHOS DE AUTOR © 2026
+      ============================================================
+      ADVERTENCIA: Este código fuente es propiedad intelectual
+      del autor arriba mencionado. Queda prohibida su
+      reproducción total o parcial sin autorización expresa.
+      El registro de derechos de autor está en trámite ante
+      INDAUTOR y la solicitud provisional de patente ante el
+      IMPI. Cualquier uso no autorizado será perseguido
+      conforme a la Ley Federal del Derecho de Autor y la
+      Ley Federal de Protección a la Propiedad Industrial.
+      ============================================================
+    -->
+    <meta name="author" content="Ing. Ind. Luis Javier Flores Flores, RFC FOFL840425E40, engineerflores@outlook.com">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde, PROJAL, COECYTJAL">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +33,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
+        /* ============================================================
+           PROYECTO: LAGOS CIRCULAR - Biofábrica Social de Los Altos
+           AUTOR: Ing. Ind. Luis Javier Flores Flores | RFC: FOFL840425E40
+           PROTEGIDO POR DERECHOS DE AUTOR © 2026
+           ============================================================ */
         :root {
             --naranja-institucional: #F39200;
             --gris-fondo: #F2F2F2;
@@ -23,7 +48,32 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; color: var(--gris-oscuro); background-color: var(--gris-fondo); line-height: 1.6; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gris-oscuro);
+            background-color: var(--gris-fondo);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo interactivo de partículas y auroras */
+        #fondo-interactivo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Capa de contenido por encima del fondo */
+        .contenido-principal {
+            position: relative;
+            z-index: 1;
+        }
+
         nav {
             background: rgba(255,255,255,0.95); backdrop-filter: blur(15px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 0.7rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -45,6 +95,7 @@
         .hero {
             background: linear-gradient(45deg, #232526, #414345, #232526); background-size: 400% 400%; animation: gradientShift 15s ease infinite;
             color: white; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 2rem;
+            position: relative; z-index: 1;
         }
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .hero-badge { background: rgba(255,255,255,0.1); border: 1px solid var(--naranja-institucional); color: var(--naranja-institucional); padding: 0.4rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1.5rem; }
@@ -53,7 +104,7 @@
         .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 2.5rem; opacity: 0.9; }
         .btn { background: var(--naranja-institucional); color: white; font-weight: 600; padding: 0.8rem 2.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
         .btn:hover { background: #e08600; transform: translateY(-2px); }
-        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
         .section-title { text-align: center; font-size: 2.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--gris-oscuro); }
         .section-title span { color: var(--naranja-institucional); }
         .section-subtitle { text-align: center; color: var(--gris-texto); margin-bottom: 3rem; font-size: 1.1rem; }
@@ -73,11 +124,11 @@
         .producto-card .contenido { padding: 1.5rem; }
         .producto-card h3 { color: var(--gris-oscuro); margin-bottom: 0.5rem; }
         .producto-card p { color: var(--gris-texto); font-size: 0.95rem; }
-        .respaldo { background: var(--gris-oscuro); color: white; text-align: center; padding: 3.5rem 5%; margin-top: 2rem; }
+        .respaldo { background: var(--gris-oscuro); color: white; text-align: center; padding: 3.5rem 5%; margin-top: 2rem; position: relative; z-index: 1; }
         .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2rem; font-weight: 600; }
         .logos div { background: rgba(255,255,255,0.08); padding: 1rem 2rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; }
         .logos i { color: var(--naranja-institucional); }
-        .contacto { background: var(--naranja-institucional); color: white; text-align: center; padding: 4rem 5%; }
+        .contacto { background: var(--naranja-institucional); color: white; text-align: center; padding: 4rem 5%; position: relative; z-index: 1; }
         .contacto .section-title { color: white; }
         .contacto .btn-wrapper { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
         .btn-outline { background: transparent; border: 2px solid white; color: white; font-weight: 600; padding: 0.7rem 2rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
@@ -85,175 +136,190 @@
         .cita-block { background: white; padding: 2rem; border-radius: 12px; margin-top: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center; }
         .cita-block blockquote { font-style: italic; color: var(--gris-texto); font-size: 1.1rem; }
         .cita-block cite { color: var(--naranja-institucional); font-style: normal; font-weight: 600; }
-        .comparativa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
-        @media (max-width: 768px) { .problema-grid, .comparativa-grid { grid-template-columns: 1fr; } }
-        .antes-card { background: #FFF3E0; padding: 1.5rem; border-radius: 12px; border-left: 5px solid #C0392B; }
-        .despues-card { background: #E8F5E9; padding: 1.5rem; border-radius: 12px; border-left: 5px solid var(--verde-sostenible); }
-        footer { background: var(--gris-oscuro); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; }
+        footer { background: var(--gris-oscuro); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; position: relative; z-index: 1; }
         footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+        /* Marca de agua CSS invisible */
+        .ljff-fofl840425e40-lc-2026 { display: none; content: "LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados."; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">LAGOS<span>CIRCULAR</span></div>
-        <span class="hamburger" onclick="toggleMenu()">☰</span>
-        <ul id="nav-links">
-            <li><a href="#problema">Problema</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#impacto">Impacto</a></li>
-            <li><a href="#centros-acopio">Acopio</a></li>
-            <li><a href="#comparativa">Rutas</a></li>
-            <li><a href="#respaldo">Respaldo</a></li>
-            <li><a href="#contacto" class="btn-nav">Contacto</a></li>
-        </ul>
-    </nav>
+    <!-- Fondo interactivo de partículas -->
+    <canvas id="fondo-interactivo"></canvas>
 
-    <!-- ==================== HERO ==================== -->
-    <section class="hero" id="hero">
-        <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido por Fundación POSiBLE 2026</div>
-        <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
-        <p>Una biofábrica social que convierte plásticos y residuos orgánicos en ladrillos ecológicos, tarimas, utensilios compostables y progreso para las familias de Los Altos.</p>
-        <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
-    </section>
+    <div class="contenido-principal">
+        <!--
+          ============================================================
+          MARCA DE AGUA HTML OCULTA
+          PROYECTO: LAGOS CIRCULAR | AUTOR: Ing. Ind. Luis Javier Flores Flores
+          RFC: FOFL840425E40 | CONTACTO: engineerflores@outlook.com
+          ============================================================
+          ADVERTENCIA: Este código fuente es propiedad intelectual
+          del autor arriba mencionado. Queda prohibida su
+          reproducción total o parcial sin autorización expresa.
+          El registro de derechos de autor está en trámite ante
+          INDAUTOR y la solicitud provisional de patente ante el
+          IMPI. Cualquier uso no autorizado será perseguido
+          conforme a la Ley Federal del Derecho de Autor y la
+          Ley Federal de Protección a la Propiedad Industrial.
+          ============================================================
+        -->
+        <div class="ljff-fofl840425e40-lc-2026" aria-hidden="true">LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados.</div>
 
-    <!-- ==================== PROBLEMA ==================== -->
-    <section id="problema" class="fade-in">
-        <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
-        <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
-        <div class="destacado-item">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p><strong>El basurero municipal de Lagos de Moreno se encuentra ya al 85% de su capacidad.</strong> Las autoridades calculan que en menos de 5 años llegará a su límite total, lo que representa una amenaza inminente de colapso ambiental.</p>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-card"><i class="fas fa-trash-alt"></i><div class="number">90-92</div><p>Toneladas de basura generadas <strong>cada día</strong></p></div>
-            <div class="stat-card"><i class="fas fa-clock"></i><div class="number">&lt; 5</div><p>Años de vida útil restantes del relleno sanitario</p></div>
-            <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">18-20%</div><p>Porcentaje de basura que <strong>realmente se recicla</strong></p></div>
-            <div class="stat-card"><i class="fas fa-skull-crossbones"></i><div class="number">8</div><p>Basureros clandestinos clausurados</p></div>
-        </div>
-        <div class="problema-grid">
-            <div class="problema-texto">
-                <h3>Una crisis que va más allá del basurero</h3>
-                <p>En Lagos de Moreno, la gestión de residuos no es solo un tema ambiental: <strong>es una emergencia de salud pública, de justicia social y de sostenibilidad económica.</strong></p>
-                <p>Mientras el relleno sanitario se acerca a su saturación total, <strong>14 de cada 100 toneladas de basura son plásticos aprovechables</strong> que hoy terminan enterrados o contaminando nuestros suelos y cuerpos de agua.</p>
-                <a href="#productos" class="btn">Descubre cómo lo solucionamos <i class="fas fa-arrow-right"></i></a>
+        <nav>
+            <div class="logo">LAGOS<span>CIRCULAR</span></div>
+            <span class="hamburger" onclick="toggleMenu()">☰</span>
+            <ul id="nav-links">
+                <li><a href="#problema">Problema</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#centros-acopio">Acopio</a></li>
+                <li><a href="#respaldo">Respaldo</a></li>
+                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <section class="hero" id="hero">
+            <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido por Fundación POSiBLE 2026</div>
+            <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
+            <p>Una biofábrica social que convierte plásticos y residuos orgánicos en ladrillos ecológicos, tarimas, utensilios compostables y progreso para las familias de Los Altos.</p>
+            <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
+        </section>
+
+        <!-- ==================== PROBLEMA ==================== -->
+        <section id="problema" class="fade-in">
+            <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
+            <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
+            <div class="destacado-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>El basurero municipal de Lagos de Moreno se encuentra ya al 85% de su capacidad.</strong> Las autoridades calculan que en menos de 5 años llegará a su límite total, lo que representa una amenaza inminente de colapso ambiental.</p>
             </div>
-            <div class="problema-imagen">
-                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop" alt="Vertedero de basura en Lagos de Moreno" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1604187351574-c75ca9b3f1a6?w=600&h=400&fit=crop';">
-                <p style="margin-top:0.5rem; color:var(--gris-texto); font-size:0.9rem; text-align:center;">El basurero municipal de Lagos de Moreno opera al límite de su capacidad.</p>
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-trash-alt"></i><div class="number">90-92</div><p>Toneladas de basura generadas <strong>cada día</strong></p></div>
+                <div class="stat-card"><i class="fas fa-clock"></i><div class="number">&lt; 5</div><p>Años de vida útil restantes del relleno sanitario</p></div>
+                <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">18-20%</div><p>Porcentaje de basura que <strong>realmente se recicla</strong></p></div>
+                <div class="stat-card"><i class="fas fa-skull-crossbones"></i><div class="number">8</div><p>Basureros clandestinos clausurados</p></div>
             </div>
-        </div>
-        <div class="cita-block">
-            <blockquote>"El problema es que la sociedad en general lo que ve es que si tú separas, al final de cuentas el camión se lo lleva todo mezclado."<cite>— Dra. Bertha Alicia Arce, investigadora del CU Lagos, Universidad de Guadalajara</cite></blockquote>
-        </div>
-    </section>
-
-    <!-- ==================== PRODUCTOS ==================== -->
-    <section id="productos" class="fade-in">
-        <h2 class="section-title">Nuestros <span>productos</span></h2>
-        <div class="grid">
-            <div class="producto-card"><img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';"><div class="contenido"><h3>Ladrillos Ecológicos</h3><p>30% más económicos, ligeros y aislantes. Ideales para vivienda social.</p></div></div>
-            <div class="producto-card"><img src="tarima.jpg" alt="Tarimas plásticas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Tarimas de Plástico</h3><p>Duraderas, higiénicas, libres de plagas. Certificación ISPM-15.</p></div></div>
-            <div class="producto-card"><img src="tapete.jpg" alt="Tapete anti-estrés ganadero" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';"><div class="contenido"><h3>Tapetes Anti-estrés</h3><p>Confort y bienestar para ganado lechero. Mejora productividad.</p></div></div>
-            <div class="producto-card"><img src="utensilios.jpg" alt="Utensilios compostables" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';"><div class="contenido"><h3>Utensilios Compostables</h3><p>Platos, vasos y cubiertos de hoja de elote y cáscara de plátano.</p></div></div>
-            <div class="producto-card"><img src="vivienda.jpg" alt="Vivienda rural con ecobloques" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div></div>
-            <div class="producto-card"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop" alt="Fertilizante orgánico"><div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div></div>
-        </div>
-    </section>
-
-    <!-- ==================== IMPACTO ==================== -->
-    <section id="impacto" class="fade-in">
-        <h2 class="section-title">Impacto en <span>3 años</span></h2>
-        <div class="stats-grid">
-            <div class="stat-card"><i class="fas fa-home"></i><div class="number">500+</div><p>Familias con piso firme</p></div>
-            <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">780 T</div><p>Residuos valorizados al año</p></div>
-            <div class="stat-card"><i class="fas fa-users"></i><div class="number">25</div><p>Empleos verdes directos</p></div>
-            <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>ROI acumulado</p></div>
-        </div>
-    </section>
-
-    <!-- ==================== CENTROS DE ACOPIO (REVISIÓN INGENIERÍA CIVIL) ==================== -->
-    <section id="centros-acopio" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-        <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
-        <p class="section-subtitle">Ubicaciones estratégicas optimizando las rutas de recolección de ENERWASTE</p>
-        <div style="text-align: left; margin-top: 2rem;">
-            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(1)">
-                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-school" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Centro-Escolar</span><i id="icon-acopio-1" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
-                <div id="acopio-1" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Zona escolar del centro (calles Luis Moreno / Silviano Carrillo). Cercano al Colegio Pedro Moreno.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 5 km. Reducción estimada del 30% en viajes al vertedero.</p></div>
+            <div class="problema-grid">
+                <div class="problema-texto">
+                    <h3>Una crisis que va más allá del basurero</h3>
+                    <p>En Lagos de Moreno, la gestión de residuos no es solo un tema ambiental: <strong>es una emergencia de salud pública, de justicia social y de sostenibilidad económica.</strong></p>
+                    <p>Mientras el relleno sanitario se acerca a su saturación total, <strong>14 de cada 100 toneladas de basura son plásticos aprovechables</strong> que hoy terminan enterrados o contaminando nuestros suelos y cuerpos de agua.</p>
+                    <a href="#productos" class="btn">Descubre cómo lo solucionamos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="problema-imagen">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop" alt="Vertedero de basura en Lagos de Moreno" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1604187351574-c75ca9b3f1a6?w=600&h=400&fit=crop';">
+                    <p style="margin-top:0.5rem; color:var(--gris-texto); font-size:0.9rem; text-align:center;">El basurero municipal de Lagos de Moreno opera al límite de su capacidad.</p>
+                </div>
             </div>
-            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(2)">
-                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-hospital" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Norte-Hospitalario</span><i id="icon-acopio-2" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i></h3>
-                <div id="acopio-2" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Av. Institución, cerca del Hospital General, Col. Cristeros. Atiende Betulia y Rancho Verde.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 3 km.</p></div>
+            <div class="cita-block">
+                <blockquote>"El problema es que la sociedad en general lo que ve es que si tú separas, al final de cuentas el camión se lo lleva todo mezclado."<cite>— Dra. Bertha Alicia Arce, investigadora del CU Lagos, Universidad de Guadalajara</cite></blockquote>
             </div>
-            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(3)">
-                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-users" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Sur-Comunitario</span><i id="icon-acopio-3" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
-                <div id="acopio-3" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> La Laguna. Clausurados 3 basureros clandestinos en esta zona.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 7 km.</p></div>
+        </section>
+
+        <!-- ==================== PRODUCTOS ==================== -->
+        <section id="productos" class="fade-in">
+            <h2 class="section-title">Nuestros <span>productos</span></h2>
+            <div class="grid">
+                <div class="producto-card"><img src="ladrillo.jpg" alt="Ladrillo ecológico" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';"><div class="contenido"><h3>Ladrillos Ecológicos</h3><p>30% más económicos, ligeros y aislantes. Ideales para vivienda social.</p></div></div>
+                <div class="producto-card"><img src="tarima.jpg" alt="Tarimas plásticas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Tarimas de Plástico</h3><p>Duraderas, higiénicas, libres de plagas. Certificación ISPM-15.</p></div></div>
+                <div class="producto-card"><img src="tapete.jpg" alt="Tapete anti-estrés ganadero" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';"><div class="contenido"><h3>Tapetes Anti-estrés</h3><p>Confort y bienestar para ganado lechero. Mejora productividad.</p></div></div>
+                <div class="producto-card"><img src="utensilios.jpg" alt="Utensilios compostables" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';"><div class="contenido"><h3>Utensilios Compostables</h3><p>Platos, vasos y cubiertos de hoja de elote y cáscara de plátano.</p></div></div>
+                <div class="producto-card"><img src="vivienda.jpg" alt="Vivienda rural con ecobloques" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Vivienda Progresiva</h3><p>Pisos firmes, muros y sistemas de riego para familias de escasos recursos.</p></div></div>
+                <div class="producto-card"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop" alt="Fertilizante orgánico"><div class="contenido"><h3>Fertilizante Orgánico</h3><p>Composta para huertos de traspatio y regeneración de suelos.</p></div></div>
             </div>
-            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(4)">
-                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-industry" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Oriente-Industrial</span><i id="icon-acopio-4" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i></h3>
-                <div id="acopio-4" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Salida a Comanja, corredor industrial que conecta con la carretera federal 45D.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 4 km.</p></div>
+        </section>
+
+        <!-- ==================== IMPACTO ==================== -->
+        <section id="impacto" class="fade-in">
+            <h2 class="section-title">Impacto en <span>3 años</span></h2>
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-home"></i><div class="number">500+</div><p>Familias con piso firme</p></div>
+                <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">780 T</div><p>Residuos valorizados al año</p></div>
+                <div class="stat-card"><i class="fas fa-users"></i><div class="number">25</div><p>Empleos verdes directos</p></div>
+                <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>ROI acumulado</p></div>
             </div>
-            <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(5)">
-                <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-clinic-medical" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Poniente-IMSS</span><i id="icon-acopio-5" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
-                <div id="acopio-5" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7, Col. Tepeyac 2ª Sección.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 6 km.</p></div>
+        </section>
+
+        <!-- ==================== CENTROS DE ACOPIO ==================== -->
+        <section id="centros-acopio" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
+            <p class="section-subtitle">Ubicaciones estratégicas optimizando las rutas de recolección de ENERWASTE</p>
+            <div style="text-align: left; margin-top: 2rem;">
+                <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(1)">
+                    <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-school" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Centro-Escolar</span><i id="icon-acopio-1" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
+                    <div id="acopio-1" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Zona escolar del centro (calles Luis Moreno / Silviano Carrillo). Cercano al Colegio Pedro Moreno.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 5 km. Reducción estimada del 30% en viajes al vertedero.</p></div>
+                </div>
+                <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(2)">
+                    <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-hospital" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Norte-Hospitalario</span><i id="icon-acopio-2" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i></h3>
+                    <div id="acopio-2" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Av. Institución, cerca del Hospital General, Col. Cristeros. Atiende Betulia y Rancho Verde.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 3 km.</p></div>
+                </div>
+                <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(3)">
+                    <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-users" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Sur-Comunitario</span><i id="icon-acopio-3" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
+                    <div id="acopio-3" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> La Laguna. Clausurados 3 basureros clandestinos en esta zona.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 7 km.</p></div>
+                </div>
+                <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(4)">
+                    <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-industry" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Oriente-Industrial</span><i id="icon-acopio-4" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i></h3>
+                    <div id="acopio-4" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Salida a Comanja, corredor industrial que conecta con la carretera federal 45D.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 4 km.</p></div>
+                </div>
+                <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(5)">
+                    <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-clinic-medical" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Poniente-IMSS</span><i id="icon-acopio-5" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
+                    <div id="acopio-5" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7, Col. Tepeyac 2ª Sección.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 6 km.</p></div>
+                </div>
+                <div style="margin-top: 2rem;"><h3 style="color: var(--gris-oscuro); text-align: center; margin-bottom: 1rem;"><i class="fas fa-map-pin" style="color: var(--naranja-institucional);"></i> Mapa de Ubicación de los Centros de Acopio</h3><div id="mapa-acopio" style="height: 400px; border-radius: 12px; border: 2px solid var(--naranja-institucional);"></div></div>
             </div>
-            <div style="margin-top: 2rem;"><h3 style="color: var(--gris-oscuro); text-align: center; margin-bottom: 1rem;"><i class="fas fa-map-pin" style="color: var(--naranja-institucional);"></i> Mapa de Ubicación de los Centros de Acopio</h3><div id="mapa-acopio" style="height: 400px; border-radius: 12px; border: 2px solid var(--naranja-institucional);"></div></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== COMPARATIVA DE RUTAS ==================== -->
-    <section id="comparativa" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-        <h2 class="section-title">Comparativa de <span>Rutas</span> de Recolección</h2>
-        <p class="section-subtitle">Propuesta de optimización para Grupo ENERWASTE</p>
-        <div class="comparativa-grid">
-            <div class="antes-card"><h3 style="color: #C0392B; margin-bottom: 1rem;"><i class="fas fa-truck"></i> Situación Actual</h3><p><strong>Flota:</strong> 10 camiones</p><p><strong>Recorrido promedio:</strong> 25-30 km por ruta</p><p><strong>Tiempo por ruta:</strong> 4h recolección + 1.5h traslado</p><p><strong>Consumo mensual:</strong> ~$87,000 MXN en combustible</p><p><strong>Desgaste:</strong> 60% más kilometraje</p></div>
-            <div class="despues-card"><h3 style="color: var(--verde-sostenible); margin-bottom: 1rem;"><i class="fas fa-truck-fast"></i> Situación Propuesta</h3><p><strong>Flota:</strong> 10 camiones (misma flota)</p><p><strong>Recorrido promedio:</strong> 18-22 km por ruta</p><p><strong>Tiempo por ruta:</strong> 3.5h recolección + 0.5h descarga</p><p><strong>Consumo mensual:</strong> ~$56,280 MXN en combustible</p><p><strong>Desgaste:</strong> 40% menos kilometraje</p></div>
-        </div>
-        <div style="margin-top: 1.5rem; text-align: center; background: #E8F5E9; padding: 1.5rem; border-radius: 12px;">
-            <p><strong><i class="fas fa-piggy-bank" style="color: var(--verde-sostenible);"></i> Ahorro Anual Estimado: $368,640 MXN solo en combustible</strong></p>
-            <p style="color: var(--gris-texto);">Incluyendo reducción en mantenimiento correctivo: más de <strong>$500,000 MXN anuales</strong></p>
-        </div>
-    </section>
+        <!-- ==================== RESPALDO ==================== -->
+        <section id="respaldo" class="respaldo fade-in">
+            <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja-institucional);">respaldo Institucional</span></h2>
+            <div class="logos">
+                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
+                <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
+                <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
+                <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
+                <div><i class="fas fa-seedling"></i> PROJAL</div>
+                <div><i class="fas fa-flask"></i> COECYTJAL</div>
+            </div>
+            <div style="margin-top:2rem;"><a href="Certificado-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Certificado POSiBLE</a></div>
+        </section>
 
-    <!-- ==================== RESPALDO ==================== -->
-    <section id="respaldo" class="respaldo fade-in">
-        <h2 style="color:white; margin-bottom:2rem;">Respaldo Institucional</h2>
-        <div class="logos">
-            <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
-            <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
-            <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
-            <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
-        </div>
-        <div style="margin-top:2rem;"><a href="Certificado-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Certificado POSiBLE</a></div>
-    </section>
+        <!-- ==================== CONTACTO ==================== -->
+        <section id="contacto" class="contacto fade-in">
+            <h2 class="section-title">Contacto e <span style="color:white;">Inversión</span></h2>
+            <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
+            <div class="btn-wrapper">
+                <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
+                <a href="hub.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
+                <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
+            </div>
+        </section>
 
-    <!-- ==================== CONTACTO ==================== -->
-    <section id="contacto" class="contacto fade-in">
-        <h2 class="section-title">Contacto e <span>Inversión</span></h2>
-        <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
-        <div class="btn-wrapper">
-            <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
-            <a href="hub.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
-            <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
-        </div>
-    </section>
-
-    <!-- ==================== MAPA DE VISITANTES ==================== -->
-    <div class="clustrmaps-container" style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-        <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;"><i class="fas fa-globe-americas" style="color: var(--naranja-institucional);"></i> Visitantes de LAGOS CIRCULAR en el Mundo</h3>
-        <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=WSn1BULsP2TWwpoPvX71AmGVd3k7BVCBN_UPJyjjfZs&co=F39200&cmo=2E7D32&cmn=F2F2F2&ct=333333'></script>
+        <footer>
+            <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
+            <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
+            <p><a href="privacidad.html" style="color: white; text-decoration: underline; margin-left: 1rem;">Política de Privacidad y Aviso Legal</a></p>
+        </footer>
     </div>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-        <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
-        <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
-        <p><a href="privacidad.html" style="color: white; text-decoration: underline; margin-left: 1rem;">Política de Privacidad y Aviso Legal</a></p>
-    </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // ============================================================
+        // MARCA DE AGUA EN JAVASCRIPT
+        // PROYECTO: LAGOS CIRCULAR
+        // AUTOR: Ing. Ind. Luis Javier Flores Flores
+        // RFC: FOFL840425E40
+        // CONTACTO: engineerflores@outlook.com
+        // PROTEGIDO POR DERECHOS DE AUTOR © 2026
+        // ============================================================
+        
+        var _ljff_lc_2026_autor = "Ing. Ind. Luis Javier Flores Flores | RFC: FOFL840425E40 | LAGOS CIRCULAR © 2026";
+        
+        console.log("LAGOS CIRCULAR © 2026 Ing. Ind. Luis Javier Flores Flores. Todos los derechos reservados.");
+        console.log("Este código fuente está protegido por derechos de autor. Registro en trámite ante INDAUTOR.");
+        
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('active'); }
         function toggleAcopio(num) {
             var contenido = document.getElementById('acopio-' + num);
@@ -284,6 +350,123 @@
         centrosAcopio.forEach(function(punto) {
             L.marker([punto.lat, punto.lng], {icon: iconoAcopio}).addTo(mapAcopio).bindPopup('<b>' + punto.nombre + '</b><br>' + punto.descripcion);
         });
+
+        // ==================== FONDO INTERACTIVO DE PARTÍCULAS Y AURORAS ====================
+        (function() {
+            var canvas = document.getElementById('fondo-interactivo');
+            var ctx = canvas.getContext('2d');
+            var width, height;
+            var particles = [];
+            var mouse = { x: null, y: null, radius: 100 };
+            var particleCount = 80;
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Crear partículas
+            for (var i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    radius: Math.random() * 2.5 + 1,
+                    color: Math.random() < 0.7 ? '#F39200' : '#2E7D32'
+                });
+            }
+
+            window.addEventListener('mousemove', function(e) {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+            window.addEventListener('mouseleave', function() {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Actualizar y dibujar partículas
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    // Rebotar en bordes
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    // Interacción con el mouse: las partículas se alejan del cursor
+                    if (mouse.x !== null && mouse.y !== null) {
+                        var dx = p.x - mouse.x;
+                        var dy = p.y - mouse.y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < mouse.radius) {
+                            var force = (mouse.radius - dist) / mouse.radius;
+                            var angle = Math.atan2(dy, dx);
+                            p.vx += Math.cos(angle) * force * 0.8;
+                            p.vy += Math.sin(angle) * force * 0.8;
+                        }
+                    }
+
+                    // Limitar velocidad máxima
+                    var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+                    if (speed > 2) {
+                        p.vx = (p.vx / speed) * 2;
+                        p.vy = (p.vy / speed) * 2;
+                    }
+
+                    // Dibujar partícula con brillo
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = p.color;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    // Conexiones entre partículas cercanas (red)
+                    for (var j = i + 1; j < particles.length; j++) {
+                        var p2 = particles[j];
+                        var dx2 = p.x - p2.x;
+                        var dy2 = p.y - p2.y;
+                        var dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+                        if (dist2 < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = p.color;
+                            ctx.lineWidth = 0.3;
+                            ctx.globalAlpha = 1 - dist2 / 100;
+                            ctx.stroke();
+                            ctx.globalAlpha = 1;
+                        }
+                    }
+                }
+
+                // Dibujar auroras suaves en zonas donde está el mouse
+                if (mouse.x !== null && mouse.y !== null) {
+                    var gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
+                    gradient.addColorStop(0, 'rgba(243, 146, 0, 0.12)');
+                    gradient.addColorStop(0.5, 'rgba(46, 125, 50, 0.06)');
+                    gradient.addColorStop(1, 'rgba(243, 146, 0, 0)');
+                    ctx.beginPath();
+                    ctx.arc(mouse.x, mouse.y, 150, 0, Math.PI * 2);
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                }
+
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
     </script>
 </body>
 </html>
