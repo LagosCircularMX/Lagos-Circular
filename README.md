@@ -5,7 +5,7 @@ Una planta de economía circular que se enfocará en la recolección, clasificac
 
 ## ⚖️ PROPIEDAD INTELECTUAL Y PROTECCIÓN LEGAL
 
-**© 2026 Ing. Ind. Luis Javier Flores Flores. Todos los derechos reservados.**
+**© 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados.**
 
 ### 🛡️ Registros en Trámite
 
@@ -52,7 +52,7 @@ En caso de detectar cualquier uso no autorizado del contenido de este repositori
 
 Cualquier solicitud de colaboración, licencia o autorización de uso debe dirigirse por escrito a:
 
-- **Titular:** Ing. Ind. Luis Javier Flores Flores
-- **Correo Electrónico:** engineerflores@outlook.com
+- **Titular:** Ing. Luis Javier Flores Flores
+- **Correo Electrónico:** engineerflores@outlook.com | luis.flores.flores00@gmail.com
 - **Teléfono:** 474 108 1206
 - **RFC:** FOFL840425E40
