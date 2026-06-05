@@ -347,6 +347,9 @@
             { lat: 21.3590, lng: -101.9080, nombre: 'Centro de Acopio Oriente-Industrial', descripcion: 'Salida a Comanja, corredor industrial.' },
             { lat: 21.3520, lng: -101.9480, nombre: 'Centro de Acopio Poniente-IMSS', descripcion: 'Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7.' }
         ];
+        <a href="/mapa-visitas.html" class="bg-[#2E7D32] text-white px-6 py-3 rounded-full hover:bg-[#1B5E20] transition inline-block">
+    📍 Registrar mi visita al centro de acopio
+</a>
         centrosAcopio.forEach(function(punto) {
             L.marker([punto.lat, punto.lng], {icon: iconoAcopio}).addTo(mapAcopio).bindPopup('<b>' + punto.nombre + '</b><br>' + punto.descripcion);
         });
