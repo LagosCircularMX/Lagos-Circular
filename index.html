@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido por Fundación POSiBLE 2026.">
+    <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido con Constancia de la Fundación POSiBLE 2026.">
     <!--
       ============================================================
       PROYECTO: LAGOS CIRCULAR - Biofábrica Social de Los Altos
@@ -24,7 +24,7 @@
       Ley Federal de Protección a la Propiedad Industrial.
       ============================================================
     -->
-    <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40, engineerflores@outlook.com">
+    <meta name="author" content="Ing. Ind. Luis Javier Flores Flores, RFC FOFL840425E40, engineerflores@outlook.com">
     <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde, PROJAL, COECYTJAL">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,8 +56,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* Fondo interactivo de partículas y auroras */
         #fondo-interactivo {
             position: fixed;
             top: 0;
@@ -67,13 +65,10 @@
             z-index: 0;
             pointer-events: none;
         }
-
-        /* Capa de contenido por encima del fondo */
         .contenido-principal {
             position: relative;
             z-index: 1;
         }
-
         nav {
             background: rgba(255,255,255,0.95); backdrop-filter: blur(15px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 0.7rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -149,22 +144,7 @@
     <canvas id="fondo-interactivo"></canvas>
 
     <div class="contenido-principal">
-        <!--
-          ============================================================
-          MARCA DE AGUA HTML OCULTA
-          PROYECTO: LAGOS CIRCULAR | AUTOR: Ing. Ind. Luis Javier Flores Flores
-          RFC: FOFL840425E40 | CONTACTO: engineerflores@outlook.com
-          ============================================================
-          ADVERTENCIA: Este código fuente es propiedad intelectual
-          del autor arriba mencionado. Queda prohibida su
-          reproducción total o parcial sin autorización expresa.
-          El registro de derechos de autor está en trámite ante
-          INDAUTOR y la solicitud provisional de patente ante el
-          IMPI. Cualquier uso no autorizado será perseguido
-          conforme a la Ley Federal del Derecho de Autor y la
-          Ley Federal de Protección a la Propiedad Industrial.
-          ============================================================
-        -->
+        <!-- MARCA DE AGUA HTML OCULTA -->
         <div class="ljff-fofl840425e40-lc-2026" aria-hidden="true">LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados.</div>
 
         <nav>
@@ -180,15 +160,15 @@
             </ul>
         </nav>
 
-        <!-- ==================== HERO ==================== -->
+        <!-- HERO -->
         <section class="hero" id="hero">
-            <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido con constancia de la Fundación POSiBLE 2026</div>
+            <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido con Constancia de la Fundación POSiBLE 2026</div>
             <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
             <p>Una biofábrica social que convierte plásticos y residuos orgánicos en ladrillos ecológicos, tarimas, utensilios compostables y progreso para las familias de Los Altos.</p>
             <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
         </section>
 
-        <!-- ==================== PROBLEMA ==================== -->
+        <!-- PROBLEMA -->
         <section id="problema" class="fade-in">
             <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
             <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
@@ -219,7 +199,7 @@
             </div>
         </section>
 
-        <!-- ==================== PRODUCTOS ==================== -->
+        <!-- PRODUCTOS -->
         <section id="productos" class="fade-in">
             <h2 class="section-title">Nuestros <span>productos</span></h2>
             <div class="grid">
@@ -232,7 +212,7 @@
             </div>
         </section>
 
-        <!-- ==================== IMPACTO ==================== -->
+        <!-- IMPACTO -->
         <section id="impacto" class="fade-in">
             <h2 class="section-title">Impacto en <span>3 años</span></h2>
             <div class="stats-grid">
@@ -243,14 +223,14 @@
             </div>
         </section>
 
-        <!-- ==================== CENTROS DE ACOPIO ==================== -->
+        <!-- CENTROS DE ACOPIO -->
         <section id="centros-acopio" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
             <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
             <p class="section-subtitle">Ubicaciones estratégicas optimizando las rutas de recolección de ENERWASTE</p>
             <div style="text-align: left; margin-top: 2rem;">
                 <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer;" onclick="toggleAcopio(1)">
                     <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-school" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Centro-Escolar</span><i id="icon-acopio-1" class="fas fa-chevron-down" style="color: var(--naranja-institucional); transition: transform 0.3s;"></i></h3>
-                    <div id="acopio-1" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Zona escolar del centro (calles Luis Moreno / Silviano Carrillo). Cercano al Colegio Pedro Moreno.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 5 km. Reducción estimada del 30% en viajes al vertedero.</p></div>
+                    <div id="acopio-1" style="display: none; margin-top: 1rem; color: var(--gris-texto);"><p><strong>📍 Ubicación:</strong> Zona escolar del centro (calles Luis Moreno / Silviano Carrillo). Cercano al Colegio Pedro Moreno.</p><p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 5 km.</p></div>
                 </div>
                 <div class="acopio-card" style="background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--verde-sostenible); cursor: pointer;" onclick="toggleAcopio(2)">
                     <h3 style="color: var(--gris-oscuro); display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-hospital" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Norte-Hospitalario</span><i id="icon-acopio-2" class="fas fa-chevron-down" style="color: var(--verde-sostenible); transition: transform 0.3s;"></i></h3>
@@ -272,9 +252,9 @@
             </div>
         </section>
 
-        <!-- ==================== RESPALDO ==================== -->
+        <!-- RESPALDO -->
         <section id="respaldo" class="respaldo fade-in">
-            <h2 style="color:white; margin-bottom:2rem;">En búsqueda Del </Del> <span style="color: var(--naranja-institucional);">Respaldo Institucional</span></h2>
+            <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja-institucional);">respaldo Institucional</span></h2>
             <div class="logos">
                 <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
                 <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
@@ -283,10 +263,10 @@
                 <div><i class="fas fa-seedling"></i> PROJAL</div>
                 <div><i class="fas fa-flask"></i> COECYTJAL</div>
             </div>
-            <div style="margin-top:2rem;"><a href="Constancia-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a></div>
+            <div style="margin-top:2rem;"><a href="Certificado-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a></div>
         </section>
 
-        <!-- ==================== CONTACTO ==================== -->
+        <!-- CONTACTO -->
         <section id="contacto" class="contacto fade-in">
             <h2 class="section-title">Contacto e <span style="color:white;">Inversión</span></h2>
             <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
@@ -309,15 +289,15 @@
         // ============================================================
         // MARCA DE AGUA EN JAVASCRIPT
         // PROYECTO: LAGOS CIRCULAR
-        // AUTOR: Ingeniero Industrial Luis Javier Flores Flores
+        // AUTOR: Ing. Ind. Luis Javier Flores Flores
         // RFC: FOFL840425E40
         // CONTACTO: engineerflores@outlook.com
         // PROTEGIDO POR DERECHOS DE AUTOR © 2026
         // ============================================================
         
-        var _ljff_lc_2026_autor = "Ingeniero Industrial Luis Javier Flores Flores | RFC: FOFL840425E40 | LAGOS CIRCULAR © 2026";
+        var _ljff_lc_2026_autor = "Ing. Ind. Luis Javier Flores Flores | RFC: FOFL840425E40 | LAGOS CIRCULAR © 2026";
         
-        console.log("LAGOS CIRCULAR © 2026 Ingeniero Industrial Luis Javier Flores Flores. Todos los derechos reservados.");
+        console.log("LAGOS CIRCULAR © 2026 Ing. Ind. Luis Javier Flores Flores. Todos los derechos reservados.");
         console.log("Este código fuente está protegido por derechos de autor. Registro en trámite ante INDAUTOR.");
         
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('active'); }
@@ -347,9 +327,6 @@
             { lat: 21.3590, lng: -101.9080, nombre: 'Centro de Acopio Oriente-Industrial', descripcion: 'Salida a Comanja, corredor industrial.' },
             { lat: 21.3520, lng: -101.9480, nombre: 'Centro de Acopio Poniente-IMSS', descripcion: 'Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7.' }
         ];
-        <a href="/mapa-visitas.html" class="bg-[#2E7D32] text-white px-6 py-3 rounded-full hover:bg-[#1B5E20] transition inline-block">
-    📍 Registrar mi visita al centro de acopio
-</a>
         centrosAcopio.forEach(function(punto) {
             L.marker([punto.lat, punto.lng], {icon: iconoAcopio}).addTo(mapAcopio).bindPopup('<b>' + punto.nombre + '</b><br>' + punto.descripcion);
         });
@@ -357,6 +334,7 @@
         // ==================== FONDO INTERACTIVO DE PARTÍCULAS Y AURORAS ====================
         (function() {
             var canvas = document.getElementById('fondo-interactivo');
+            if (!canvas) return;
             var ctx = canvas.getContext('2d');
             var width, height;
             var particles = [];
@@ -372,7 +350,6 @@
             window.addEventListener('resize', resize);
             resize();
 
-            // Crear partículas
             for (var i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * width,
@@ -395,18 +372,12 @@
 
             function draw() {
                 ctx.clearRect(0, 0, width, height);
-
-                // Actualizar y dibujar partículas
                 for (var i = 0; i < particles.length; i++) {
                     var p = particles[i];
                     p.x += p.vx;
                     p.y += p.vy;
-
-                    // Rebotar en bordes
                     if (p.x < 0 || p.x > width) p.vx *= -1;
                     if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                    // Interacción con el mouse: las partículas se alejan del cursor
                     if (mouse.x !== null && mouse.y !== null) {
                         var dx = p.x - mouse.x;
                         var dy = p.y - mouse.y;
@@ -418,15 +389,11 @@
                             p.vy += Math.sin(angle) * force * 0.8;
                         }
                     }
-
-                    // Limitar velocidad máxima
                     var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
                     if (speed > 2) {
                         p.vx = (p.vx / speed) * 2;
                         p.vy = (p.vy / speed) * 2;
                     }
-
-                    // Dibujar partícula con brillo
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                     ctx.fillStyle = p.color;
@@ -434,8 +401,6 @@
                     ctx.shadowColor = p.color;
                     ctx.fill();
                     ctx.shadowBlur = 0;
-
-                    // Conexiones entre partículas cercanas (red)
                     for (var j = i + 1; j < particles.length; j++) {
                         var p2 = particles[j];
                         var dx2 = p.x - p2.x;
@@ -453,8 +418,6 @@
                         }
                     }
                 }
-
-                // Dibujar auroras suaves en zonas donde está el mouse
                 if (mouse.x !== null && mouse.y !== null) {
                     var gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
                     gradient.addColorStop(0, 'rgba(243, 146, 0, 0.12)');
@@ -465,7 +428,6 @@
                     ctx.fillStyle = gradient;
                     ctx.fill();
                 }
-
                 requestAnimationFrame(draw);
             }
             draw();
