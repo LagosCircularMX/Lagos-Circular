@@ -11,8 +11,6 @@
         .btn { background: #F39200; color: white; padding: 0.8rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; width: 100%; }
         .btn:hover { background: #e08600; }
         .mensaje { margin-top: 1rem; font-weight: 600; display: none; }
-        .exito { color: #2E7D32; }
-        .error { color: #C0392B; }
     </style>
 </head>
 <body>
@@ -25,12 +23,10 @@
             <input type="text" id="institucion" placeholder="Institución o empresa (opcional)">
             <button type="submit" class="btn">Acceder a la Información</button>
         </form>
-        <p class="mensaje" id="mensaje-exito">✅ Registro exitoso. Redirigiendo...</p>
-        <p class="mensaje" id="mensaje-error">❌ Hubo un error. Intenta de nuevo.</p>
+        <p id="mensaje-estado" style="margin-top: 1rem; font-weight: 600;"></p>
     </div>
     <script>
-        // ✅ CORREGIDO: La URL ahora coincide con el nombre real del archivo en Vercel
-        var API_URL = 'https://lagos-circular-hdfb7hz7c-luis-javier-flores-flores-projects.vercel.app/api/registrar-visitas';
+        var API_URL = 'https://lagos-circular-leads.vercel.app/api/registro';
         
         document.getElementById('form-acceso').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -43,6 +39,10 @@
             localStorage.setItem('lc_email', email);
             localStorage.setItem('lc_institucion', institucion);
             
+            var mensajeEstado = document.getElementById('mensaje-estado');
+            mensajeEstado.style.color = '#F39200';
+            mensajeEstado.textContent = '⏳ Registrando...';
+            
             fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -51,19 +51,19 @@
             .then(function(response) { return response.json(); })
             .then(function(data) {
                 if (data.success) {
-                    document.getElementById('mensaje-exito').style.display = 'block';
-                    document.getElementById('mensaje-error').style.display = 'none';
+                    mensajeEstado.style.color = '#2E7D32';
+                    mensajeEstado.textContent = '✅ Registro exitoso. Redirigiendo...';
                     setTimeout(function() {
                         window.location.href = 'hub.html';
                     }, 1500);
                 } else {
-                    document.getElementById('mensaje-error').style.display = 'block';
-                    document.getElementById('mensaje-exito').style.display = 'none';
+                    mensajeEstado.style.color = '#C0392B';
+                    mensajeEstado.textContent = '❌ Error: ' + (data.error || 'Intenta de nuevo');
                 }
             })
-            .catch(function() {
-                document.getElementById('mensaje-error').style.display = 'block';
-                document.getElementById('mensaje-exito').style.display = 'none';
+            .catch(function(error) {
+                mensajeEstado.style.color = '#C0392B';
+                mensajeEstado.textContent = '❌ Error de conexión. Redirigiendo de todos modos...';
                 setTimeout(function() {
                     window.location.href = 'hub.html';
                 }, 3000);
