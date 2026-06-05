@@ -29,8 +29,8 @@
         <p class="mensaje" id="mensaje-error">❌ Hubo un error. Intenta de nuevo.</p>
     </div>
     <script>
-        // ⚠️ REEMPLAZA CON LA URL DE TU API DE VERCEL
-        var API_URL = 'https://lagos-circular-git-main-luis-javier-flores-flores-projects.vercel.app/api/acceso';
+        // ✅ URL CORREGIDA (con https://)
+        var API_URL = 'https://lagos-circular-hdfb7hz7c-luis-javier-flores-flores-projects.vercel.app/api/acceso';
         
         document.getElementById('form-acceso').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -39,12 +39,10 @@
             var email = document.getElementById('email').value;
             var institucion = document.getElementById('institucion').value || 'No especificada';
             
-            // Guardar en localStorage para el candado de hub.html
             localStorage.setItem('lc_nombre', nombre);
             localStorage.setItem('lc_email', email);
             localStorage.setItem('lc_institucion', institucion);
             
-            // Enviar a la API
             fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -66,7 +64,6 @@
             .catch(function() {
                 document.getElementById('mensaje-error').style.display = 'block';
                 document.getElementById('mensaje-exito').style.display = 'none';
-                // Si la API falla, igual dejamos pasar (no bloqueamos el acceso)
                 setTimeout(function() {
                     window.location.href = 'hub.html';
                 }, 3000);
