@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<script>
-    if (!localStorage.getItem('lc_email')) {
-        window.location.href = 'acceso.html';
-    }
-</script>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +17,6 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            
             font-family: 'Inter', sans-serif;
             background: var(--gris-fondo);
             color: var(--gris-oscuro);
@@ -97,17 +91,10 @@
     </style>
 </head>
 <body>
-    <script>
-    if (!localStorage.getItem('lc_email')) {
-        window.location.href = 'acceso.html';
-    } else {
-        console.log('Acceso autorizado para: ' + localStorage.getItem('lc_email'));
-    }
-</script>
 <div class="hub-container">
     <div class="hub-header">
         <h1><i class="fas fa-briefcase"></i> LAGOS<span>CIRCULAR</span></h1>
-        <p>Centro de información para el H. Ayuntamiento de Lagos de Moreno, Grupo ENERWASTE, Fundación POSiBLE, Gobierno del Estado, PROJAL, COECYTJAL y futuros inversionistas.</p>
+        <p>Centro de información para el Lic. Edgar González, Grupo ENERWASTE, Fundación POSiBLE, el Gobernador Pablo Lemus Navarro y futuros inversionistas.</p>
     </div>
 
     <div class="metrics-grid">
@@ -126,7 +113,7 @@
         <a href="Constancia-Lagos-circular-2026.pdf" class="hub-btn" target="_blank">
             <i class="fas fa-certificate"></i>
             <strong>Constancia POSiBLE</strong>
-            <span>Reconocimiento oficial 2026</span>
+            <span>Constancia oficial 2026</span>
         </a>
         <a href="dashboard.html" class="hub-btn primary">
             <i class="fas fa-chart-pie"></i>
@@ -143,15 +130,20 @@
             <strong>Panel de Control</strong>
             <span>Mapa interactivo y filtros avanzados</span>
         </a>
+        <a href="centros-acopio.html" class="hub-btn">
+            <i class="fas fa-location-dot"></i>
+            <strong>Centros de Acopio</strong>
+            <span>Ubicaciones estratégicas y justificación técnica</span>
+        </a>
+        <a href="rutas-optimizacion.html" class="hub-btn">
+            <i class="fas fa-route"></i>
+            <strong>Optimización de Rutas</strong>
+            <span>Análisis comparativo y ahorros para ENERWASTE</span>
+        </a>
         <a href="index.html" class="hub-btn">
             <i class="fas fa-globe"></i>
             <strong>Página Principal</strong>
             <span>Proyecto LAGOS CIRCULAR completo</span>
-        </a>
-        <a href="rutas-optimizacion.html" class="hub-btn">
-    <i class="fas fa-route"></i>
-    <strong> Proximamente: Análisis de Optimización de Rutas</strong>
-    <span>Análisis comparativo y ahorros para ENERWASTE</span>
         </a>
     </div>
 
