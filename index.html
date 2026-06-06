@@ -4,26 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno. Proyecto reconocido con Constancia de la Fundación POSiBLE 2026.">
-    <!--
-      ============================================================
-      PROYECTO: LAGOS CIRCULAR - Biofábrica Social de Los Altos
-      AUTOR: Ing. Luis Javier Flores Flores
-      RFC: FOFL840425E40
-      CORREO: engineerflores@outlook.com
-      TELÉFONO: 474 108 1206
-      FECHA DE CREACIÓN: Abril 2026
-      PROTEGIDO POR DERECHOS DE AUTOR © 2026
-      ============================================================
-      ADVERTENCIA: Este código fuente es propiedad intelectual
-      del autor arriba mencionado. Queda prohibida su
-      reproducción total o parcial sin autorización expresa.
-      El registro de derechos de autor está en trámite ante
-      INDAUTOR y la solicitud provisional de patente ante el
-      IMPI. Cualquier uso no autorizado será perseguido
-      conforme a la Ley Federal del Derecho de Autor y la
-      Ley Federal de Protección a la Propiedad Industrial.
-      ============================================================
-    -->
     <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40, engineerflores@outlook.com">
     <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, Gobernador, POSiBLE, Financiamiento Verde, PROJAL, COECYTJAL">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos | Reconocido POSiBLE 2026</title>
@@ -33,11 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* ============================================================
-           PROYECTO: LAGOS CIRCULAR - Biofábrica Social de Los Altos
-           AUTOR: Ing. Luis Javier Flores Flores | RFC: FOFL840425E40
-           PROTEGIDO POR DERECHOS DE AUTOR © 2026
-           ============================================================ */
         :root {
             --naranja-institucional: #F39200;
             --gris-fondo: #F2F2F2;
@@ -65,10 +40,7 @@
             z-index: 0;
             pointer-events: none;
         }
-        .contenido-principal {
-            position: relative;
-            z-index: 1;
-        }
+        .contenido-principal { position: relative; z-index: 1; }
         nav {
             background: rgba(255,255,255,0.95); backdrop-filter: blur(15px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 0.7rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -135,16 +107,12 @@
         footer .slogan { color: var(--naranja-institucional); margin-top: 0.5rem; font-style: italic; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        /* Marca de agua CSS invisible */
         .ljff-fofl840425e40-lc-2026 { display: none; content: "LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados."; }
     </style>
 </head>
 <body>
-    <!-- Fondo interactivo de partículas -->
     <canvas id="fondo-interactivo"></canvas>
-
     <div class="contenido-principal">
-        <!-- MARCA DE AGUA HTML OCULTA -->
         <div class="ljff-fofl840425e40-lc-2026" aria-hidden="true">LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados.</div>
 
         <nav>
@@ -155,12 +123,12 @@
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#impacto">Impacto</a></li>
                 <li><a href="#centros-acopio">Acopio</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#respaldo">Respaldo</a></li>
                 <li><a href="#contacto" class="btn-nav">Contacto</a></li>
             </ul>
         </nav>
 
-        <!-- HERO -->
         <section class="hero" id="hero">
             <div class="hero-badge"><i class="fas fa-certificate"></i> Reconocido con Constancia de la Fundación POSiBLE 2026</div>
             <h1>Transformamos <span>residuos</span> en futuro para Lagos de Moreno</h1>
@@ -168,7 +136,6 @@
             <a href="#productos" class="btn"><i class="fas fa-cubes"></i> Explorar productos</a>
         </section>
 
-        <!-- PROBLEMA -->
         <section id="problema" class="fade-in">
             <h2 class="section-title">El <span>Reto</span> que Enfrentamos</h2>
             <p class="section-subtitle">Una crisis ambiental y de salud pública que exige soluciones urgentes e innovadoras</p>
@@ -199,7 +166,6 @@
             </div>
         </section>
 
-        <!-- PRODUCTOS -->
         <section id="productos" class="fade-in">
             <h2 class="section-title">Nuestros <span>productos</span></h2>
             <div class="grid">
@@ -212,7 +178,6 @@
             </div>
         </section>
 
-        <!-- IMPACTO -->
         <section id="impacto" class="fade-in">
             <h2 class="section-title">Impacto en <span>3 años</span></h2>
             <div class="stats-grid">
@@ -223,18 +188,29 @@
             </div>
         </section>
 
-        <!-- CENTROS DE ACOPIO -->
-<!-- ==================== CENTROS DE ACOPIO (RESUMEN) ==================== -->
-<section id="centros-acopio" class="fade-in" style="max-width: 800px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-    <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
-    <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Hemos diseñado una red de 5 centros de acopio estratégicos basados en criterios de ingeniería civil, optimizando las rutas de recolección de ENERWASTE.</p>
-    <p style="color: var(--gris-texto); margin-bottom: 2rem;"><i class="fas fa-lock" style="color: var(--naranja-institucional);"></i> Para acceder a la ubicación exacta, mapas interactivos y justificación técnica de cada centro, es necesario registrarse en nuestra Sala de Datos.</p>
-    <a href="acceso.html" class="btn"><i class="fas fa-key"></i> Acceder a Información Detallada</a>
-</section>
+        <section id="centros-acopio" class="fade-in" style="max-width: 800px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
+            <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
+            <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Hemos diseñado una red de 5 centros de acopio estratégicos basados en criterios de ingeniería civil, optimizando las rutas de recolección de ENERWASTE.</p>
+            <p style="color: var(--gris-texto); margin-bottom: 2rem;"><i class="fas fa-lock" style="color: var(--naranja-institucional);"></i> Para acceder a la ubicación exacta, mapas interactivos y justificación técnica de cada centro, es necesario registrarse en nuestra Sala de Datos.</p>
+            <a href="acceso.html" class="btn"><i class="fas fa-key"></i> Acceder a Información Detallada</a>
+        </section>
 
-        <!-- RESPALDO -->
+        <section id="faq" class="fade-in" style="background: var(--blanco); max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+            <div style="text-align: left; margin-top: 2rem;">
+                <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(1)"><i class="fas fa-building-columns"></i> ¿Cómo se beneficiará el Ayuntamiento de esta alianza?</h3>
+                <p id="faq1" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">El municipio obtendrá un ahorro significativo en el costo de disposición final de residuos y podrá adquirir ladrillos ecológicos para obra pública a un precio hasta 30% menor que los materiales tradicionales. Además, la reducción del volumen de basura alargará la vida útil del relleno sanitario.</p>
+                <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(2)"><i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir dinero?</h3>
+                <p id="faq2" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">No. El modelo de negocio está diseñado para que ENERWASTE no invierta capital. Su participación consiste en suministrar los plásticos recolectados a cambio de un porcentaje de las utilidades futuras.</p>
+                <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(3)"><i class="fas fa-hand-holding-usd"></i> ¿Qué garantías de rentabilidad ofrece el proyecto a un inversionista?</h3>
+                <p id="faq3" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">Las proyecciones financieras muestran un payback de 2.3 años y un ROI del 187% al tercer año. La materia prima tiene costo casi nulo y el mercado local carece de competidores directos.</p>
+                <h3 style="color: var(--naranja-institucional); cursor: pointer;" onclick="toggleFAQ(4)"><i class="fas fa-gavel"></i> ¿Cómo se protege legalmente la innovación del proyecto?</h3>
+                <p id="faq4" style="display: none; color: var(--gris-texto); padding: 1rem; border-left: 3px solid var(--naranja-institucional); margin: 0.5rem 0 1.5rem 0;">Actualmente se está gestionando la solicitud provisional de patente ante el IMPI, el registro de la marca "LAGOS CIRCULAR" y los derechos de autor del plan de negocios y del código del sitio web.</p>
+            </div>
+        </section>
+
         <section id="respaldo" class="respaldo fade-in">
-            <h2 style="color:white; margin-bottom:2rem;">En Búsqueda del </del> <span style="color: var(--naranja-institucional);">Respaldo Institucional</span></h2>
+            <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja-institucional);">respaldo Institucional</span></h2>
             <div class="logos">
                 <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
                 <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
@@ -246,14 +222,13 @@
             <div style="margin-top:2rem;"><a href="Constancia-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja-institucional); font-weight:600; text-decoration:none; border:2px solid var(--naranja-institucional); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a></div>
         </section>
 
-        <!-- CONTACTO -->
         <section id="contacto" class="contacto fade-in">
             <h2 class="section-title">Contacto e <span style="color:white;">Inversión</span></h2>
             <p style="max-width:600px; margin: 0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
             <div class="btn-wrapper">
                 <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
-                
                 <a href="acceso.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
+                <a href="dashboard.html" class="btn-outline"><i class="fas fa-chart-pie"></i> Dashboard</a>
             </div>
         </section>
 
@@ -266,52 +241,21 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // ============================================================
-        // MARCA DE AGUA EN JAVASCRIPT
-        // PROYECTO: LAGOS CIRCULAR
-        // AUTOR: Ing. Luis Javier Flores Flores
-        // RFC: FOFL840425E40
-        // CONTACTO: engineerflores@outlook.com
-        // PROTEGIDO POR DERECHOS DE AUTOR © 2026
-        // ============================================================
-        
         var _ljff_lc_2026_autor = "Ing. Luis Javier Flores Flores | RFC: FOFL840425E40 | LAGOS CIRCULAR © 2026";
-        
         console.log("LAGOS CIRCULAR © 2026 Ing. Luis Javier Flores Flores. Todos los derechos reservados.");
         console.log("Este código fuente está protegido por derechos de autor. Registro en trámite ante INDAUTOR.");
         
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('active'); }
-        function toggleAcopio(num) {
-            var contenido = document.getElementById('acopio-' + num);
-            var icono = document.getElementById('icon-acopio-' + num);
-            if (contenido.style.display === 'none' || contenido.style.display === '') {
-                contenido.style.display = 'block'; icono.style.transform = 'rotate(180deg)';
-            } else { contenido.style.display = 'none'; icono.style.transform = 'rotate(0deg)'; }
+        function toggleFAQ(num) {
+            var elemento = document.getElementById('faq' + num);
+            if (elemento.style.display === 'none') { elemento.style.display = 'block'; }
+            else { elemento.style.display = 'none'; }
         }
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        var mapAcopio = L.map('mapa-acopio').setView([21.3580, -101.9290], 14);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(mapAcopio);
-        var iconoAcopio = L.icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
-        });
-        var centrosAcopio = [
-            { lat: 21.3584, lng: -101.9352, nombre: 'Centro de Acopio Centro-Escolar', descripcion: 'Zona escolar del centro. 2 camiones asignados.' },
-            { lat: 21.3705, lng: -101.8850, nombre: 'Centro de Acopio Norte-Hospitalario', descripcion: 'Av. Institución, cerca del Hospital General. Atiende Betulia y Rancho Verde.' },
-            { lat: 21.3450, lng: -101.9420, nombre: 'Centro de Acopio Sur-Comunitario', descripcion: 'La Laguna. Clausurados 3 basureros clandestinos en esta zona.' },
-            { lat: 21.3590, lng: -101.9080, nombre: 'Centro de Acopio Oriente-Industrial', descripcion: 'Salida a Comanja, corredor industrial.' },
-            { lat: 21.3520, lng: -101.9480, nombre: 'Centro de Acopio Poniente-IMSS', descripcion: 'Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7.' }
-        ];
-        centrosAcopio.forEach(function(punto) {
-            L.marker([punto.lat, punto.lng], {icon: iconoAcopio}).addTo(mapAcopio).bindPopup('<b>' + punto.nombre + '</b><br>' + punto.descripcion);
-        });
-
-        // ==================== FONDO INTERACTIVO DE PARTÍCULAS Y AURORAS ====================
         (function() {
             var canvas = document.getElementById('fondo-interactivo');
             if (!canvas) return;
@@ -404,14 +348,4 @@
                     gradient.addColorStop(0.5, 'rgba(46, 125, 50, 0.06)');
                     gradient.addColorStop(1, 'rgba(243, 146, 0, 0)');
                     ctx.beginPath();
-                    ctx.arc(mouse.x, mouse.y, 150, 0, Math.PI * 2);
-                    ctx.fillStyle = gradient;
-                    ctx.fill();
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
-    </script>
-</body>
-</html>
+                    ctx
