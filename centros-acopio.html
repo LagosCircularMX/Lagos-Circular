@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centros de Acopio | LAGOS CIRCULAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --naranja-institucional: #F39200;
+            --gris-fondo: #F2F2F2;
+            --gris-texto: #4D4D4D;
+            --gris-oscuro: #333333;
+            --blanco: #FFFFFF;
+            --verde-sostenible: #2E7D32;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--gris-fondo); color: var(--gris-oscuro); line-height: 1.6; padding: 20px; }
+        .container { max-width: 1200px; margin: auto; }
+        header {
+            background: var(--blanco); border-left: 6px solid var(--naranja-institucional);
+            padding: 20px 30px; border-radius: 12px; margin-bottom: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+        }
+        header h1 { font-size: 1.8rem; font-weight: 800; }
+        header h1 span { color: var(--naranja-institucional); }
+        .btn-volver { background: var(--naranja-institucional); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
+        section { background: var(--blanco); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--gris-oscuro); }
+        .section-title span { color: var(--naranja-institucional); }
+        .acopio-card { background: var(--gris-fondo); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 6px solid var(--naranja-institucional); cursor: pointer; }
+        .acopio-card h3 { display: flex; justify-content: space-between; align-items: center; }
+        .acopio-contenido { display: none; margin-top: 1rem; color: var(--gris-texto); }
+        #mapa-acopio { height: 400px; border-radius: 12px; border: 2px solid var(--naranja-institucional); margin-top: 1rem; }
+        footer { text-align: center; margin-top: 20px; color: var(--gris-texto); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>LAGOS<span>CIRCULAR</span> | Centros de Acopio</h1>
+        <a href="hub.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al Centro de Inversión</a>
+    </header>
+
+    <section>
+        <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
+        <p style="margin-bottom: 2rem; color: var(--gris-texto);">Ubicaciones estratégicas basadas en criterios de ingeniería civil, cercanía a escuelas, hospitales y zonas de alta generación de residuos, optimizando las rutas de recolección de ENERWASTE.</p>
+        
+        <div class="acopio-card" onclick="toggleAcopio(1)">
+            <h3><span><i class="fas fa-school" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Centro-Escolar</span><i id="icon-acopio-1" class="fas fa-chevron-down"></i></h3>
+            <div id="acopio-1" class="acopio-contenido">
+                <p><strong>📍 Ubicación:</strong> Zona escolar del centro (calles Luis Moreno / Silviano Carrillo). Cercano al Colegio Pedro Moreno.</p>
+                <p style="margin-top: 0.8rem;"><strong>🏫 Generadores cercanos:</strong> Colegio Pedro Moreno, Colegio Teresiano, múltiples escuelas primarias y secundarias del centro.</p>
+                <p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 5 km. Reducción estimada del 30% en viajes al vertedero.</p>
+            </div>
+        </div>
+
+        <div class="acopio-card" style="border-left: 6px solid var(--verde-sostenible);" onclick="toggleAcopio(2)">
+            <h3><span><i class="fas fa-hospital" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Norte-Hospitalario</span><i id="icon-acopio-2" class="fas fa-chevron-down"></i></h3>
+            <div id="acopio-2" class="acopio-contenido">
+                <p><strong>📍 Ubicación:</strong> Av. Institución, cerca del Hospital General, Col. Cristeros. A 500 metros del nosocomio que atiende a toda la región.</p>
+                <p style="margin-top: 0.8rem;"><strong>🏥 Generadores cercanos:</strong> Hospital General de Lagos de Moreno (Av. Institución 150, Col. Cristeros).</p>
+                <p style="margin-top: 0.8rem;"><strong>⚠️ Problemática atendida:</strong> Cercanía a basureros clandestinos de Betulia (140 toneladas limpiadas) y Rancho Verde.</p>
+                <p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 3 km.</p>
+            </div>
+        </div>
+
+        <div class="acopio-card" onclick="toggleAcopio(3)">
+            <h3><span><i class="fas fa-users" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Sur-Comunitario</span><i id="icon-acopio-3" class="fas fa-chevron-down"></i></h3>
+            <div id="acopio-3" class="acopio-contenido">
+                <p><strong>📍 Ubicación:</strong> La Laguna. Clausurados 3 basureros clandestinos en esta zona.</p>
+                <p style="margin-top: 0.8rem;"><strong>⚠️ Problemática atendida:</strong> Tres puntos de tiradero ilegal en La Laguna, más los de la carretera a El Puesto.</p>
+                <p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 7 km.</p>
+            </div>
+        </div>
+
+        <div class="acopio-card" style="border-left: 6px solid var(--verde-sostenible);" onclick="toggleAcopio(4)">
+            <h3><span><i class="fas fa-industry" style="color: var(--verde-sostenible); margin-right: 0.5rem;"></i>Centro de Acopio Oriente-Industrial</span><i id="icon-acopio-4" class="fas fa-chevron-down"></i></h3>
+            <div id="acopio-4" class="acopio-contenido">
+                <p><strong>📍 Ubicación:</strong> Salida a Comanja, corredor industrial que conecta con la carretera federal 45D.</p>
+                <p style="margin-top: 0.8rem;"><strong>🏭 Generadores cercanos:</strong> Talleres, bodegas y empresas del corredor industrial (20 ton/día de manejo especial).</p>
+                <p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 4 km.</p>
+            </div>
+        </div>
+
+        <div class="acopio-card" onclick="toggleAcopio(5)">
+            <h3><span><i class="fas fa-clinic-medical" style="color: var(--naranja-institucional); margin-right: 0.5rem;"></i>Centro de Acopio Poniente-IMSS</span><i id="icon-acopio-5" class="fas fa-chevron-down"></i></h3>
+            <div id="acopio-5" class="acopio-contenido">
+                <p><strong>📍 Ubicación:</strong> Av. El Tepeyac, cerca del IMSS HGZ-UMAA 7, Col. Tepeyac 2ª Sección.</p>
+                <p style="margin-top: 0.8rem;"><strong>🏥 Generadores cercanos:</strong> Hospital IMSS HGZ-UMAA 7, escuelas y colonias de alta densidad como Vistahermosa y Tepeyac.</p>
+                <p style="margin-top: 0.8rem;"><strong>🚛 Ruta ENERWASTE:</strong> 2 camiones asignados. Distancia al relleno: 6 km.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem;"><i class="fas fa-map-pin" style="color: var(--naranja-institucional);"></i> Mapa de Ubicación</h3>
+        <div id="mapa-acopio"></div>
+    </section>
+
+    <footer>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos | Lagos de Moreno, Jalisco</footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Verificar acceso
+    if (!localStorage.getItem('lc_email')) {
+        window.location.href = 'acceso.html';
+    }
+
+    function toggleAcopio(num) {
+        var contenido = document.getElementById('acopio-' + num);
+        var icono = document.getElementById('icon-acopio-' + num);
+        if (contenido.style.display === 'none' || contenido.style.display === '') {
+            contenido.style.display = 'block';
+            icono.style.transform = 'rotate(180deg)';
+        } else {
+            contenido.style.display = 'none';
+            icono.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    var map = L.map('mapa-acopio').setView([21.3580, -101.9290], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
+    var iconoVerde = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+    });
+    var centros = [
+        { lat: 21.3584, lng: -101.9352, nombre: 'Centro-Escolar', desc: 'Zona escolar del centro. 2 camiones.' },
+        { lat: 21.3705, lng: -101.8850, nombre: 'Norte-Hospitalario', desc: 'Av. Institución, cerca del Hospital General.' },
+        { lat: 21.3450, lng: -101.9420, nombre: 'Sur-Comunitario', desc: 'La Laguna. 3 basureros clausurados.' },
+        { lat: 21.3590, lng: -101.9080, nombre: 'Oriente-Industrial', desc: 'Salida a Comanja, corredor industrial.' },
+        { lat: 21.3520, lng: -101.9480, nombre: 'Poniente-IMSS', desc: 'Av. El Tepeyac, cerca del IMSS.' }
+    ];
+    centros.forEach(function(p) {
+        L.marker([p.lat, p.lng], {icon: iconoVerde}).addTo(map).bindPopup('<b>' + p.nombre + '</b><br>' + p.desc);
+    });
+</script>
+</body>
+</html>
