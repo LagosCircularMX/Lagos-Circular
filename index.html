@@ -126,25 +126,131 @@
                 <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>ROI acumulado</p></div>
             </div>
         </section>
-        <section id="centros-acopio" class="fade-in" style="max-width: 800px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
-            <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
-            <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Red de 5 centros estratégicos basados en criterios de ingeniería civil, optimizando las rutas de ENERWASTE.</p>
-            <p style="color: var(--gris-texto); margin-bottom: 2rem;"><i class="fas fa-lock" style="color: var(--naranja);"></i> Para acceder a la ubicación exacta y justificación técnica, regístrate en nuestra Sala de Datos.</p>
-            <a href="acceso.html" class="btn"><i class="fas fa-key"></i> Acceder a Información Detallada</a>
-        </section>
-        <section id="faq" class="fade-in" style="background: white; max-width: 800px; margin: 3rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-            <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
-            <div style="text-align: left; margin-top: 2rem;">
-                <h3 style="color: var(--naranja); cursor: pointer;" onclick="toggleFAQ(1)"><i class="fas fa-building-columns"></i> ¿Cómo se beneficiará el Ayuntamiento?</h3>
-                <p id="faq1" style="display:none; padding:1rem; border-left:3px solid var(--naranja); margin:0.5rem 0 1.5rem;">Ahorro en disposición final y adquisición de ladrillos ecológicos 30% más baratos para obra pública. Se alarga la vida útil del relleno sanitario.</p>
-                <h3 style="color: var(--naranja); cursor: pointer;" onclick="toggleFAQ(2)"><i class="fas fa-trash-can"></i> ¿ENERWASTE necesita invertir?</h3>
-                <p id="faq2" style="display:none; padding:1rem; border-left:3px solid var(--naranja); margin:0.5rem 0 1.5rem;">No. Suministran los plásticos que actualmente entierran a cambio de un porcentaje de las utilidades futuras. Sin riesgo financiero.</p>
-                <h3 style="color: var(--naranja); cursor: pointer;" onclick="toggleFAQ(3)"><i class="fas fa-hand-holding-usd"></i> ¿Qué rentabilidad ofrece?</h3>
-                <p id="faq3" style="display:none; padding:1rem; border-left:3px solid var(--naranja); margin:0.5rem 0 1.5rem;">Payback de 2.3 años y ROI del 187% al tercer año. Materia prima a costo casi nulo y sin competidores directos en la región.</p>
-                <h3 style="color: var(--naranja); cursor: pointer;" onclick="toggleFAQ(4)"><i class="fas fa-gavel"></i> ¿Cómo se protege legalmente?</h3>
-                <p id="faq4" style="display:none; padding:1rem; border-left:3px solid var(--naranja); margin:0.5rem 0 1.5rem;">Patente provisional en trámite ante el IMPI, registro de marca y derechos de autor. NDAs firmados con todos los socios estratégicos.</p>
-            </div>
-        </section>
+<section id="faq" class="fade-in" style="background: white; max-width: 900px; margin: 3rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+    <h2 class="section-title">Preguntas <span>Frecuentes</span> para Inversionistas</h2>
+    <p class="section-subtitle">Respuestas técnicas y financieras para la toma de decisiones estratégicas</p>
+    
+    <div style="text-align: left; margin-top: 2rem;">
+        
+        <!-- Pregunta 1: Ingeniería Industrial y Capacidad -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(1)">
+            <i class="fas fa-industry"></i> ¿Cuál es la capacidad máxima de producción y cómo se escalará en cada fase?
+        </h3>
+        <div id="faq1" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Fase 1 (Años 1-2):</strong> Procesamiento de 200 kg/hora de plástico, equivalentes a 1,600 kg/día en un turno de 8 horas. Esto permite fabricar aproximadamente <strong>34,000 ladrillos diarios</strong> o <strong>1,200 tarimas semanales</strong>. La capacidad instalada total es de 480 toneladas de plástico al año.</p>
+            <p><strong>Fase 2 (Años 3-4):</strong> Escalamiento a 500 kg/hora con la adición de una segunda extrusora. La producción se triplica sin necesidad de ampliar la nave industrial.</p>
+            <p><strong>Cuello de botella identificado:</strong> El enfriamiento de piezas es la etapa más lenta (15-25 minutos por ciclo). Se ha previsto un sistema de racks de enfriamiento con ventilación forzada que reduce este tiempo en un 30%.</p>
+            <p><strong>Retorno para ENERWASTE:</strong> Por cada tonelada de plástico que ENERWASTE suministra, la biofábrica genera aproximadamente $8,500 MXN en productos terminados, de los cuales un porcentaje acordado corresponde a ENERWASTE.</p>
+        </div>
+        
+        <!-- Pregunta 2: Ingeniería Civil y Geotecnia -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(2)">
+            <i class="fas fa-hard-hat"></i> ¿Cómo se garantiza la estabilidad estructural de la planta al estar sobre un relleno sanitario?
+        </h3>
+        <div id="faq2" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Estudio de mecánica de suelos:</strong> Se realizarán sondeos de penetración estándar (SPT) a 15 metros de profundidad en 5 puntos del predio para determinar la capacidad de carga admisible y los asentamientos esperados. Presupuesto asignado: $45,000 MXN.</p>
+            <p><strong>Plataforma de concreto armado:</strong> Se construirá una losa de cimentación de 500 m² con concreto f'c=250 kg/cm², doble malla electrosoldada y 15 cm de espesor. Esto distribuye las cargas uniformemente y evita asentamientos diferenciales. Presupuesto: $425,000 MXN.</p>
+            <p><strong>Membrana de protección:</strong> Se instalará geotextil no tejido de polipropileno (200 gr/m²) como barrera entre el terreno natural y la plataforma, evitando la migración de gases del relleno.</p>
+            <p><strong>Sistema de ventilación:</strong> Tubería de PVC perforada y extractores eólicos para disipar el biogás (metano) que pudiera acumularse bajo la losa, eliminando riesgos de explosión. Presupuesto: $85,000 MXN.</p>
+        </div>
+        
+        <!-- Pregunta 3: Ingeniería Ambiental y Agua -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(3)">
+            <i class="fas fa-water"></i> ¿Qué impacto ambiental tiene el proceso de lavado de plásticos y cómo se mitiga?
+        </h3>
+        <div id="faq3" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Sistema de recirculación de agua en circuito cerrado:</strong> El agua de lavado se recolecta en una cisterna de sedimentación de 5,000 litros, pasa por un filtro de arena sílica (retención de partículas >50 micras) y un filtro de carbón activado (eliminación de olores y compuestos orgánicos volátiles). El agua tratada se almacena en un tanque de 10,000 litros y se reutiliza en el proceso.</p>
+            <p><strong>Eficiencia del sistema:</strong> 95% de recirculación. Solo se repone el 5% perdido por evaporación y arrastre. <strong>Cero descargas</strong> al drenaje municipal.</p>
+            <p><strong>Lodos residuales:</strong> Los lodos retenidos en la cisterna se deshidratan y pueden incorporarse como material de relleno controlado o enviarse al relleno sanitario en una fracción mínima del volumen original.</p>
+            <p><strong>Cumplimiento normativo:</strong> El sistema cumple con la NOM-001-SEMARNAT-2021 sobre descargas de aguas residuales y con los requisitos de la Manifestación de Impacto Ambiental (MIA) ante SEMADET.</p>
+        </div>
+        
+        <!-- Pregunta 4: Ingeniería Mecánica-Eléctrica -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(4)">
+            <i class="fas fa-bolt"></i> ¿Cuál es la demanda energética de la planta y cómo se garantiza el suministro?
+        </h3>
+        <div id="faq4" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Carga eléctrica total calculada:</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Extrusora de tornillo simple (40 HP): 30 kW</li>
+                <li>Prensa hidráulica (50-100 Ton): 15 kW</li>
+                <li>Molino triturador (30 HP): 22 kW</li>
+                <li>Mezclador horizontal, montacargas, iluminación, ventiladores: 10 kW</li>
+                <li><strong>Total:</strong> 77 kW ≈ <strong>100 kVA</strong> (considerando factor de potencia de 0.85)</li>
+            </ul>
+            <p><strong>Subestación eléctrica:</strong> Se instalará un transformador de 100 kVA con conexión trifásica 220V/440V. Presupuesto asignado: $120,000 MXN (incluido en el CAPEX de instalaciones).</p>
+            <p><strong>Eficiencia energética:</strong> La extrusora opera a temperaturas controladas (180-220°C) con aislamiento térmico de lana mineral que reduce la pérdida de calor en un 40%. Se instalarán variadores de frecuencia en los motores principales para optimizar el consumo.</p>
+            <p><strong>Costo energético mensual estimado:</strong> $22,000 MXN (tarifa industrial CFE, considerando 8 horas diarias de operación).</p>
+        </div>
+        
+        <!-- Pregunta 5: Ingeniería Bioquímica y Materiales -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(5)">
+            <i class="fas fa-flask"></i> ¿Qué aditivos garantizan la durabilidad e inocuidad de los tapetes ganaderos?
+        </h3>
+        <div id="faq5" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Formulación completa del tapete antiestrés:</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>75-80% PEBD reciclado (matriz flexible)</li>
+                <li>10-15% PEAD/PP reciclado (resistencia al desgaste)</li>
+                <li>5-10% elastómero termoplástico (TPE) o EVA reciclado (amortiguación)</li>
+                <li>0.5-1% agente espumante (azodicarbonamida) para microceldas de aire</li>
+                <li><strong>0.5% agente antimicrobiano</strong> (nanopartículas de plata o Triclosán) para prevenir proliferación bacteriana en el establo</li>
+                <li>0.5% estabilizante UV (HALS, como Tinuvin®) para resistencia a la intemperie</li>
+            </ul>
+            <p><strong>Validación en laboratorio:</strong> Se realizarán pruebas de resistencia a la compresión (ASTM D395), resiliencia y deformación por compresión en el laboratorio de materiales de CULagos. Las muestras se someterán a envejecimiento acelerado con luz UV para garantizar una vida útil mínima de 5 años.</p>
+            <p><strong>Inocuidad animal:</strong> El agente antimicrobiano previene la proliferación de bacterias como <em>Staphylococcus aureus</em> y <em>Escherichia coli</em>, reduciendo el riesgo de mastitis en el ganado lechero.</p>
+        </div>
+        
+        <!-- Pregunta 6: Modelo de Negocios y Financiero -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(6)">
+            <i class="fas fa-chart-pie"></i> ¿Cuál es el Valor Presente Neto (VPN) y la Tasa Interna de Retorno (TIR) del proyecto?
+        </h3>
+        <div id="faq6" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Indicadores financieros calculados con tasa de descuento del 35% anual</strong> (estándar para startups industriales en México):</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>VPN (Valor Presente Neto):</strong> $1,200,000 MXN positivo. Un VPN mayor a cero indica que el proyecto genera valor por encima del costo de capital.</li>
+                <li><strong>TIR (Tasa Interna de Retorno):</strong> 62% anual. Esto significa que el proyecto rinde un 62% sobre el capital invertido, muy por encima de cualquier instrumento financiero tradicional (Cetes ~10%, bonos ~8%).</li>
+                <li><strong>Payback descontado:</strong> 2.6 años (considerando el valor del dinero en el tiempo).</li>
+                <li><strong>Relación Beneficio/Costo:</strong> 2.8. Por cada peso invertido, el proyecto genera $2.80 MXN de retorno.</li>
+            </ul>
+            <p><strong>Análisis de sensibilidad:</strong> Incluso en un escenario pesimista (reducción del 30% en los ingresos proyectados), el VPN se mantiene positivo en $180,000 MXN y la TIR en 28%, lo que sigue siendo atractivo para un inversionista.</p>
+            <p><strong>Para ENERWASTE específicamente:</strong> Con una participación del 37.5% en las utilidades, su retorno proyectado es de $787,500 MXN anuales a partir del Año 3, recuperando su inversión en 2.3 años.</p>
+        </div>
+        
+        <!-- Pregunta 7: Protección Legal y Propiedad Intelectual -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(7)">
+            <i class="fas fa-shield-alt"></i> ¿Cómo se protege legalmente la inversión y la propiedad intelectual?
+        </h3>
+        <div id="faq7" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Protecciones activas:</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Solicitud provisional de patente ante el IMPI:</strong> Protege el proceso de termofusión, extrusión y moldeo por compresión con residuos plásticos mixtos. Fecha de prioridad reconocida legalmente.</li>
+                <li><strong>Registro de marca "LAGOS CIRCULAR" en trámite:</strong> Protege el nombre comercial y el logotipo.</li>
+                <li><strong>Derechos de autor:</strong> El plan de negocios, el código fuente del sitio web, los dashboards y los diseños de productos están protegidos automáticamente desde su creación conforme a la Ley Federal del Derecho de Autor.</li>
+                <li><strong>Acuerdos de Confidencialidad (NDAs):</strong> Firmados con todos los socios estratégicos antes de compartir información técnica.</li>
+            </ul>
+            <p><strong>Para el inversionista:</strong> La participación accionaria se formaliza mediante contrato de inversión ante notario público, con cláusulas de protección antidilución y derecho de preferencia en futuras rondas de financiamiento.</p>
+            <p><strong>Vigencia de la protección:</strong> La patente provisional otorga 12 meses para completar la solicitud formal. Una vez concedida, la patente tiene una vigencia de 20 años improrrogables.</p>
+        </div>
+        
+        <!-- Pregunta 8: Propuesta de Valor para ENERWASTE -->
+        <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(8)">
+            <i class="fas fa-handshake"></i> ¿Por qué Grupo ENERWASTE debería invertir en LAGOS CIRCULAR en lugar de desarrollar su propia planta de valorización?
+        </h3>
+        <div id="faq8" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;">
+            <p><strong>Ventaja competitiva de LAGOS CIRCULAR:</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Tecnología patentable ya desarrollada:</strong> Las fórmulas de mezcla, los perfiles de temperatura de extrusión y los diseños de moldes han sido optimizados tras meses de investigación. ENERWASTE ahorraría el costo y el tiempo de desarrollar esto desde cero.</li>
+                <li><strong>Reconocimiento institucional:</strong> El proyecto ya cuenta con la Constancia de la Fundación POSiBLE 2026, lo que reduce el riesgo reputacional para ENERWASTE.</li>
+                <li><strong>Sin costo de oportunidad:</strong> ENERWASTE no desvía recursos de su operación principal (recolección). La inversión es financiera, no operativa.</li>
+                <li><strong>Sinergia inmediata:</strong> La planta se instala en el predio del relleno sanitario que ENERWASTE ya opera, eliminando costos de transporte de materia prima.</li>
+            </ul>
+            <p><strong>Costo de desarrollar internamente:</strong> Se estima que ENERWASTE necesitaría invertir al menos $4,500,000 MXN y 18 meses de desarrollo para replicar la tecnología de LAGOS CIRCULAR, sin garantía de éxito. Invertir en este proyecto reduce ese riesgo a cero y acelera el time-to-market.</p>
+            <p><strong>Propuesta concreta:</strong> ENERWASTE invierte $2,400,000 MXN a cambio del 37.5% de participación. No requiere invertir en desarrollo, pruebas ni certificaciones. La planta entra en operación en 4 meses a partir de la firma del convenio.</p>
+        </div>
+        
+    </div>
+</section>
         <section id="respaldo" class="respaldo fade-in">
             <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja);">respaldo Institucional</span></h2>
             <div class="logos">
