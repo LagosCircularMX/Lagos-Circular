@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno.">
     <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40">
-    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, POSiBLE, Financiamiento Verde">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, POSiBLE, Financiamiento Verde, Ley de Economía Circular">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root { --naranja: #F39200; --gris-fondo: #F2F2F2; --gris-texto: #4D4D4D; --gris-oscuro: #333333; --blanco: #FFFFFF; --verde: #2E7D32; }
+        :root { --naranja: #F39200; --gris-fondo: #F2F2F2; --gris-texto: #4D4D4D; --gris-oscuro: #333333; --blanco: #FFFFFF; --verde: #2E7D32; --azul: #1565C0; --rojo: #C0392B; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; color: var(--gris-oscuro); background-color: var(--gris-fondo); line-height: 1.6; overflow-x: hidden; position: relative; }
@@ -21,12 +21,12 @@
         nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 0.7rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--naranja); }
         .logo { font-size: 1.7rem; font-weight: 800; color: var(--gris-oscuro); }
         .logo span { color: var(--naranja); }
-        nav ul { display: flex; gap: 2rem; list-style: none; }
-        nav a { text-decoration: none; color: var(--gris-oscuro); font-weight: 500; transition: color 0.3s; }
+        nav ul { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: var(--gris-oscuro); font-weight: 500; transition: color 0.3s; font-size: 0.9rem; }
         nav a:hover { color: var(--naranja); }
-        .btn-nav { background: var(--naranja); color: white !important; padding: 0.6rem 1.8rem; border-radius: 50px; font-weight: 600; }
+        .btn-nav { background: var(--naranja); color: white !important; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
-        @media (max-width: 768px) { .hamburger { display: block; } nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); } nav ul.active { display: flex; } }
+        @media (max-width: 900px) { .hamburger { display: block; } nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); } nav ul.active { display: flex; } }
         .hero { background: linear-gradient(45deg, #232526, #414345, #232526); background-size: 400% 400%; animation: gradientShift 15s ease infinite; color: white; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 2rem; position: relative; z-index: 1; }
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .hero-badge { background: rgba(255,255,255,0.1); border: 1px solid var(--naranja); color: var(--naranja); padding: 0.4rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1.5rem; }
@@ -62,6 +62,15 @@
         .btn-outline { background: transparent; border: 2px solid white; color: white; font-weight: 600; padding: 0.7rem 2rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
         .btn-outline:hover { background: white; color: var(--naranja); }
         .cita-block { background: white; padding: 2rem; border-radius: 12px; margin-top: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th { background: var(--gris-oscuro); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        .foda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        @media (max-width: 768px) { .foda-grid { grid-template-columns: 1fr; } .problema-grid { grid-template-columns: 1fr; } }
+        .foda-box { padding: 1.5rem; border-radius: 12px; }
+        .foda-box h3 { margin-bottom: 1rem; }
+        .foda-box ul { list-style: none; padding-left: 0; }
+        .foda-box li { padding: 0.5rem 0; }
         footer { background: var(--gris-oscuro); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; position: relative; z-index: 1; }
         footer .slogan { color: var(--naranja); margin-top: 0.5rem; font-style: italic; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -78,6 +87,8 @@
                 <li><a href="#problema">Problema</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#ley-circular">Ley Circular</a></li>
+                <li><a href="#foda">FODA</a></li>
                 <li><a href="#centros-acopio">Acopio</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#respaldo">Respaldo</a></li>
@@ -126,61 +137,91 @@
                 <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>ROI acumulado</p></div>
             </div>
         </section>
+
+        <!-- NUEVA SECCIÓN: LEY DE ECONOMÍA CIRCULAR -->
+        <section id="ley-circular" class="fade-in" style="max-width: 900px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Alineación con la <span>Ley de Economía Circular</span> de Jalisco</h2>
+            <p class="section-subtitle">Nuestro proyecto cumple con los principios y disposiciones de la ley publicada en septiembre de 2025</p>
+            <table>
+                <thead><tr><th>Artículo</th><th>Disposición</th><th>Cómo se cumple en LAGOS CIRCULAR</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:600;">Artículo 4</td><td>Principios de ecodiseño, valorización de residuos y creación de empleos verdes</td><td>Los productos se diseñan a partir de residuos plásticos y orgánicos; se generan 25 empleos verdes directos en la región.</td></tr>
+                    <tr><td style="font-weight:600;">Artículo 12</td><td>Planes Municipales de Manejo de Residuos</td><td>Se ofrece un modelo de Plan de Manejo listo para replicarse en otros municipios del estado.</td></tr>
+                    <tr><td style="font-weight:600;">Artículo 18</td><td>Responsabilidad compartida entre gobierno, empresas y ciudadanía</td><td>Integra a la ciudadanía mediante 5 centros de acopio comunitarios operados por cooperativas locales.</td></tr>
+                    <tr><td style="font-weight:600;">Artículo 22</td><td>Fomento a la inversión en infraestructura para la valorización</td><td>El proyecto es elegible para el Programa de Financiamiento Verde (FOJAL) y busca inversión privada complementaria.</td></tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: var(--gris-texto);"><i class="fas fa-check-circle" style="color: var(--verde);"></i> LAGOS CIRCULAR está diseñado para ser el primer <strong>caso demostrativo</strong> de esta ley en la región de Los Altos.</p>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: FODA EMPRESARIAL -->
+        <section id="foda" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Análisis <span>FODA</span> Empresarial</h2>
+            <p class="section-subtitle">Diagnóstico estratégico para la toma de decisiones</p>
+            <div class="foda-grid">
+                <div class="foda-box" style="background: #E8F5E9; border-left: 6px solid var(--verde);"><h3 style="color: var(--verde);"><i class="fas fa-check-circle"></i> Fortalezas</h3><ul><li>✅ Materia prima local a costo casi nulo</li><li>✅ Tecnología patentable de termofusión y moldeo</li><li>✅ Reconocimiento Fundación POSiBLE 2026</li><li>✅ Alianza estratégica con ENERWASTE</li><li>✅ Alineación con la Ley de Economía Circular</li></ul></div>
+                <div class="foda-box" style="background: #FFF3E0; border-left: 6px solid var(--naranja);"><h3 style="color: var(--naranja);"><i class="fas fa-exclamation-triangle"></i> Debilidades</h3><ul><li>⚠️ Inversión inicial alta ($2.4M MXN)</li><li>⚠️ Dependencia del convenio municipal</li><li>⚠️ Curva de aprendizaje del personal</li><li>⚠️ Capacidad limitada en Fase 1 (200 kg/h)</li></ul></div>
+                <div class="foda-box" style="background: #E3F2FD; border-left: 6px solid var(--azul);"><h3 style="color: var(--azul);"><i class="fas fa-lightbulb"></i> Oportunidades</h3><ul><li>🚀 Nueva Ley de Economía Circular de Jalisco</li><li>🚀 Financiamiento Verde FOJAL (hasta 15 MDP)</li><li>🚀 Prohibición de plásticos de un solo uso</li><li>🚀 Mercado ganadero de Los Altos sin competencia</li><li>🚀 Bonos de carbono por reducción de emisiones</li></ul></div>
+                <div class="foda-box" style="background: #FFEBEE; border-left: 6px solid var(--rojo);"><h3 style="color: var(--rojo);"><i class="fas fa-times-circle"></i> Amenazas</h3><ul><li>🔴 Competencia de materiales tradicionales</li><li>🔴 Cambios en la administración municipal</li><li>🔴 Volatilidad de precios energéticos</li><li>🔴 Endurecimiento de normas sanitarias</li><li>🔴 Riesgo reputacional si fallos de calidad</li></ul></div>
+            </div>
+        </section>
+
         <section id="centros-acopio" class="fade-in" style="max-width: 800px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
             <h2 class="section-title">Centros de <span>Acopio</span> Propuestos</h2>
             <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Red de 5 centros estratégicos basados en criterios de ingeniería civil, optimizando las rutas de ENERWASTE.</p>
             <p style="color: var(--gris-texto); margin-bottom: 2rem;"><i class="fas fa-lock" style="color: var(--naranja);"></i> Para acceder a la ubicación exacta y justificación técnica, regístrate en nuestra Sala de Datos.</p>
             <a href="acceso.html" class="btn"><i class="fas fa-key"></i> Acceder a Información Detallada</a>
         </section>
+
         <section id="faq" class="fade-in" style="background: white; max-width: 900px; margin: 3rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
             <h2 class="section-title">Preguntas <span>Frecuentes</span> para Inversionistas</h2>
             <p class="section-subtitle">Respuestas técnicas y financieras para la toma de decisiones estratégicas</p>
             <div style="text-align: left; margin-top: 2rem;">
                 <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(1)"><i class="fas fa-industry"></i> ¿Cuál es la capacidad máxima de producción y cómo se escalará en cada fase?</h3>
-                <div id="faq1" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Fase 1 (Años 1-2):</strong> Procesamiento de 200 kg/hora de plástico, equivalentes a 1,600 kg/día en un turno de 8 horas. Esto permite fabricar aproximadamente <strong>34,000 ladrillos diarios</strong> o <strong>1,200 tarimas semanales</strong>.</p></div>
+                <div id="faq1" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Fase 1:</strong> 200 kg/hora, 1,600 kg/día, 34,000 ladrillos diarios.</p></div>
                 <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(2)"><i class="fas fa-hard-hat"></i> ¿Cómo se garantiza la estabilidad estructural de la planta al estar sobre un relleno sanitario?</h3>
-                <div id="faq2" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Estudio de mecánica de suelos:</strong> Se realizarán sondeos de penetración estándar (SPT) a 15 metros de profundidad en 5 puntos del predio. Presupuesto: $45,000 MXN.</p></div>
+                <div id="faq2" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Estudio de mecánica de suelos ($45,000 MXN), plataforma de concreto armado ($425,000 MXN) y sistema de ventilación de biogás.</p></div>
                 <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(3)"><i class="fas fa-water"></i> ¿Qué impacto ambiental tiene el proceso de lavado de plásticos y cómo se mitiga?</h3>
-                <div id="faq3" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Sistema de recirculación de agua en circuito cerrado:</strong> 95% de recirculación. <strong>Cero descargas</strong> al drenaje municipal.</p></div>
-                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(4)"><i class="fas fa-bolt"></i> ¿Cuál es la demanda energética de la planta y cómo se garantiza el suministro?</h3>
-                <div id="faq4" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Carga eléctrica total:</strong> 77 kW ≈ 100 kVA. Subestación de 100 kVA con conexión trifásica. Costo mensual estimado: $22,000 MXN.</p></div>
-                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(5)"><i class="fas fa-flask"></i> ¿Qué aditivos garantizan la durabilidad e inocuidad de los tapetes ganaderos?</h3>
-                <div id="faq5" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Formulación:</strong> PEBD reciclado, elastómero termoplástico, agente espumante, agente antimicrobiano y estabilizante UV.</p></div>
-                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(6)"><i class="fas fa-chart-pie"></i> ¿Cuál es el Valor Presente Neto (VPN) y la Tasa Interna de Retorno (TIR) del proyecto?</h3>
-                <div id="faq6" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>VPN:</strong> $1,200,000 MXN positivo. <strong>TIR:</strong> 62% anual. <strong>Payback descontado:</strong> 2.6 años.</p></div>
-                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(7)"><i class="fas fa-shield-alt"></i> ¿Cómo se protege legalmente la inversión y la propiedad intelectual?</h3>
-                <div id="faq7" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Patente provisional ante el IMPI, registro de marca, derechos de autor y NDAs firmados con socios estratégicos.</p></div>
-                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(8)"><i class="fas fa-handshake"></i> ¿Por qué Grupo ENERWASTE debería invertir en LAGOS CIRCULAR?</h3>
-                <div id="faq8" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Tecnología patentable ya desarrollada, reconocimiento institucional, sinergia inmediata y un retorno proyectado de $787,500 MXN anuales a partir del Año 3.</p></div>
+                <div id="faq3" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Sistema de recirculación en circuito cerrado. 95% de reutilización. Cero descargas al drenaje municipal.</p></div>
+                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(4)"><i class="fas fa-bolt"></i> ¿Cuál es la demanda energética de la planta?</h3>
+                <div id="faq4" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>77 kW totales. Subestación de 100 kVA. Costo mensual estimado: $22,000 MXN.</p></div>
+                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(5)"><i class="fas fa-flask"></i> ¿Qué aditivos garantizan la durabilidad de los tapetes ganaderos?</h3>
+                <div id="faq5" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>PEBD reciclado, elastómero termoplástico, agente espumante, agente antimicrobiano y estabilizante UV.</p></div>
+                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(6)"><i class="fas fa-chart-pie"></i> ¿Cuál es el VPN y la TIR del proyecto?</h3>
+                <div id="faq6" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>VPN: $1,200,000 MXN positivo. TIR: 62% anual. Payback descontado: 2.6 años.</p></div>
+                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(7)"><i class="fas fa-shield-alt"></i> ¿Cómo se protege legalmente la propiedad intelectual?</h3>
+                <div id="faq7" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Patente provisional ante el IMPI, registro de marca, derechos de autor y NDAs firmados.</p></div>
+                <h3 style="color: var(--naranja); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(8)"><i class="fas fa-handshake"></i> ¿Por qué ENERWASTE debería invertir en LAGOS CIRCULAR?</h3>
+                <div id="faq8" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Tecnología ya desarrollada, sinergia inmediata, sin costo de oportunidad y retorno de $787,500 MXN anuales a partir del Año 3.</p></div>
             </div>
         </section>
+
         <section id="respaldo" class="respaldo fade-in">
             <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja);">respaldo Institucional</span></h2>
-    <div class="logos">
-         <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
-           <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
-          <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
-          <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
-          <div><i class="fas fa-seedling"></i> PROJAL</div>
-          <div><i class="fas fa-leaf"></i> SEMADET Jalisco</div>
-          <div><i class="fas fa-flask"></i> COECYTJAL</div>
-          <div><i class="fas fa-microchip"></i> SICyT Jalisco</div>
-          <div><i class="fas fa-tractor"></i> SADER Jalisco</div>
-          <div><i class="fas fa-chart-bar"></i> IIEG Jalisco</div>
-         <div><i class="fas fa-industry"></i> SEDECO Jalisco</div>
-          <div><i class="fas fa-gavel"></i> Congreso del Estado de Jalisco</div>
-    </div>
+            <div class="logos">
+                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
+                <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
+                <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
+                <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
+                <div><i class="fas fa-seedling"></i> PROJAL</div>
+                <div><i class="fas fa-leaf"></i> SEMADET Jalisco</div>
+                <div><i class="fas fa-flask"></i> COECYTJAL</div>
+            </div>
             <div style="margin-top:2rem;"><a href="Constancia-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja); font-weight:600; text-decoration:none; border:2px solid var(--naranja); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a></div>
         </section>
+
         <section id="contacto" class="contacto fade-in">
             <h2 class="section-title">Contacto e <span style="color:white;">Inversión</span></h2>
             <p style="max-width:600px; margin:0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
             <div class="btn-wrapper">
                 <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
+                <a href="acceso.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
             </div>
         </section>
-        
-        <!-- ==================== MAPA DE VISITANTES AUTÓNOMO ==================== -->
+
+        <!-- ==================== MAPA DE VISITANTES CON GEOLOCALIZACIÓN REAL ==================== -->
         <div style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
             <h3 style="color: var(--gris-oscuro); margin-bottom: 1rem;">
                 <i class="fas fa-globe-americas" style="color: var(--naranja);"></i> Visitantes de LAGOS CIRCULAR en el Mundo
@@ -190,7 +231,7 @@
                 Cargando contador...
             </p>
         </div>
-        
+
         <footer>
             <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
             <p class="slogan">"De la basura al progreso, construyendo un Lagos Circular"</p>
@@ -202,7 +243,7 @@
         function toggleFAQ(n) { var e = document.getElementById('faq'+n); e.style.display = e.style.display === 'none' ? 'block' : 'none'; }
         const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        
+
         // Fondo de partículas
         (function() {
             var c = document.getElementById('fondo-index'), ctx = c.getContext('2d'), w, h, pts = [], mouse = { x: null, y: null, r: 100 };
@@ -227,13 +268,15 @@
             draw();
         })();
 
-        // ==================== MAPA DE VISITANTES AUTÓNOMO ====================
+        // ==================== MAPA DE VISITANTES CON GEOLOCALIZACIÓN REAL ====================
         (function() {
             var canvas = document.getElementById('mapa-visitantes');
             if (!canvas) return;
             var ctx = canvas.getContext('2d');
             var ancho = canvas.width;
             var alto = canvas.height;
+
+            var paisesVisitados = JSON.parse(localStorage.getItem('lc_paises_visitados') || '[]');
 
             function dibujarContinente(x, y, rx, ry) {
                 ctx.fillStyle = '#D5D8DC';
@@ -257,63 +300,70 @@
                 ctx.fillText('Jalisco', 138, 186);
             }
 
-            var puntosBase = [
-                { x: 155, y: 150 }, { x: 160, y: 155 }, { x: 150, y: 160 }, { x: 158, y: 145 },
-                { x: 148, y: 152 }, { x: 162, y: 148 },
-                { x: 140, y: 100 }, { x: 130, y: 90 }, { x: 160, y: 85 }, { x: 145, y: 110 },
-                { x: 180, y: 200 }, { x: 195, y: 220 }, { x: 210, y: 240 },
-                { x: 170, y: 210 }, { x: 190, y: 260 },
-                { x: 390, y: 80 }, { x: 410, y: 90 }, { x: 380, y: 100 },
-                { x: 420, y: 75 }, { x: 400, y: 110 },
-                { x: 550, y: 80 }, { x: 580, y: 100 }, { x: 560, y: 120 },
-                { x: 600, y: 90 }, { x: 570, y: 70 },
-                { x: 610, y: 270 }, { x: 600, y: 285 },
-                { x: 400, y: 200 }, { x: 430, y: 220 }, { x: 415, y: 250 }
-            ];
-
-            var visitasTotales = parseInt(localStorage.getItem('lc_visitas_totales') || '0');
-            var ultimaVisita = parseInt(localStorage.getItem('lc_ultima_visita') || '0');
-            var ahora = new Date().getTime();
-            if (!ultimaVisita || ahora - ultimaVisita > 30 * 60 * 1000) {
-                visitasTotales++;
-                localStorage.setItem('lc_visitas_totales', visitasTotales);
-                localStorage.setItem('lc_ultima_visita', ahora);
+            function geoAPixel(lat, lon) {
+                var x = ((lon + 180) / 360) * ancho;
+                var y = ((90 - lat) / 180) * alto;
+                return { x: x, y: y };
             }
-            document.getElementById('contador-visitantes').textContent = 'Total de visitas registradas: ' + visitasTotales;
 
-            dibujarMapaBase();
-            puntosBase.forEach(function(p) {
+            function dibujarPunto(x, y, esNuevo) {
                 ctx.fillStyle = '#2E7D32';
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
+                ctx.arc(x, y, esNuevo ? 6 : 5, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.fillStyle = '#F39200';
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = esNuevo ? 12 : 8;
                 ctx.shadowColor = '#F39200';
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+                ctx.arc(x, y, esNuevo ? 4.5 : 3.5, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 0;
-            });
-
-            if (visitasTotales > 10) {
-                var extras = Math.min(visitasTotales - 10, 20);
-                for (var i = 0; i < extras; i++) {
-                    var x = Math.random() * (ancho - 100) + 50;
-                    var y = Math.random() * (alto - 80) + 40;
-                    if ((x > 100 && x < 250 && y > 60 && y < 300) || 
-                        (x > 350 && x < 500 && y > 60 && y < 300) || 
-                        (x > 500 && x < 650 && y > 60 && y < 300)) {
-                        ctx.fillStyle = '#F39200';
-                        ctx.shadowBlur = 6;
-                        ctx.shadowColor = '#F39200';
-                        ctx.beginPath();
-                        ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    }
-                }
             }
+
+            function cargarMapa() {
+                dibujarMapaBase();
+
+                paisesVisitados.forEach(function(p) {
+                    var pos = geoAPixel(p.lat, p.lon);
+                    dibujarPunto(pos.x, pos.y, false);
+                });
+
+                fetch('https://ipapi.co/json/')
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        if (data && data.latitude && data.longitude) {
+                            var lat = parseFloat(data.latitude);
+                            var lon = parseFloat(data.longitude);
+                            var pos = geoAPixel(lat, lon);
+
+                            var yaRegistrado = paisesVisitados.some(function(p) {
+                                return p.pais === data.country_name;
+                            });
+
+                            if (!yaRegistrado) {
+                                paisesVisitados.push({
+                                    pais: data.country_name,
+                                    ciudad: data.city,
+                                    lat: lat,
+                                    lon: lon
+                                });
+                                localStorage.setItem('lc_paises_visitados', JSON.stringify(paisesVisitados));
+                                dibujarPunto(pos.x, pos.y, true);
+                            } else {
+                                dibujarPunto(pos.x, pos.y, false);
+                            }
+
+                            document.getElementById('contador-visitantes').textContent = 
+                                'Países desde donde nos han visitado: ' + paisesVisitados.length;
+                        }
+                    })
+                    .catch(function() {
+                        document.getElementById('contador-visitantes').textContent = 
+                            'Visitantes de LAGOS CIRCULAR en el Mundo';
+                    });
+            }
+
+            cargarMapa();
         })();
     </script>
 </body>
