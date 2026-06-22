@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LAGOS CIRCULAR: Social Biofactory that transforms waste into development for Lagos de Moreno, Mexico. Recognized by Fundación POSiBLE 2026.">
+    <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40">
+    <meta name="keywords" content="circular economy, Lagos de Moreno, recycling, ecological bricks, Jalisco, POSiBLE, Green Financing, Circular Economy Law">
+    <title>LAGOS CIRCULAR | Social Biofactory of Los Altos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --orange: #F39200; --gray-bg: #F2F2F2; --gray-text: #4D4D4D; --dark-gray: #333333; --white: #FFFFFF; --green: #2E7D32; --blue: #1565C0; --red: #C0392B; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark-gray); background-color: var(--gray-bg); line-height: 1.6; overflow-x: hidden; position: relative; }
+        #bg-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .content { position: relative; z-index: 1; }
+        nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 0.7rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--orange); }
+        .logo { font-size: 1.7rem; font-weight: 800; color: var(--dark-gray); }
+        .logo span { color: var(--orange); }
+        nav ul { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: var(--dark-gray); font-weight: 500; transition: color 0.3s; font-size: 0.9rem; }
+        nav a:hover { color: var(--orange); }
+        .btn-nav { background: var(--orange); color: white !important; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; }
+        .lang-link { margin-left: 1rem; color: var(--orange); font-weight: 600; text-decoration: none; }
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+        @media (max-width: 900px) { .hamburger { display: block; } nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); } nav ul.active { display: flex; } }
+        .hero { background: linear-gradient(45deg, #232526, #414345, #232526); background-size: 400% 400%; animation: gradientShift 15s ease infinite; color: white; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 2rem; position: relative; z-index: 1; }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .hero-badge { background: rgba(255,255,255,0.1); border: 1px solid var(--orange); color: var(--orange); padding: 0.4rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); font-weight: 800; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--orange); }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 2.5rem; opacity: 0.9; }
+        .btn { background: var(--orange); color: white; font-weight: 600; padding: 0.8rem 2.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
+        .btn:hover { background: #e08600; transform: translateY(-2px); }
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .section-title { text-align: center; font-size: 2.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--dark-gray); }
+        .section-title span { color: var(--orange); }
+        .section-subtitle { text-align: center; color: var(--gray-text); margin-bottom: 3rem; font-size: 1.1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center; border-left: 5px solid var(--orange); }
+        .stat-card i { font-size: 2rem; color: var(--orange); margin-bottom: 1rem; }
+        .stat-card .number { font-size: 2.2rem; font-weight: 700; }
+        .problema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+        .problema-grid img { width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+        .destacado-item { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-left: 6px solid var(--orange); margin-bottom: 2rem; display: flex; align-items: center; gap: 1.5rem; }
+        .destacado-item i { font-size: 2.5rem; color: var(--orange); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .producto-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.3s; }
+        .producto-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .producto-card img { width: 100%; height: 200px; object-fit: cover; }
+        .producto-card .contenido { padding: 1.5rem; }
+        .respaldo { background: var(--dark-gray); color: white; text-align: center; padding: 3.5rem 5%; margin-top: 2rem; position: relative; z-index: 1; }
+        .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2rem; font-weight: 600; }
+        .logos div { background: rgba(255,255,255,0.08); padding: 1rem 2rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; }
+        .logos i { color: var(--orange); }
+        .contacto { background: var(--orange); color: white; text-align: center; padding: 4rem 5%; position: relative; z-index: 1; }
+        .contacto .section-title { color: white; }
+        .contacto .btn-wrapper { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .btn-outline { background: transparent; border: 2px solid white; color: white; font-weight: 600; padding: 0.7rem 2rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
+        .btn-outline:hover { background: white; color: var(--orange); }
+        .cita-block { background: white; padding: 2rem; border-radius: 12px; margin-top: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th { background: var(--dark-gray); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        .foda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        @media (max-width: 768px) { .foda-grid { grid-template-columns: 1fr; } .problema-grid { grid-template-columns: 1fr; } }
+        .foda-box { padding: 1.5rem; border-radius: 12px; }
+        .foda-box h3 { margin-bottom: 1rem; }
+        .foda-box ul { list-style: none; padding-left: 0; }
+        .foda-box li { padding: 0.5rem 0; }
+        footer { background: var(--dark-gray); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; position: relative; z-index: 1; }
+        footer .slogan { color: var(--orange); margin-top: 0.5rem; font-style: italic; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <canvas id="bg-particles"></canvas>
+    <div class="content">
+        <nav>
+            <div class="logo">LAGOS<span>CIRCULAR</span></div>
+            <span class="hamburger" onclick="toggleMenu()">☰</span>
+            <ul id="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#circular-law">Circular Law</a></li>
+                <li><a href="#swot">SWOT</a></li>
+                <li><a href="#collection-centers">Collection</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#backing">Backing</a></li>
+                <li><a href="#contact" class="btn-nav">Contact</a></li>
+                <li><a href="index.html" class="lang-link">🇲🇽 ES</a></li>
+            </ul>
+        </nav>
+        <section class="hero" id="hero">
+            <div class="hero-badge"><i class="fas fa-certificate"></i> Recognized with a Certificate from Fundación POSiBLE 2026</div>
+            <h1>We transform <span>waste</span> into a future for Lagos de Moreno</h1>
+            <p>A social biofactory that converts plastics and organic waste into ecological bricks, pallets, compostable utensils, and progress for the families of Los Altos.</p>
+            <a href="#products" class="btn"><i class="fas fa-cubes"></i> Explore our products</a>
+        </section>
+        <section id="problem" class="fade-in">
+            <h2 class="section-title">The <span>Challenge</span> We Face</h2>
+            <p class="section-subtitle">An environmental and public health crisis demanding urgent, innovative solutions</p>
+            <div class="destacado-item"><i class="fas fa-exclamation-triangle"></i><p><strong>The municipal dump of Lagos de Moreno is already at 85% capacity.</strong> Authorities estimate it will reach its total limit in less than 5 years.</p></div>
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-trash-alt"></i><div class="number">90-92</div><p>Tons of waste generated <strong>every day</strong></p></div>
+                <div class="stat-card"><i class="fas fa-clock"></i><div class="number">&lt; 5</div><p>Remaining years of landfill life</p></div>
+                <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">18-20%</div><p>Percentage that is <strong>actually recycled</strong></p></div>
+                <div class="stat-card"><i class="fas fa-skull-crossbones"></i><div class="number">8</div><p>Clausured clandestine dumps</p></div>
+            </div>
+            <div class="problema-grid">
+                <div><h3>A crisis that goes beyond the dump</h3><p>In Lagos de Moreno, waste management is not just an environmental issue: <strong>it's a public health, social justice, and economic sustainability emergency.</strong></p><p>As the landfill approaches saturation, <strong>14 out of every 100 tons of garbage are valuable plastics</strong> that end up buried.</p><a href="#products" class="btn">Discover how we solve it <i class="fas fa-arrow-right"></i></a></div>
+                <div><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop" alt="Landfill"><p style="margin-top:0.5rem; color:var(--gray-text); font-size:0.9rem; text-align:center;">The municipal landfill is operating at its limit.</p></div>
+            </div>
+            <div class="cita-block"><blockquote>"The problem is that society sees that if you separate your waste, the truck takes it all mixed anyway. So you say, well, my effort is useless."<cite>— Dr. Bertha Alicia Arce, Researcher at CU Lagos, University of Guadalajara</cite></blockquote></div>
+        </section>
+        <section id="products" class="fade-in">
+            <h2 class="section-title">Our <span>products</span></h2>
+            <div class="grid">
+                <div class="producto-card"><img src="ladrillo.jpg" alt="Ecological brick" onerror="this.src='https://images.unsplash.com/photo-1617791160536-598b1d1c0e3b?w=400&h=300&fit=crop';"><div class="contenido"><h3>Ecological Bricks</h3><p>30% cheaper, lighter and insulating. Ideal for social housing.</p></div></div>
+                <div class="producto-card"><img src="tarima.jpg" alt="Plastic pallets" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Plastic Pallets</h3><p>Durable, hygienic, pest-free.</p></div></div>
+                <div class="producto-card"><img src="tapete.jpg" alt="Anti-stress mat" onerror="this.src='https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';"><div class="contenido"><h3>Anti-Stress Mats</h3><p>Comfort and welfare for dairy cattle.</p></div></div>
+                <div class="producto-card"><img src="utensilios.jpg" alt="Compostable utensils" onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop';"><div class="contenido"><h3>Compostable Utensils</h3><p>Made from corn husks and banana peels.</p></div></div>
+                <div class="producto-card"><img src="vivienda.jpg" alt="Rural house" onerror="this.src='https://images.unsplash.com/photo-1591955506264-3e5a6831461d?w=400&h=300&fit=crop';"><div class="contenido"><h3>Progressive Housing</h3><p>Firm floors, walls and irrigation systems.</p></div></div>
+                <div class="producto-card"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=300&fit=crop" alt="Organic fertilizer"><div class="contenido"><h3>Organic Fertilizer</h3><p>Compost for backyard gardens.</p></div></div>
+            </div>
+        </section>
+        <section id="impact" class="fade-in">
+            <h2 class="section-title">Impact in <span>3 years</span></h2>
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-home"></i><div class="number">500+</div><p>Families with firm floor</p></div>
+                <div class="stat-card"><i class="fas fa-recycle"></i><div class="number">780 T</div><p>Valorized waste per year</p></div>
+                <div class="stat-card"><i class="fas fa-users"></i><div class="number">25</div><p>Direct green jobs</p></div>
+                <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">187%</div><p>Cumulative ROI</p></div>
+            </div>
+        </section>
+        <section id="circular-law" class="fade-in" style="max-width: 900px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Alignment with Jalisco's <span>Circular Economy Law</span></h2>
+            <p class="section-subtitle">Our project complies with the principles and provisions of the law published in September 2025</p>
+            <table>
+                <thead><tr><th>Article</th><th>Provision</th><th>How LAGOS CIRCULAR complies</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:600;">Article 4</td><td>Eco-design, waste valorization, green jobs</td><td>Products are designed from plastic and organic waste; 25 direct green jobs are created.</td></tr>
+                    <tr><td style="font-weight:600;">Article 12</td><td>Municipal Waste Management Plans</td><td>It offers a Management Plan model ready to be replicated in other municipalities.</td></tr>
+                    <tr><td style="font-weight:600;">Article 18</td><td>Shared responsibility among government, business and citizens</td><td>Integrates citizens through 5 community collection centers operated by local cooperatives.</td></tr>
+                    <tr><td style="font-weight:600;">Article 22</td><td>Promotion of investment in valorization infrastructure</td><td>The project is eligible for the Green Financing Program (FOJAL) and seeks complementary private investment.</td></tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 2rem;"><p style="color: var(--gray-text);"><i class="fas fa-check-circle" style="color: var(--green);"></i> LAGOS CIRCULAR is designed to be the first <strong>demonstrative case</strong> of this law in the Los Altos region.</p></div>
+        </section>
+        <section id="swot" class="fade-in" style="max-width: 1000px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title"><span>SWOT</span> Analysis</h2>
+            <p class="section-subtitle">Strategic diagnosis for decision making</p>
+            <div class="foda-grid">
+                <div class="foda-box" style="background: #E8F5E9; border-left: 6px solid var(--green);"><h3 style="color: var(--green);"><i class="fas fa-check-circle"></i> Strengths</h3><ul><li>✅ Local raw material at almost zero cost</li><li>✅ Patentable thermofusion and molding technology</li><li>✅ Recognized by Fundación POSiBLE 2026</li><li>✅ Strategic alliance with ENERWASTE</li><li>✅ Alignment with the Circular Economy Law</li></ul></div>
+                <div class="foda-box" style="background: #FFF3E0; border-left: 6px solid var(--orange);"><h3 style="color: var(--orange);"><i class="fas fa-exclamation-triangle"></i> Weaknesses</h3><ul><li>⚠️ High initial investment ($2.4M MXN)</li><li>⚠️ Dependence on municipal agreement</li><li>⚠️ Staff learning curve</li><li>⚠️ Limited capacity in Phase 1 (200 kg/h)</li></ul></div>
+                <div class="foda-box" style="background: #E3F2FD; border-left: 6px solid var(--blue);"><h3 style="color: var(--blue);"><i class="fas fa-lightbulb"></i> Opportunities</h3><ul><li>🚀 New Circular Economy Law of Jalisco</li><li>🚀 FOJAL Green Financing (up to 15 MDP)</li><li>🚀 Ban on single-use plastics</li><li>🚀 Los Altos livestock market without competition</li><li>🚀 Carbon credits for emission reduction</li></ul></div>
+                <div class="foda-box" style="background: #FFEBEE; border-left: 6px solid var(--red);"><h3 style="color: var(--red);"><i class="fas fa-times-circle"></i> Threats</h3><ul><li>🔴 Competition from traditional materials</li><li>🔴 Changes in municipal administration</li><li>🔴 Volatility in energy prices</li><li>🔴 Tightening of sanitary standards</li><li>🔴 Reputational risk if quality fails</li></ul></div>
+            </div>
+        </section>
+        <section id="collection-centers" class="fade-in" style="max-width: 800px; margin: 3rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
+            <h2 class="section-title">Proposed <span>Collection Centers</span></h2>
+            <p style="color: var(--gray-text); margin-bottom: 1.5rem;">A network of 5 strategic centers based on civil engineering criteria, optimizing ENERWASTE collection routes.</p>
+            <p style="color: var(--gray-text); margin-bottom: 2rem;"><i class="fas fa-lock" style="color: var(--orange);"></i> To access exact locations and technical justification, please register in our Data Room.</p>
+            <a href="acceso.html" class="btn"><i class="fas fa-key"></i> Access Detailed Information</a>
+        </section>
+        <section id="faq" class="fade-in" style="background: white; max-width: 900px; margin: 3rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <h2 class="section-title">Frequently Asked <span>Questions</span> for Investors</h2>
+            <p class="section-subtitle">Technical and financial answers for strategic decision-making</p>
+            <div style="text-align: left; margin-top: 2rem;">
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(1)"><i class="fas fa-industry"></i> What is the maximum production capacity and how will it scale?</h3>
+                <div id="faq1" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p><strong>Phase 1:</strong> 200 kg/h, 1,600 kg/day, up to 34,000 bricks per day.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(2)"><i class="fas fa-hard-hat"></i> How is structural stability guaranteed on a landfill?</h3>
+                <div id="faq2" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Soil mechanics study ($45,000 MXN), reinforced concrete platform ($425,000 MXN), and biogas ventilation system.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(3)"><i class="fas fa-water"></i> What is the environmental impact of plastic washing?</h3>
+                <div id="faq3" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Closed-loop water recirculation system. 95% reuse. Zero discharges to the municipal sewer.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(4)"><i class="fas fa-bolt"></i> What is the plant's energy demand?</h3>
+                <div id="faq4" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>77 kW total. 100 kVA substation. Estimated monthly cost: $22,000 MXN.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(5)"><i class="fas fa-flask"></i> What additives ensure the durability of livestock mats?</h3>
+                <div id="faq5" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Recycled LDPE, thermoplastic elastomer, foaming agent, antimicrobial agent, and UV stabilizer.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(6)"><i class="fas fa-chart-pie"></i> What is the NPV and IRR of the project?</h3>
+                <div id="faq6" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>NPV: +$1,200,000 MXN. IRR: 62% per year. Discounted payback: 2.6 years.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(7)"><i class="fas fa-shield-alt"></i> How is intellectual property protected?</h3>
+                <div id="faq7" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Provisional patent before IMPI, trademark registration, copyright, and signed NDAs.</p></div>
+                <h3 style="color: var(--orange); cursor: pointer; padding: 0.8rem 0; border-bottom: 1px solid #eee;" onclick="toggleFAQ(8)"><i class="fas fa-handshake"></i> Why should ENERWASTE invest in LAGOS CIRCULAR?</h3>
+                <div id="faq8" style="display: none; padding: 1.2rem; background: #f9f9f9; border-radius: 8px; margin: 0.5rem 0 1rem;"><p>Already developed technology, immediate synergy, no opportunity cost, and a projected return of $787,500 MXN annually from Year 3.</p></div>
+            </div>
+        </section>
+        <section id="backing" class="respaldo fade-in">
+            <h2 style="color:white; margin-bottom:2rem;">In search of <span style="color: var(--orange);">Institutional Backing</span></h2>
+            <div class="logos">
+                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
+                <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
+                <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
+                <div><i class="fas fa-landmark"></i> Government of the State of Jalisco</div>
+                <div><i class="fas fa-seedling"></i> PROJAL</div>
+                <div><i class="fas fa-leaf"></i> SEMADET Jalisco</div>
+                <div><i class="fas fa-flask"></i> COECYTJAL</div>
+            </div>
+            <div style="margin-top:2rem;"><a href="Constancia-Lagos-circular-2026.pdf" target="_blank" style="color:var(--orange); font-weight:600; text-decoration:none; border:2px solid var(--orange); padding:0.5rem 1.5rem; border-radius:50px;">📜 View POSiBLE Certificate</a></div>
+        </section>
+        <section id="contact" class="contacto fade-in">
+            <h2 class="section-title">Contact & <span style="color:white;">Investment</span></h2>
+            <p style="max-width:600px; margin:0 auto 2rem;">Request information, download the business plan, or access the interactive dashboard.</p>
+            <div class="btn-wrapper">
+                <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Schedule a Meeting</a>
+            </div>
+        </section>
+        <footer>
+            <p>© 2026 LAGOS CIRCULAR – Social Biofactory of Los Altos</p>
+            <p class="slogan">"From waste to progress, building a Circular Lagos"</p>
+            <p><a href="privacidad.html" style="color:white; text-decoration:underline;">Privacy Policy & Legal Notice</a></p>
+        </footer>
+    </div>
+    <script>
+        function toggleMenu() { document.getElementById('nav-links').classList.toggle('active'); }
+        function toggleFAQ(n) { var e = document.getElementById('faq'+n); e.style.display = e.style.display === 'none' ? 'block' : 'none'; }
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        (function() {
+            var c = document.getElementById('bg-particles'), ctx = c.getContext('2d'), w, h, pts = [], mouse = { x: null, y: null, r: 100 };
+            for (var i = 0; i < 80; i++) pts.push({ x: Math.random()*1920, y: Math.random()*1080, vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.6, r: Math.random()*2.5+1, col: Math.random()<0.7?'#F39200':'#2E7D32' });
+            function resize() { w = window.innerWidth; h = window.innerHeight; c.width = w; c.height = h; }
+            window.addEventListener('resize', resize); resize();
+            window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+            window.addEventListener('mouseleave', function() { mouse.x = null; mouse.y = null; });
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                for (var i = 0; i < pts.length; i++) {
+                    var p = pts[i]; p.x += p.vx; p.y += p.vy;
+                    if (p.x<0||p.x>w) p.vx*=-1; if (p.y<0||p.y>h) p.vy*=-1;
+                    if (mouse.x && mouse.y) { var dx=p.x-mouse.x, dy=p.y-mouse.y, d=Math.sqrt(dx*dx+dy*dy); if (d<mouse.r) { var f=(mouse.r-d)/mouse.r, a=Math.atan2(dy,dx); p.vx+=Math.cos(a)*f*0.8; p.vy+=Math.sin(a)*f*0.8; } }
+                    var s=Math.sqrt(p.vx*p.vx+p.vy*p.vy); if(s>2){ p.vx=(p.vx/s)*2; p.vy=(p.vy/s)*2; }
+                    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.col; ctx.shadowBlur=12; ctx.shadowColor=p.col; ctx.fill(); ctx.shadowBlur=0;
+                    for(var j=i+1;j<pts.length;j++){var p2=pts[j],dx2=p.x-p2.x,dy2=p.y-p2.y,d2=Math.sqrt(dx2*dx2+dy2*dy2);if(d2<100){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle=p.col;ctx.lineWidth=0.3;ctx.globalAlpha=1-d2/100;ctx.stroke();ctx.globalAlpha=1;}}
+                }
+                if(mouse.x&&mouse.y){var g=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,150);g.addColorStop(0,'rgba(243,146,0,0.12)');g.addColorStop(0.5,'rgba(46,125,50,0.06)');g.addColorStop(1,'rgba(243,146,0,0)');ctx.beginPath();ctx.arc(mouse.x,mouse.y,150,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();}
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
+</body>
+</html>
