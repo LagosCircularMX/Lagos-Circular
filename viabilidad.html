@@ -21,11 +21,14 @@
         .card:hover { transform: translateY(-5px); }
         .card i { font-size: 2rem; color: var(--verde); margin-bottom: 10px; }
         .card .value { font-size: 2rem; font-weight: 800; }
+        .card .label { color: var(--gris-texto); font-size: 0.95rem; margin-top: 5px; }
         .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
         .chart-box { background: var(--blanco); border-radius: 12px; padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-        .chart-box h3 { margin-bottom: 15px; border-left: 4px solid var(--naranja); padding-left: 10px; }
+        .chart-box h3 { margin-bottom: 15px; color: var(--gris-oscuro); font-size: 1.2rem; border-left: 4px solid var(--naranja); padding-left: 10px; }
         canvas { max-height: 300px; }
         .info-box { background: var(--blanco); border-radius: 12px; padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .info-box p { color: var(--gris-texto); line-height: 1.6; }
+        .info-box strong { color: var(--naranja); }
         footer { text-align: center; margin-top: 20px; color: var(--gris-texto); font-size: 0.9rem; position: relative; z-index: 1; }
         @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } }
     </style>
@@ -33,25 +36,81 @@
 <body>
     <canvas id="fondo-via"></canvas>
     <div class="container">
-        <header><h1>🔬 LAGOS<span>CIRCULAR</span> | Viabilidad Técnica y Económica</h1><p>Datos duros para la toma de decisiones. Actualizado a Mayo 2026.</p></header>
+        <header>
+            <h1>🔬 LAGOS<span>CIRCULAR</span> | Viabilidad Técnica y Económica</h1>
+            <p>Datos actualizados a Junio 2026. Inversión total: $8,326,450 MXN | Payback: 4.3 años | TIR: 42%</p>
+        </header>
+
         <div class="cards">
             <div class="card"><i class="fas fa-cube"></i><div class="value">$14.00</div><div class="label">Precio Ladrillo (MXN/pieza)</div></div>
             <div class="card"><i class="fas fa-coins"></i><div class="value">$8.50</div><div class="label">Margen Bruto por Ladrillo</div></div>
-            <div class="card"><i class="fas fa-percent"></i><div class="value">60%</div><div class="label">Margen de Utilidad Bruta</div></div>
-            <div class="card"><i class="fas fa-pallet"></i><div class="value">$250</div><div class="label">Precio Tarima Reciclada</div></div>
-            <div class="card"><i class="fas fa-industry"></i><div class="value">$384‑$676</div><div class="label">Precio Tarima Virgen</div></div>
-            <div class="card"><i class="fas fa-hard-hat"></i><div class="value">$22‑$31</div><div class="label">Precio Block Concreto</div></div>
+            <div class="card"><i class="fas fa-percent"></i><div class="value">60%</div><div class="label">Margen de Utilidad Bruta (Ladrillo)</div></div>
+            <div class="card"><i class="fas fa-pallet"></i><div class="value">$250</div><div class="label">Precio Tarima Reciclada (MXN)</div></div>
+            <div class="card"><i class="fas fa-pallet"></i><div class="value">$137.50</div><div class="label">Margen Bruto por Tarima</div></div>
+            <div class="card"><i class="fas fa-percent"></i><div class="value">55%</div><div class="label">Margen de Utilidad Bruta (Tarima)</div></div>
+            <div class="card"><i class="fas fa-cow"></i><div class="value">$180/m²</div><div class="label">Precio Tapete Ganadero (MXN)</div></div>
+            <div class="card"><i class="fas fa-coins"></i><div class="value">$90/m²</div><div class="label">Margen Bruto por Tapete</div></div>
+            <div class="card"><i class="fas fa-percent"></i><div class="value">50%</div><div class="label">Margen de Utilidad Bruta (Tapete)</div></div>
         </div>
+
         <div class="charts-grid">
-            <div class="chart-box"><h3><i class="fas fa-balance-scale"></i> Comparativa de Precios</h3><canvas id="chartComparativa"></canvas></div>
-            <div class="chart-box"><h3><i class="fas fa-chart-pie"></i> Estructura de Costo del Ladrillo</h3><canvas id="chartCostos"></canvas></div>
+            <div class="chart-box">
+                <h3><i class="fas fa-balance-scale"></i> Comparativa de Precios de Venta (MXN)</h3>
+                <canvas id="chartComparativa"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3><i class="fas fa-chart-pie"></i> Estructura de Costo del Ladrillo</h3>
+                <canvas id="chartCostos"></canvas>
+            </div>
         </div>
-        <div class="info-box"><p><strong>Materiales clave:</strong> PEBD, PEAD y PP. Se excluyen PET y PVC por incompatibilidad térmica y toxicidad.</p><p><strong>Ventaja competitiva:</strong> Materia prima a costo casi nulo. Precios 30-60% más bajos que materiales tradicionales, con margen bruto del 60%.</p></div>
+
+        <div class="info-box">
+            <p><strong>Materiales clave:</strong> Polietileno de Baja Densidad (PEBD), Polietileno de Alta Densidad (PEAD) y Polipropileno (PP). Se excluyen PET y PVC por incompatibilidad térmica y riesgos de toxicidad.</p>
+            <p><strong>Ventaja competitiva:</strong> El costo de la materia prima es cercano a cero gracias al convenio con el Ayuntamiento y ENERWASTE. Esto nos permite ofrecer precios entre un <strong>30% y 60% más bajos</strong> que los materiales tradicionales, manteniendo márgenes brutos del <strong>50% al 60%</strong>.</p>
+            <p><strong>Inversión total:</strong> $8,326,450 MXN (maquinaria + construcción + centros de acopio + capital de trabajo). Payback: 4.3 años. TIR: 42%.</p>
+        </div>
+
         <footer>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos | Lagos de Moreno, Jalisco</footer>
     </div>
     <script>
-        new Chart(document.getElementById('chartComparativa'), { type: 'bar', data: { labels: ['Ladrillo Ecológico','Block Concreto','Tarima Reciclada','Tarima Virgen'], datasets: [{ data: [14,26,250,500], backgroundColor: ['#F39200','#4D4D4D','#333333','#A0A0A0'] }] }, options: { responsive: true, plugins: { legend: { display: false } } } });
-        new Chart(document.getElementById('chartCostos'), { type: 'doughnut', data: { labels: ['Materia Prima ($0.50)','Mano de Obra ($2.50)','Energía ($1.50)','Depreciación ($1.00)'], datasets: [{ data: [0.50,2.50,1.50,1.00], backgroundColor: ['#F39200','#333333','#4D4D4D','#A0A0A0'] }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } } });
+        new Chart(document.getElementById('chartComparativa'), {
+            type: 'bar',
+            data: {
+                labels: ['Ladrillo Ecológico', 'Block Concreto', 'Tarima Reciclada', 'Tarima Virgen', 'Tapete Ganadero', 'Tapete Comercial'],
+                datasets: [{
+                    label: 'Precio (MXN)',
+                    data: [14, 26, 250, 500, 180, 350],
+                    backgroundColor: ['#F39200', '#4D4D4D', '#333333', '#A0A0A0', '#2E7D32', '#8B5A2B'],
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN por pieza / m²' } } }
+            }
+        });
+
+        new Chart(document.getElementById('chartCostos'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Materia Prima ($0.50)', 'Mano de Obra ($2.50)', 'Energía ($1.50)', 'Depreciación y Mtto. ($1.00)'],
+                datasets: [{
+                    data: [0.50, 2.50, 1.50, 1.00],
+                    backgroundColor: ['#F39200', '#333333', '#4D4D4D', '#A0A0A0'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: { callbacks: { label: ctx => `${ctx.label}: $${ctx.raw} MXN` } }
+                }
+            }
+        });
+
         (function() {
             var c = document.getElementById('fondo-via'), ctx = c.getContext('2d'), w, h, pts = [];
             for (var i = 0; i < 40; i++) pts.push({ x: Math.random()*1920, y: Math.random()*1080, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, r: Math.random()*3+2, col: Math.random()<0.5?'#F39200':'#2E7D32' });

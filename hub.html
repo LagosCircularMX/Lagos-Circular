@@ -27,6 +27,11 @@
         .hub-btn.primary i { color: white; }
         .hub-btn.download { border: 2px solid var(--verde); }
         .hub-btn.download i { color: var(--verde); }
+        .respaldo-box { background: var(--gris-oscuro); color: white; text-align: center; padding: 2rem; border-radius: 12px; margin-top: 2rem; }
+        .respaldo-box h3 { color: var(--naranja); margin-bottom: 1rem; }
+        .respaldo-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-weight: 600; font-size: 0.9rem; }
+        .respaldo-logos div { background: rgba(255,255,255,0.1); padding: 0.6rem 1.2rem; border-radius: 8px; }
+        .respaldo-logos i { color: var(--naranja); margin-right: 0.3rem; }
         footer { margin-top: 20px; color: var(--gris-texto); font-size: 0.9rem; position: relative; z-index: 1; }
         @media (max-width: 600px) { .button-grid, .metrics-grid { grid-template-columns: 1fr; } }
     </style>
@@ -34,22 +39,36 @@
 <body>
     <canvas id="fondo-hub"></canvas>
     <div class="hub-container">
-        <div class="hub-header"><h1><i class="fas fa-briefcase"></i> LAGOS<span>CIRCULAR</span></h1><p>Centro de información para el Lic. Edgar González, Grupo ENERWASTE, Fundación POSiBLE, el Gobernador Pablo Lemus Navarro y futuros inversionistas.</p></div>
+        <div class="hub-header"><h1><i class="fas fa-briefcase"></i> LAGOS<span>CIRCULAR</span></h1><p>Centro de información para el Lic. Edgar González, Grupo ENERWASTE, Fundación POSiBLE, el Gobernador Pablo Lemus Navarro, SEDECO, FOJAL, SEMADET y/o futuros inversionistas.</p></div>
         <div class="metrics-grid">
-            <div class="metric-card"><div class="number">$2.4M</div><div class="label">Inversión Inicial</div></div>
-            <div class="metric-card"><div class="number">2.3 Años</div><div class="label">Payback</div></div>
-            <div class="metric-card"><div class="number">187%</div><div class="label">ROI (3 años)</div></div>
+            <div class="metric-card"><div class="number">$8.3M</div><div class="label">Inversión Inicial</div></div>
+            <div class="metric-card"><div class="number">4.3 Años</div><div class="label">Payback</div></div>
+            <div class="metric-card"><div class="number">42%</div><div class="label">TIR</div></div>
             <div class="metric-card"><div class="number">800+</div><div class="label">Familias Beneficiadas</div></div>
         </div>
         <div class="button-grid">
             <a href="Plan-Negocios-Lagos-Circular-2026.pdf" class="hub-btn download" target="_blank"><i class="fas fa-file-pdf"></i><strong>Plan de Negocios (PDF)</strong><span>Documento ejecutivo completo</span></a>
             <a href="Constancia-Lagos-circular-2026.pdf" class="hub-btn" target="_blank"><i class="fas fa-certificate"></i><strong>Constancia POSiBLE</strong><span>Constancia oficial 2026</span></a>
-            <a href="dashboard.html" class="hub-btn primary"><i class="fas fa-chart-pie"></i><strong>Dashboard Interactivo</strong><span>Métricas y proyecciones</span></a>
+            <a href="dashboard.html" class="hub-btn primary"><i class="fas fa-chart-pie"></i><strong>Dashboard Interactivo</strong><span>Métricas y proyecciones a 5 años</span></a>
             <a href="viabilidad.html" class="hub-btn"><i class="fas fa-flask"></i><strong>Viabilidad Técnica</strong><span>Costos y ventaja competitiva</span></a>
             <a href="panel-control.html" class="hub-btn"><i class="fas fa-map-marked-alt"></i><strong>Panel de Control</strong><span>Mapa interactivo y filtros</span></a>
             <a href="centros-acopio.html" class="hub-btn"><i class="fas fa-location-dot"></i><strong>Centros de Acopio</strong><span>Ubicaciones y justificación</span></a>
             <a href="rutas-optimizacion.html" class="hub-btn"><i class="fas fa-route"></i><strong>Optimización de Rutas</strong><span>Ahorros para ENERWASTE</span></a>
+            <a href="proceso.html" class="hub-btn"><i class="fas fa-industry"></i><strong>Proceso Productivo</strong><span>Diagrama de flujo animado</span></a>
             <a href="index.html" class="hub-btn"><i class="fas fa-globe"></i><strong>Página Principal</strong><span>Proyecto completo</span></a>
+        </div>
+        <div class="respaldo-box">
+            <h3>En Búsqueda de Respaldo Institucional</h3>
+            <div class="respaldo-logos">
+                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento</div>
+                <div><i class="fas fa-trash-can"></i> ENERWASTE</div>
+                <div><i class="fas fa-star"></i> POSiBLE 2026</div>
+                <div><i class="fas fa-landmark"></i> Gob. de Jalisco</div>
+                <div><i class="fas fa-seedling"></i> PROJAL</div>
+                <div><i class="fas fa-hand-holding-dollar"></i> FOJAL</div>
+                <div><i class="fas fa-leaf"></i> SEMADET</div>
+                <div><i class="fas fa-flask"></i> COECYTJAL</div>
+            </div>
         </div>
         <footer>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos | Lagos de Moreno, Jalisco</footer>
     </div>
@@ -61,11 +80,7 @@
             for (var i = 0; i < 50; i++) pts.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3, r: Math.random()*3+1, col: Math.random()<0.5?'#F39200':'#2E7D32' });
             function draw() {
                 ctx.clearRect(0,0,w,h);
-                for (var i = 0; i < pts.length; i++) {
-                    var p = pts[i]; p.x += p.vx; p.y += p.vy;
-                    if (p.x<0||p.x>w) p.vx*=-1; if (p.y<0||p.y>h) p.vy*=-1;
-                    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.col; ctx.globalAlpha=0.5; ctx.fill();
-                }
+                for (var i = 0; i < pts.length; i++) { var p = pts[i]; p.x += p.vx; p.y += p.vy; if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.col; ctx.globalAlpha=0.5; ctx.fill(); }
                 ctx.globalAlpha=1; requestAnimationFrame(draw);
             }
             draw();

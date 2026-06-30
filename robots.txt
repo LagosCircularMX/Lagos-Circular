@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lagoscircularmx.github.io/Lagos-Circular/sitemap.xml

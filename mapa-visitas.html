@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Lagos Circular - Mapa de Centros de Acopio y Registro de Visitas</title>
+    
+    <!-- TailwindCSS + Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
+    
+    <!-- Firebase -->
+    <script type="module">
+        // 🔥 REEMPLAZA ESTE OBJETO CON TU CONFIGURACIÓN DE FIREBASE 🔥
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIyUtTi0x3cJXckrKUI9IcyvXVl5ny3G4",
+            authDomain: "lagos-circular-visitas.firebaseapp.com",
+            projectId: "lagos-circular-visitas",
+            storageBucket: "lagos-circular-visitas.firebasestorage.app",
+            messagingSenderId: "161012870000",
+            appId: "1:161012870000:web:28803fa1ff9c99d413bdb5"
+        };
+        
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, query, where, getDocs, orderBy, limit } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
+        
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        window.db = db; // Para usar desde funciones no-module
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.query = query;
+        window.where = where;
+        window.getDocs = getDocs;
+        window.orderBy = orderBy;
+        window.limit = limit;
+    </script>
+    
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .leaflet-popup-content-wrapper { border-radius: 1rem; }
+        .leaflet-popup-content { margin: 0.75rem 1rem; }
+        .btn-registro { transition: all 0.2s ease; }
+        .btn-registro:hover { transform: scale(1.02); }
+        .toast-notify { animation: fadeInUp 0.3s ease; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 py-6 md:py-10">
+        <!-- Encabezado con identidad Lagos Circular -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#2E7D32] mb-2">🌱 Centros de Acopio</h1>
+            <p class="text-[#5D4037] text-lg max-w-2xl mx-auto">Registra tu visita y sé parte del cambio circular. Cada visita suma un ladrillo para el futuro de Lagos de Moreno.</p>
+            <div class="w-24 h-1 bg-[#8D6E63] mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <!-- Mapa -->
+        <div id="map" class="h-[500px] md:h-[550px] rounded-2xl shadow-xl border-2 border-[#D7CCC8] overflow-hidden mb-8"></div>
+
+        <!-- Frase motivacional dinámica -->
+        <div class="text-center mt-6 mb-4">
+            <p id="frase-motivacional" class="text-[#5D4037] italic text-sm md:text-base bg-[#FAFAFA] inline-block px-6 py-2 rounded-full shadow-sm">🌍 Cargando impacto comunitario...</p>
+        </div>
+
+        <!-- Estadísticas rápidas públicas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div class="bg-white rounded-xl p-4 shadow-md text-center">
+                <p class="text-[#8D6E63] text-sm">Visitas esta semana</p>
+                <p id="stats-semana" class="text-3xl font-bold text-[#2E7D32]">---</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-md text-center">
+                <p class="text-[#8D6E63] text-sm">Centro más activo</p>
+                <p id="stats-top-centro" class="text-lg font-semibold text-[#5D4037]">---</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-md text-center">
+                <p class="text-[#8D6E63] text-sm">Total de visitas</p>
+                <p id="stats-total" class="text-3xl font-bold text-[#2E7D32]">---</p>
+            </div>
+        </div>
+        
+        <div class="text-center text-xs text-[#8D6E63] mt-8">
+            🌟 Al registrar tu visita, ayudas a medir el impacto real de nuestra biofábrica social.
+        </div>
+    </div>
+
+    <!-- Toast de confirmación (oculto) -->
+    <div id="toast-message" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-[#2E7D32] text-white px-6 py-3 rounded-full shadow-xl z-50 hidden transition-all duration-300 text-sm md:text-base font-medium">
+        ✅ ¡Gracias por sumarte a la economía circular!
+    </div>
+
+    <script>
+        // Centros de acopio de Lagos Circular (coordenadas reales aproximadas)
+        const centros = [
+            { id: 1, nombre: "Centro-Escolar", direccion: "Calle Luis Moreno / Silviano Carrillo, Zona Centro", lat: 21.3568, lng: -101.9354, desc: "Cerca del Colegio Pedro Moreno" },
+            { id: 2, nombre: "Norte-Hospitalario", direccion: "Av. Institución, Col. Cristeros", lat: 21.3612, lng: -101.9421, desc: "Junto al Hospital General" },
+            { id: 3, nombre: "Sur-Comunitario", direccion: "La Laguna", lat: 21.3425, lng: -101.9289, desc: "Zona donde se clausuraron 3 basureros clandestinos" },
+            { id: 4, nombre: "Oriente-Industrial", direccion: "Salida a Comanja", lat: 21.3521, lng: -101.9145, desc: "Corredor industrial" },
+            { id: 5, nombre: "Poniente-IMSS", direccion: "Av. El Tepeyac, Col. Tepeyac", lat: 21.3630, lng: -101.9520, desc: "Cerca del IMSS HGZ-UMAA 7" }
+        ];
+        // Agregamos el sexto centro (originalmente son 6)
+        centros.push({ id: 6, nombre: "Norte 2 - Betulia", direccion: "Betulia y Rancho Verde", lat: 21.3705, lng: -101.9380, desc: "Atiende zona norte extendida" });
+        
+        // Inicializar mapa
+        const map = L.map('map').setView([21.355, -101.935], 13);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
+            subdomains: 'abcd',
+            maxZoom: 19,
+            minZoom: 12
+        }).addTo(map);
+        
+        // Clúster de marcadores
+        const markers = L.markerClusterGroup({ chunkedLoading: true, maxClusterRadius: 50 });
+        
+        // Ícono personalizado (hoja/árbol)
+        const iconoVerde = L.divIcon({
+            html: '<div style="background-color:#2E7D32; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.2); border:2px solid white;"><span style="color:white; font-size:18px;">🌿</span></div>',
+            iconSize: [32, 32],
+            popupAnchor: [0, -12]
+        });
+        
+        // Agregar marcadores con popup de registro
+        centros.forEach(centro => {
+            const popupContent = `
+                <div class="text-center min-w-[200px]">
+                    <h3 class="font-bold text-[#2E7D32] text-lg">${centro.nombre}</h3>
+                    <p class="text-sm text-[#5D4037] mt-1">${centro.direccion}</p>
+                    <p class="text-xs text-gray-500 italic mt-1">${centro.desc}</p>
+                    <button onclick="registrarVisita(${centro.id}, '${centro.nombre}')" class="btn-registro mt-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white text-sm py-2 px-4 rounded-full transition w-full">
+                        📍 Registrar mi visita
+                    </button>
+                </div>
+            `;
+            const marker = L.marker([centro.lat, centro.lng], { icon: iconoVerde }).bindPopup(popupContent);
+            markers.addLayer(marker);
+        });
+        map.addLayer(markers);
+        
+        // Función global para registrar visita
+        window.registrarVisita = async (centroId, centroNombre) => {
+            try {
+                const now = new Date();
+                const visita = {
+                    centroId: centroId,
+                    centroNombre: centroNombre,
+                    fecha: now.toISOString(),
+                    timestamp: now.getTime(),
+                    comentario: "🌱 Visitante de Lagos Circular",
+                    userAgent: navigator.userAgent.substring(0, 100)
+                };
+                
+                // Guardar en Firebase
+                const docRef = await window.addDoc(window.collection(window.db, "visitas"), visita);
+                console.log("Visit saved with ID: ", docRef.id);
+                
+                // Mostrar toast
+                const toast = document.getElementById('toast-message');
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 3000);
+                
+                // Actualizar estadísticas en tiempo real (recargamos datos)
+                cargarEstadisticasPublicas();
+                
+                // Frase motivacional aleatoria
+                const frases = [
+                    "💚 ¡Cada visita es un ladrillo para un futuro circular!",
+                    "🌎 Gracias por transformar residuos en oportunidades.",
+                    "♻️ Tu acción hoy evita que plásticos terminen en el relleno sanitario.",
+                    "🌟 Eres parte de los 500+ hogares con piso firme, ¡sigue así!",
+                    "🌱 Este registro ayuda a medir nuestro impacto real en Lagos de Moreno."
+                ];
+                const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+                document.getElementById('frase-motivacional').innerHTML = `✨ ${fraseAleatoria} ✨`;
+                
+            } catch (error) {
+                console.error("Error al guardar visita:", error);
+                alert("Hubo un problema al registrar. Intenta nuevamente.");
+            }
+        };
+        
+        // Cargar estadísticas públicas
+        async function cargarEstadisticasPublicas() {
+            try {
+                const visitasRef = window.collection(window.db, "visitas");
+                const q = window.query(visitasRef, window.orderBy("timestamp", "desc"), window.limit(500));
+                const snapshot = await window.getDocs(q);
+                const visitas = [];
+                snapshot.forEach(doc => visitas.push(doc.data()));
+                
+                // Total de visitas
+                const total = visitas.length;
+                document.getElementById('stats-total').innerText = total;
+                
+                // Visitas esta semana (últimos 7 días)
+                const unaSemanaAtras = Date.now() - 7*24*60*60*1000;
+                const visitasSemana = visitas.filter(v => v.timestamp > unaSemanaAtras);
+                document.getElementById('stats-semana').innerText = visitasSemana.length;
+                
+                // Centro más activo
+                const conteo = {};
+                visitas.forEach(v => { conteo[v.centroNombre] = (conteo[v.centroNombre] || 0) + 1; });
+                let maxCentro = "---", maxCount = 0;
+                for (const [nombre, count] of Object.entries(conteo)) {
+                    if (count > maxCount) { maxCount = count; maxCentro = nombre; }
+                }
+                document.getElementById('stats-top-centro').innerHTML = maxCentro !== "---" ? `${maxCentro} (${maxCount})` : "Aún sin visitas";
+            } catch(e) { console.warn("Error cargando stats", e); }
+        }
+        
+        cargarEstadisticasPublicas();
+        // Recargar cada 30 segundos
+        setInterval(cargarEstadisticasPublicas, 30000);
+    </script>
+</body>
+</html>

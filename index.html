@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LAGOS CIRCULAR: Biofábrica Social que transforma residuos en desarrollo para Lagos de Moreno.">
     <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40">
-    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, POSiBLE, Financiamiento Verde, Ley de Economía Circular">
+    <meta name="keywords" content="economía circular, Lagos de Moreno, reciclaje, ladrillos ecológicos, Jalisco, POSiBLE, FOJAL, SEMADET, COECYTJAL">
     <title>LAGOS CIRCULAR | Biofábrica Social de Los Altos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,7 @@
         nav a { text-decoration: none; color: var(--gris-oscuro); font-weight: 500; transition: color 0.3s; font-size: 0.85rem; }
         nav a:hover { color: var(--naranja); }
         .btn-nav { background: var(--naranja); color: white !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 600; }
+        .lang-link { margin-left: 0.5rem; color: var(--naranja); font-weight: 600; text-decoration: none; }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
         @media (max-width: 900px) { .hamburger { display: block; } nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); } nav ul.active { display: flex; } }
         .hero { background: linear-gradient(45deg, #232526, #414345, #232526); background-size: 400% 400%; animation: gradientShift 15s ease infinite; color: white; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 2rem; position: relative; z-index: 1; }
@@ -53,8 +54,8 @@
         .producto-card img { width: 100%; height: 200px; object-fit: cover; }
         .producto-card .contenido { padding: 1.5rem; }
         .respaldo { background: var(--gris-oscuro); color: white; text-align: center; padding: 3.5rem 5%; margin-top: 2rem; position: relative; z-index: 1; }
-        .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2rem; font-weight: 600; }
-        .logos div { background: rgba(255,255,255,0.08); padding: 1rem 2rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; }
+        .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 2rem; font-weight: 600; font-size: 0.9rem; }
+        .logos div { background: rgba(255,255,255,0.08); padding: 0.8rem 1.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; }
         .logos i { color: var(--naranja); }
         .contacto { background: var(--naranja); color: white; text-align: center; padding: 4rem 5%; position: relative; z-index: 1; }
         .contacto .section-title { color: white; }
@@ -99,6 +100,7 @@
                 <li><a href="#noticias">Noticias</a></li>
                 <li><a href="#respaldo">Respaldo</a></li>
                 <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+                <li><a href="en.html" class="lang-link">🇺🇸 EN</a></li>
             </ul>
         </nav>
         <section class="hero" id="hero">
@@ -221,12 +223,13 @@
         <section id="respaldo" class="respaldo fade-in">
             <h2 style="color:white; margin-bottom:2rem;">En búsqueda de <span style="color: var(--naranja);">respaldo Institucional</span></h2>
             <div class="logos">
-                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento de Lagos de Moreno</div>
-                <div><i class="fas fa-trash-can"></i> Grupo ENERWASTE</div>
-                <div><i class="fas fa-star"></i> Fundación POSiBLE 2026</div>
-                <div><i class="fas fa-landmark"></i> Gobierno del Estado de Jalisco</div>
+                <div><i class="fas fa-building-columns"></i> H. Ayuntamiento</div>
+                <div><i class="fas fa-trash-can"></i> ENERWASTE</div>
+                <div><i class="fas fa-star"></i> POSiBLE 2026</div>
+                <div><i class="fas fa-landmark"></i> Gob. de Jalisco</div>
                 <div><i class="fas fa-seedling"></i> PROJAL</div>
-                <div><i class="fas fa-leaf"></i> SEMADET Jalisco</div>
+                <div><i class="fas fa-hand-holding-dollar"></i> FOJAL</div>
+                <div><i class="fas fa-leaf"></i> SEMADET</div>
                 <div><i class="fas fa-flask"></i> COECYTJAL</div>
             </div>
             <div style="margin-top:2rem;"><a href="Constancia-Lagos-circular-2026.pdf" target="_blank" style="color:var(--naranja); font-weight:600; text-decoration:none; border:2px solid var(--naranja); padding:0.5rem 1.5rem; border-radius:50px;">📜 Ver Constancia POSiBLE</a></div>
@@ -236,7 +239,7 @@
             <p style="max-width:600px; margin:0 auto 2rem;">Solicita información, descarga el plan de negocios o accede al dashboard interactivo.</p>
             <div class="btn-wrapper">
                 <a href="mailto:engineerflores@outlook.com" class="btn"><i class="fas fa-envelope"></i> Agendar Reunión</a>
-
+                <a href="acceso.html" class="btn-outline"><i class="fas fa-briefcase"></i> Centro de Inversión</a>
             </div>
         </section>
         <div style="max-width: 800px; margin: 3rem auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: center;">
