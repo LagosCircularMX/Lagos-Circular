@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso Productivo | LAGOS CIRCULAR</title>
+    <style>
+        :root { --naranja: #F39200; --gris-fondo: #F2F2F2; --gris-oscuro: #333333; --blanco: #FFFFFF; --verde: #2E7D32; }
+        body { font-family: 'Inter', sans-serif; background: var(--gris-fondo); color: var(--gris-oscuro); display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+        h1 { margin-bottom: 2rem; }
+        .flujo { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0; max-width: 1200px; }
+        .etapa { background: var(--blanco); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-top: 5px solid var(--naranja); min-width: 140px; animation: aparecer 0.6s ease forwards; opacity: 0; }
+        .etapa:nth-child(1) { animation-delay: 0.2s; }
+        .etapa:nth-child(3) { animation-delay: 0.5s; }
+        .etapa:nth-child(5) { animation-delay: 0.8s; }
+        .etapa:nth-child(7) { animation-delay: 1.1s; }
+        .etapa:nth-child(9) { animation-delay: 1.4s; }
+        .etapa:nth-child(11) { animation-delay: 1.7s; }
+        .etapa i { font-size: 2rem; color: var(--naranja); margin-bottom: 0.5rem; }
+        .flecha { font-size: 2rem; color: var(--naranja); margin: 0 10px; animation: mover 1.5s infinite; }
+        @keyframes aparecer { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes mover { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+        @media (max-width: 768px) { .flujo { flex-direction: column; } .flecha { transform: rotate(90deg); } }
+    </style>
+</head>
+<body>
+    <h1>🏭 Proceso Productivo de LAGOS CIRCULAR</h1>
+    <div class="flujo">
+        <div class="etapa"><i class="fas fa-truck"></i><h3>Recepción</h3><p>Camiones ENERWASTE</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-hand-sparkles"></i><h3>Lavado</h3><p>Agua recirculada</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-cogs"></i><h3>Trituración</h3><p>Hojuelas 5-10mm</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-blender"></i><h3>Mezclado</h3><p>Plástico + Arena</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-fire"></i><h3>Extrusión</h3><p>180-220°C</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-compress"></i><h3>Prensado</h3><p>100 Toneladas</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-snowflake"></i><h3>Enfriamiento</h3><p>15-25 minutos</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-check-circle"></i><h3>Calidad</h3><p>Inspección final</p></div>
+        <div class="flecha">→</div>
+        <div class="etapa"><i class="fas fa-warehouse"></i><h3>Almacén</h3><p>Producto terminado</p></div>
+    </div>
+</body>
+</html>

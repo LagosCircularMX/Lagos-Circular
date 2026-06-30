@@ -16,8 +16,8 @@
         header { background: var(--blanco); border-left: 6px solid var(--naranja); padding: 20px 30px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); flex-wrap: wrap; }
         header h1 { font-size: 1.8rem; font-weight: 800; }
         header h1 span { color: var(--naranja); }
-        .selector-anio { display: flex; gap: 10px; }
-        .selector-anio button { background: var(--blanco); border: 2px solid var(--naranja); color: var(--naranja); padding: 8px 18px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+        .selector-anio { display: flex; gap: 10px; flex-wrap: wrap; }
+        .selector-anio button { background: var(--blanco); border: 2px solid var(--naranja); color: var(--naranja); padding: 8px 14px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
         .selector-anio button.active, .selector-anio button:hover { background: var(--naranja); color: white; }
         .summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .card { background: var(--blanco); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid var(--naranja); transition: transform 0.3s; }
@@ -38,32 +38,49 @@
 <body>
     <canvas id="fondo-dash"></canvas>
     <div class="dashboard-container">
-        <header><h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Financiero</h1><div class="selector-anio"><button id="btn2026" class="active">2026 (Año 1)</button><button id="btn2027">2027 (Año 2)</button><button id="btn2028">2028 (Año 3)</button></div></header>
+        <header>
+            <h1>📊 LAGOS<span>CIRCULAR</span> | Dashboard Financiero</h1>
+            <div class="selector-anio">
+                <button id="btn2026" class="active">2026 (Año 1)</button>
+                <button id="btn2027">2027 (Año 2)</button>
+                <button id="btn2028">2028 (Año 3)</button>
+                <button id="btn2029">2029 (Año 4)</button>
+                <button id="btn2030">2030 (Año 5)</button>
+            </div>
+        </header>
         <div class="summary-cards" id="summaryCards"></div>
         <div class="charts-grid">
             <div class="chart-box"><h3><i class="fas fa-chart-pie"></i> Composición de Ingresos</h3><canvas id="pieChart"></canvas></div>
             <div class="chart-box"><h3><i class="fas fa-chart-line"></i> Flujo de Efectivo Acumulado</h3><canvas id="lineChart"></canvas></div>
         </div>
-        <div class="progress-container"><h3>Recuperación de Inversión (Payback)</h3><p id="payback-label">Progreso: 37.5% de $2,400,000 MXN</p><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+        <div class="progress-container"><h3>Recuperación de Inversión (Payback)</h3><p id="payback-label">Progreso: 10.8% de $8,326,450 MXN</p><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
         <footer>Proyecto reconocido por Fundación POSiBLE 2026 | Lagos de Moreno, Jalisco</footer>
     </div>
     <script>
-        var d = { 2026: { it:2500000, fn:900000, fa:900000, l:930000, t:810000, tp:372000, u:281000, f:93000, cm:360000, pp:120, op:60, e:15, fam:300, pct:37.5 }, 2027: { it:3500000, fn:1500000, fa:2400000, l:1260000, t:1100000, tp:510000, u:420000, f:110000, cm:360000, pp:240, op:150, e:20, fam:600, pct:100 }, 2028: { it:4500000, fn:2100000, fa:4500000, l:1620000, t:1420000, tp:660000, u:540000, f:180000, cm:360000, pp:480, op:300, e:25, fam:800, pct:187.5 } };
+        var d = {
+            2026: { it:2500000, fn:900000, fa:900000, l:930000, t:810000, tp:372000, u:281000, f:93000, cm:360000, pp:120, op:60, e:15, fam:300, pct:10.8 },
+            2027: { it:3500000, fn:1500000, fa:2400000, l:1260000, t:1100000, tp:510000, u:420000, f:110000, cm:360000, pp:240, op:150, e:20, fam:600, pct:28.8 },
+            2028: { it:4500000, fn:2100000, fa:4500000, l:1620000, t:1420000, tp:660000, u:540000, f:180000, cm:360000, pp:480, op:300, e:25, fam:800, pct:54.0 },
+            2029: { it:5800000, fn:2800000, fa:7300000, l:2088000, t:1840000, tp:840000, u:696000, f:232000, cm:360000, pp:720, op:400, e:30, fam:1200, pct:87.7 },
+            2030: { it:7000000, fn:3500000, fa:10800000, l:2520000, t:2220000, tp:1020000, u:840000, f:280000, cm:360000, pp:960, op:500, e:35, fam:1500, pct:129.7 }
+        };
         var pi, li;
         function ud(y) {
             var x = d[y];
             document.getElementById('summaryCards').innerHTML = '<div class="card"><i class="fas fa-dollar-sign"></i><div class="value">$'+(x.it/1e6).toFixed(1)+'M</div><div class="label">Ingresos Totales</div></div><div class="card"><i class="fas fa-chart-simple"></i><div class="value">$'+(x.fn/1e6).toFixed(1)+'M</div><div class="label">Flujo Neto</div></div><div class="card"><i class="fas fa-recycle"></i><div class="value">'+x.pp+' T</div><div class="label">Plástico Procesado</div></div><div class="card"><i class="fas fa-users"></i><div class="value">'+x.e+'</div><div class="label">Empleos Verdes</div></div><div class="card"><i class="fas fa-home"></i><div class="value">'+x.fam+'+</div><div class="label">Familias Beneficiadas</div></div><div class="card"><i class="fas fa-seedling"></i><div class="value">'+x.op+' T</div><div class="label">Orgánicos Compostados</div></div>';
-            document.getElementById('progressFill').style.width = x.pct + '%';
-            document.getElementById('payback-label').innerHTML = 'Progreso: '+x.pct+'% de $2,400,000 MXN '+(x.pct>=100?'✅ INVERSIÓN RECUPERADA':'');
+            document.getElementById('progressFill').style.width = Math.min(x.pct, 100) + '%';
+            document.getElementById('payback-label').innerHTML = 'Progreso: '+x.pct+'% de $8,326,450 MXN '+(x.pct>=100?'✅ INVERSIÓN RECUPERADA':'');
             if(pi) pi.destroy();
             pi = new Chart(document.getElementById('pieChart'), { type: 'doughnut', data: { labels: ['Ladrillos','Tarimas','Tapetes','Utensilios','Fertilizante','Cuota Municipal'], datasets: [{ data: [x.l,x.t,x.tp,x.u,x.f,x.cm], backgroundColor: ['#F39200','#333333','#2E7D32','#4D4D4D','#A0A0A0','#F2F2F2'] }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } } });
             if(li) li.destroy();
-            var fa = [d[2026].fa, d[2027].fa, d[2028].fa], inv = 2400000;
-            li = new Chart(document.getElementById('lineChart'), { type: 'line', data: { labels: ['2026','2027','2028'], datasets: [{ label: 'Flujo Acumulado', data: fa, borderColor: '#F39200', backgroundColor: 'rgba(243,146,0,0.1)', fill: true, tension: 0.3 },{ label: 'Inversión ($2.4M)', data: [inv,inv,inv], borderColor: '#333333', borderDash: [6,6], borderWidth: 2, fill: false }] }, options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: function(v) { return '$'+(v/1e6).toFixed(1)+'M'; } } } } } });
+            var fa = [d[2026].fa, d[2027].fa, d[2028].fa, d[2029].fa, d[2030].fa], inv = 8326450;
+            li = new Chart(document.getElementById('lineChart'), { type: 'line', data: { labels: ['2026','2027','2028','2029','2030'], datasets: [{ label: 'Flujo Acumulado', data: fa, borderColor: '#F39200', backgroundColor: 'rgba(243,146,0,0.1)', fill: true, tension: 0.3 },{ label: 'Inversión ($8.3M)', data: [inv,inv,inv,inv,inv], borderColor: '#333333', borderDash: [6,6], borderWidth: 2, fill: false }] }, options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: function(v) { return '$'+(v/1e6).toFixed(1)+'M'; } } } } } });
         }
         document.getElementById('btn2026').addEventListener('click', function() { document.querySelectorAll('.selector-anio button').forEach(function(b){ b.classList.remove('active'); }); this.classList.add('active'); ud(2026); });
         document.getElementById('btn2027').addEventListener('click', function() { document.querySelectorAll('.selector-anio button').forEach(function(b){ b.classList.remove('active'); }); this.classList.add('active'); ud(2027); });
         document.getElementById('btn2028').addEventListener('click', function() { document.querySelectorAll('.selector-anio button').forEach(function(b){ b.classList.remove('active'); }); this.classList.add('active'); ud(2028); });
+        document.getElementById('btn2029').addEventListener('click', function() { document.querySelectorAll('.selector-anio button').forEach(function(b){ b.classList.remove('active'); }); this.classList.add('active'); ud(2029); });
+        document.getElementById('btn2030').addEventListener('click', function() { document.querySelectorAll('.selector-anio button').forEach(function(b){ b.classList.remove('active'); }); this.classList.add('active'); ud(2030); });
         window.onload = function() { ud(2026); };
         (function() {
             var c = document.getElementById('fondo-dash'), ctx = c.getContext('2d'), w, h, lines = [];
