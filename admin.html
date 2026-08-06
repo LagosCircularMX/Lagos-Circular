@@ -12,13 +12,11 @@
         gtag('config', 'G-469V8BBKLB');
     </script>
 
-    <!-- Google Search Console - verificación -->
-    <meta name="google-site-verification" content="xbbsymA6OhzQY73W9MhcMxc9ltQ4YjovV5likrRuXng" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración | LAGOS CIRCULAR</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --naranja-institucional: #F39200;
@@ -69,6 +67,7 @@
             transition: background 0.3s;
         }
         .btn:hover { background: #e08600; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
         .btn-small {
             width: auto;
             padding: 0.4rem 1.2rem;
@@ -118,12 +117,13 @@
 
 <!-- PANTALLA DE LOGIN -->
 <div id="login-screen" class="login-box">
-    <h2><i class="fas fa-shield-haltered" style="color: var(--naranja-institucional);"></i></h2>
+    <h2><i class="fas fa-shield-halved" style="color: var(--naranja-institucional);"></i></h2>
     <h2>Panel de Administración</h2>
     <p style="color: #4D4D4D; margin-bottom: 1.5rem;">Acceso restringido al administrador de LAGOS CIRCULAR</p>
-    <input type="password" id="password" placeholder="Ingresa la contraseña">
-    <button class="btn" onclick="verificarAcceso()"><i class="fas fa-lock-open"></i> Acceder</button>
-    <p id="error-login" class="error">❌ Contraseña incorrecta</p>
+    <input type="email" id="email" placeholder="Correo electrónico" autocomplete="username">
+    <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password">
+    <button class="btn" id="btn-login" onclick="verificarAcceso()"><i class="fas fa-lock-open"></i> Acceder</button>
+    <p id="error-login" class="error">❌ Correo o contraseña incorrectos</p>
 </div>
 
 <!-- PANEL DE ADMINISTRACIÓN -->
@@ -158,111 +158,119 @@
 </div>
 
 <script>
-    // ⚠️ SEGURIDAD: esta contraseña es visible para cualquiera que vea el código fuente de esta página.
-    // No protege datos sensibles por sí sola — revisa las políticas de Row Level Security en Supabase
-    // (tabla "interesados") para asegurarte de que la clave anon de abajo no pueda leer ni borrar datos
-    // sin pasar por una autenticación real. Cambia esta contraseña por una nueva de todos modos.
-    var CONTRASENA = 'LagosCircular2026!';
-    
+    // La clave "anon" es pública por diseño de Supabase. Ya no es un riesgo por sí sola:
+    // la política "leer_autenticado" exige haber iniciado sesión real (abajo) para poder leer la tabla.
     var SUPABASE_URL = 'https://tdxxtuhlaimmmcesclat.supabase.co';
     var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkeHh0dWhsYWltbW1jZXNjbGF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjM2NDksImV4cCI6MjA5NTczOTY0OX0.lgoLL29EEOeTpQAY_enkGmwS1t5S1Ans3Lnip0QRfF8';
-    
-    // Verificar acceso
-    function verificarAcceso() {
+
+    var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Iniciar sesión con correo y contraseña reales (verificados por Supabase Auth)
+    async function verificarAcceso() {
+        var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
-        if (password === CONTRASENA) {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('admin-screen').style.display = 'block';
-            document.getElementById('error-login').style.display = 'none';
-            localStorage.setItem('lc_admin', 'true');
-            cargarRegistros();
-        } else {
-            document.getElementById('error-login').style.display = 'block';
+        var btn = document.getElementById('btn-login');
+        var errorMsg = document.getElementById('error-login');
+
+        btn.disabled = true;
+        btn.textContent = 'Verificando...';
+        errorMsg.style.display = 'none';
+
+        var { data, error } = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
+
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-lock-open"></i> Acceder';
+
+        if (error) {
+            errorMsg.style.display = 'block';
+            return;
         }
-    }
-    
-    // Cerrar sesión
-    function cerrarSesion() {
-        localStorage.removeItem('lc_admin');
-        document.getElementById('login-screen').style.display = 'block';
-        document.getElementById('admin-screen').style.display = 'none';
-        document.getElementById('password').value = '';
-    }
-    
-    // Cargar registros desde Supabase
-    function cargarRegistros() {
-        var tabla = document.getElementById('tabla-registros');
-        tabla.innerHTML = '<tr><td colspan="5" style="text-align: center;">⏳ Cargando registros...</td></tr>';
-        
-        fetch(SUPABASE_URL + '/rest/v1/interesados?select=*&order=fecha.desc', {
-            headers: {
-                'apikey': SUPABASE_KEY,
-                'Authorization': 'Bearer ' + SUPABASE_KEY
-            }
-        })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-            if (data.length === 0) {
-                tabla.innerHTML = '<tr><td colspan="5" style="text-align: center;">No hay registros aún</td></tr>';
-                document.getElementById('contador').textContent = 'Total de registros: 0';
-                return;
-            }
-            
-            document.getElementById('contador').textContent = 'Total de registros: ' + data.length;
-            tabla.innerHTML = '';
-            
-            data.forEach(function(row, index) {
-                var fecha = new Date(row.fecha).toLocaleDateString('es-MX', {
-                    year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
-                });
-                tabla.innerHTML += '<tr>' +
-                    '<td>' + (index + 1) + '</td>' +
-                    '<td>' + row.nombre + '</td>' +
-                    '<td>' + row.email + '</td>' +
-                    '<td>' + (row.institucion || 'No especificada') + '</td>' +
-                    '<td>' + fecha + '</td>' +
-                '</tr>';
-            });
-        })
-        .catch(function() {
-            tabla.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #C0392B;">Error al cargar los datos</td></tr>';
-        });
-    }
-    
-    // Exportar a CSV
-    function exportarCSV() {
-        fetch(SUPABASE_URL + '/rest/v1/interesados?select=*&order=fecha.desc', {
-            headers: {
-                'apikey': SUPABASE_KEY,
-                'Authorization': 'Bearer ' + SUPABASE_KEY
-            }
-        })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-            if (data.length === 0) {
-                alert('No hay registros para exportar');
-                return;
-            }
-            
-            var csv = 'Nombre,Correo,Institución,Fecha\n';
-            data.forEach(function(row) {
-                csv += '"' + row.nombre + '","' + row.email + '","' + (row.institucion || '') + '","' + row.fecha + '"\n';
-            });
-            
-            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            var link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'interesados_lagos_circular.csv';
-            link.click();
-        });
-    }
-    
-    // Verificar si ya inició sesión
-    if (localStorage.getItem('lc_admin') === 'true') {
+
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('admin-screen').style.display = 'block';
         cargarRegistros();
     }
+
+    // Cerrar sesión real de Supabase
+    async function cerrarSesion() {
+        await supabaseClient.auth.signOut();
+        document.getElementById('login-screen').style.display = 'block';
+        document.getElementById('admin-screen').style.display = 'none';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+    }
+
+    // Cargar registros usando el cliente autenticado (ya no fetch manual con la clave anon)
+    async function cargarRegistros() {
+        var tabla = document.getElementById('tabla-registros');
+        tabla.innerHTML = '<tr><td colspan="5" style="text-align: center;">⏳ Cargando registros...</td></tr>';
+
+        var { data, error } = await supabaseClient
+            .from('interesados')
+            .select('*')
+            .order('fecha', { ascending: false });
+
+        if (error) {
+            tabla.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #C0392B;">Error al cargar los datos</td></tr>';
+            return;
+        }
+
+        if (data.length === 0) {
+            tabla.innerHTML = '<tr><td colspan="5" style="text-align: center;">No hay registros aún</td></tr>';
+            document.getElementById('contador').textContent = 'Total de registros: 0';
+            return;
+        }
+
+        document.getElementById('contador').textContent = 'Total de registros: ' + data.length;
+        tabla.innerHTML = '';
+
+        data.forEach(function(row, index) {
+            var fecha = new Date(row.fecha).toLocaleDateString('es-MX', {
+                year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            tabla.innerHTML += '<tr>' +
+                '<td>' + (index + 1) + '</td>' +
+                '<td>' + row.nombre + '</td>' +
+                '<td>' + row.email + '</td>' +
+                '<td>' + (row.institucion || 'No especificada') + '</td>' +
+                '<td>' + fecha + '</td>' +
+            '</tr>';
+        });
+    }
+
+    // Exportar a CSV usando el cliente autenticado
+    async function exportarCSV() {
+        var { data, error } = await supabaseClient
+            .from('interesados')
+            .select('*')
+            .order('fecha', { ascending: false });
+
+        if (error || !data || data.length === 0) {
+            alert('No hay registros para exportar');
+            return;
+        }
+
+        var csv = 'Nombre,Correo,Institución,Fecha\n';
+        data.forEach(function(row) {
+            csv += '"' + row.nombre + '","' + row.email + '","' + (row.institucion || '') + '","' + row.fecha + '"\n';
+        });
+
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'interesados_lagos_circular.csv';
+        link.click();
+    }
+
+    // Al cargar la página, revisa si ya hay una sesión activa de Supabase (evita pedir login otra vez)
+    (async function() {
+        var { data: { session } } = await supabaseClient.auth.getSession();
+        if (session) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('admin-screen').style.display = 'block';
+            cargarRegistros();
+        }
+    })();
 </script>
 </body>
 </html>
