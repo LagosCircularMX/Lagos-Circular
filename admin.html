@@ -2,6 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Google tag (gtag.js) - Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-469V8BBKLB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-469V8BBKLB');
+    </script>
+
+    <!-- Google Search Console - verificación -->
+    <meta name="google-site-verification" content="xbbsymA6OhzQY73W9MhcMxc9ltQ4YjovV5likrRuXng" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración | LAGOS CIRCULAR</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -145,7 +158,10 @@
 </div>
 
 <script>
-    // ⚠️ CAMBIA ESTA CONTRASEÑA POR UNA QUE SOLO TÚ CONOZCAS
+    // ⚠️ SEGURIDAD: esta contraseña es visible para cualquiera que vea el código fuente de esta página.
+    // No protege datos sensibles por sí sola — revisa las políticas de Row Level Security en Supabase
+    // (tabla "interesados") para asegurarte de que la clave anon de abajo no pueda leer ni borrar datos
+    // sin pasar por una autenticación real. Cambia esta contraseña por una nueva de todos modos.
     var CONTRASENA = 'LagosCircular2026!';
     
     var SUPABASE_URL = 'https://tdxxtuhlaimmmcesclat.supabase.co';
