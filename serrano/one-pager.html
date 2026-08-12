@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Pager - Grupo Serrano | LAGOS CIRCULAR</title>
+    <style>
+        :root { --azul-serrano: #1F3B4D; --verde-serrano: #3E8E5A; --naranja-lc: #F39200; --blanco: #FFFFFF; --gris-claro: #F4F6F8; --texto: #333333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; color: var(--texto); background: var(--blanco); line-height: 1.4; font-size: 11px; }
+        .page { max-width: 800px; margin: 0 auto; padding: 18px; border: 2px solid var(--azul-serrano); }
+        .header { background: var(--azul-serrano); color: white; text-align: center; padding: 14px; margin: -18px -18px 14px -18px; }
+        .header h1 { font-size: 22px; }
+        .header h1 span { color: var(--naranja-lc); }
+        .header .badge { display: inline-block; background: var(--naranja-lc); color: white; padding: 3px 12px; border-radius: 20px; font-size: 10px; font-weight: 600; margin-top: 4px; }
+        .dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .caja { background: var(--gris-claro); padding: 8px; border-radius: 6px; border-left: 4px solid var(--azul-serrano); }
+        .caja h3 { font-size: 12px; color: var(--azul-serrano); margin-bottom: 5px; }
+        .caja p, .caja li { font-size: 10px; margin-bottom: 2px; }
+        .caja ul { padding-left: 14px; }
+        .metrica { text-align: center; }
+        .metrica .num { font-size: 24px; font-weight: 800; color: var(--azul-serrano); }
+        .metrica .lab { font-size: 9px; color: #666; }
+        .metricas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
+        .tabla { width: 100%; border-collapse: collapse; font-size: 9px; }
+        .tabla th { background: var(--azul-serrano); color: white; padding: 3px; text-align: left; }
+        .tabla td { padding: 3px; border-bottom: 1px solid #ddd; }
+        .cta { background: var(--naranja-lc); color: white; text-align: center; padding: 10px; margin-top: 10px; }
+        .cta h2 { font-size: 14px; }
+        .footer { text-align: center; font-size: 8px; color: #999; margin-top: 8px; }
+        @media print { body { padding: 0; } .page { border: none; } }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <h1>LAGOS<span>CIRCULAR</span></h1>
+        <p style="font-size:11px;color:#ccc;">Propuesta de Alianza Estratégica para Grupo Serrano</p>
+        <div class="badge">🏆 Reconocido por Fundación POSiBLE 2026 | Agosto 2026</div>
+    </div>
+
+    <div class="dos-col">
+        <div class="caja">
+            <h3>🚨 El Problema</h3>
+            <p>Relleno sanitario al <strong>85%</strong> de capacidad. Menos de <strong>5 años</strong> de vida útil. Solo se recicla el <strong>18-20%</strong>. Grupo Serrano genera residuos plásticos y orgánicos en sus diferentes empresas.</p>
+        </div>
+        <div class="caja">
+            <h3>💡 La Solución</h3>
+            <p>Biofábrica que convierte plásticos en <strong>ladrillos ecológicos (ECOBLOCK-LC), tarimas y tapetes ganaderos</strong>, y residuos orgánicos en <strong>fertilizante</strong>. Todo con cero descargas de agua.</p>
+        </div>
+    </div>
+
+    <div class="metricas">
+        <div class="metrica"><div class="num">$8.3M</div><div class="lab">Inversión Total</div></div>
+        <div class="metrica"><div class="num">42%</div><div class="lab">TIR Anual</div></div>
+        <div class="metrica"><div class="num">4.3</div><div class="lab">Años Payback</div></div>
+        <div class="metrica"><div class="num">960 T</div><div class="lab">Plástico valorizado/año</div></div>
+    </div>
+
+    <div class="dos-col">
+        <div class="caja">
+            <h3>🏗️ Escenario A: Construcción (Sabinda)</h3>
+            <ul>
+                <li>ECOBLOCK-LC sustituye block tradicional.</li>
+                <li>Ahorro del <strong>30%</strong> en material.</li>
+                <li>Mejor aislamiento térmico y acústico.</li>
+                <li>Ventaja competitiva en licitaciones verdes.</li>
+            </ul>
+        </div>
+        <div class="caja">
+            <h3>🌱 Escenario B: Agroindustria (Finca de Lagos, Sabinda)</h3>
+            <ul>
+                <li>Fertilizante orgánico para cultivos.</li>
+                <li>Tapetes antiestrés para ganado lechero.</li>
+                <li>Reducción de costos de insumos.</li>
+                <li>Certificación sustentable para sus productos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dos-col">
+        <div class="caja">
+            <h3>🚛 Escenario C: Logística y Residuos (Tralisol, Translíquidos)</h3>
+            <ul>
+                <li>Valorización de plásticos que hoy se destruyen.</li>
+                <li>Ingreso adicional por venta de materia prima.</li>
+                <li>Cumplimiento de la Ley de Economía Circular.</li>
+            </ul>
+        </div>
+        <div class="caja">
+            <h3>⚡ Escenario D: Energía (Brimex)</h3>
+            <ul>
+                <li>Integración con paneles solares.</li>
+                <li>Reducción de costos energéticos de la biofábrica.</li>
+                <li>Posicionamiento como grupo sustentable.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="caja" style="margin-bottom:10px;">
+        <h3>🏛️ Apoyos Gubernamentales que Reducen el Capital</h3>
+        <ul>
+            <li><strong>FOJAL:</strong> Créditos de hasta 15 MDP para proyectos verdes.</li>
+            <li><strong>SEMADET:</strong> Asistencia técnica y validación normativa.</li>
+            <li><strong>COECYTJAL:</strong> Fondos para innovación tecnológica.</li>
+            <li><strong>SEDECO:</strong> Apoyos a MIPyMEs y desarrollo regional.</li>
+        </ul>
+    </div>
+
+    <div class="cta">
+        <h2>📅 Solicitamos una reunión de 30 minutos</h2>
+        <p style="font-size:11px;">Carretera Camino al Puesto Km 6, Lagos de Moreno, Jalisco</p>
+        <p style="font-size:11px;margin-top:4px;"><strong>🌐 lagoscircularmx.github.io/Lagos-Circular/</strong></p>
+    </div>
+
+    <div class="footer">
+        <strong>Ing. Luis Javier Flores Flores</strong> | Tel: 474 108 1206 | engineerflores@outlook.com | RFC: FOFL840425E40<br>
+        © 2026 LAGOS CIRCULAR – Documento confidencial. Protegido por derechos de autor y patente en trámite.
+    </div>
+</div>
+</body>
+</html>
