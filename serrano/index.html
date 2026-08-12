@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LAGOS CIRCULAR y Grupo Serrano: alianza estratégica para transformar residuos en materiales de construcción y soluciones agroindustriales.">
+    <meta name="author" content="Ing. Luis Javier Flores Flores, RFC FOFL840425E40">
+    <title>LAGOS CIRCULAR | Propuesta para Grupo Serrano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --azul-serrano: #1F3B4D;
+            --verde-serrano: #3E8E5A;
+            --naranja-lc: #F39200;
+            --blanco: #FFFFFF;
+            --gris-claro: #F4F6F8;
+            --texto: #333333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--gris-claro); color: var(--texto); line-height: 1.6; }
+        .contenido { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+        nav {
+            background: var(--azul-serrano);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        nav .logo { font-size: 1.5rem; font-weight: 800; }
+        nav .logo span { color: var(--naranja-lc); }
+        nav a { color: white; text-decoration: none; font-weight: 600; padding: 0.5rem 1.2rem; border-radius: 30px; background: var(--naranja-lc); transition: 0.3s; }
+        nav a:hover { background: #e08600; }
+        .hero {
+            background: linear-gradient(135deg, var(--azul-serrano), var(--verde-serrano));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+        .hero p { max-width: 750px; margin: 1rem auto 2rem; opacity: 0.9; }
+        .hero .btn {
+            display: inline-block;
+            background: var(--naranja-lc);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .tarjeta {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--verde-serrano);
+        }
+        .tarjeta h3 { color: var(--azul-serrano); margin-bottom: 0.8rem; }
+        .tarjeta i { font-size: 2rem; color: var(--verde-serrano); margin-bottom: 0.8rem; }
+        .metricas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .metrica {
+            background: var(--azul-serrano);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .metrica .numero { font-size: 2rem; font-weight: 800; color: var(--naranja-lc); }
+        .metrica .etiqueta { font-size: 0.85rem; opacity: 0.8; }
+        footer {
+            background: var(--azul-serrano);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        footer a { color: var(--naranja-lc); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+<div class="contenido">
+    <nav>
+        <div class="logo">LAGOS<span>CIRCULAR</span> + <span style="color:white;">Grupo Serrano</span></div>
+        <a href="one-pager.html"><i class="fas fa-file-pdf"></i> Ver One Pager</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Transformamos los residuos de Grupo Serrano en materiales de construcción y soluciones agroindustriales</h1>
+        <p>Una alianza estratégica para aprovechar los plásticos, orgánicos y residuos de sus empresas, con el respaldo de instituciones estatales como FOJAL, SEMADET y COECYTJAL.</p>
+        <a href="#propuesta" class="btn"><i class="fas fa-arrow-down"></i> Conocer la propuesta</a>
+    </section>
+
+    <section id="propuesta">
+        <h2 style="text-align:center; margin-bottom:1.5rem; color:var(--azul-serrano);">Escenarios de Colaboración</h2>
+        <div class="grid">
+            <div class="tarjeta">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Escenario A: Construcción</h3>
+                <p><strong>Sociedad Agropecuaria Sabinda</strong> construye viviendas con monolítico y vigueta/bovedilla. Nuestro <strong>ECOBLOCK-LC</strong> puede sustituir esos sistemas con ahorro del 30% y mejor aislamiento térmico.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fas fa-tractor"></i>
+                <h3>Escenario B: Agroindustria</h3>
+                <p><strong>La Finca de Lagos</strong> y <strong>Sabinda</strong> generan residuos orgánicos y requieren fertilizantes. Producimos <strong>fertilizante orgánico</strong> y <strong>tapetes antiestrés</strong> para su ganado.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fas fa-truck"></i>
+                <h3>Escenario C: Logística y Residuos</h3>
+                <p><strong>Transportadora Tralisol</strong> y <strong>Translíquidos Serra</strong> manejan residuos. Nuestra biofábrica puede valorizar plásticos que hoy destruyen, convirtiéndolos en producto útil.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fas fa-bolt"></i>
+                <h3>Escenario D: Energía</h3>
+                <p><strong>Brimex Energy</strong> produce energías renovables. Nuestro proyecto puede integrarse con paneles solares para alimentar la biofábrica, reduciendo costos operativos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 style="text-align:center; margin-bottom:1.5rem; color:var(--azul-serrano);">Apoyos Gubernamentales que Reducen el Capital Requerido</h2>
+        <div class="grid">
+            <div class="tarjeta">
+                <i class="fas fa-hand-holding-dollar"></i>
+                <h3>FOJAL (Fondo Jalisco de Fomento al Emprendimiento)</h3>
+                <p>Créditos de hasta <strong>15 MDP</strong> para proyectos verdes, con tasas preferenciales. Grupo Serrano puede acceder con LAGOS CIRCULAR como proyecto ancla.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fas fa-leaf"></i>
+                <h3>SEMADET</h3>
+                <p>La Dirección de Protección y Gestión Ambiental puede otorgar <strong>asistencia técnica</strong> y validar el cumplimiento normativo, lo que facilita la obtención de permisos.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fas fa-flask"></i>
+                <h3>COECYTJAL</h3>
+                <p>Apoyos para <strong>proyectos de innovación tecnológica</strong>. Nuestro proceso patentable de termofusión califica para fondos de investigación aplicada.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 style="text-align:center; margin-bottom:1.5rem; color:var(--azul-serrano);">Métricas Clave</h2>
+        <div class="metricas">
+            <div class="metrica"><div class="numero">$8.3M</div><div class="etiqueta">Inversión Total</div></div>
+            <div class="metrica"><div class="numero">42%</div><div class="etiqueta">TIR Anual</div></div>
+            <div class="metrica"><div class="numero">4.3</div><div class="etiqueta">Años Payback</div></div>
+            <div class="metrica"><div class="numero">960 T</div><div class="etiqueta">Plástico valorizado/año</div></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 LAGOS CIRCULAR – Biofábrica Social de Los Altos</p>
+        <p>Contacto: <a href="mailto:engineerflores@outlook.com">engineerflores@outlook.com</a> | Tel: 474 108 1206</p>
+        <p><a href="../index.html">Volver a página principal</a></p>
+    </footer>
+</div>
+</body>
+</html>
